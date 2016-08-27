@@ -31,6 +31,8 @@ gem "minima"
    gem "octopress-filter-tag"
    gem "octopress-filters"
    gem "octopress-comment-tag"
+#   gem "octopress-deploy"
+#   gem "octopress-escape-code"
    gem "jekyll-sitemap"
    gem "jekyll-paginate"
  end
