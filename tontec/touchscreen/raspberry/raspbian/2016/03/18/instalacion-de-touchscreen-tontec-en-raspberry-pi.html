@@ -46,6 +46,10 @@
         
           
         
+          
+        
+          
+        
       </div>
     </nav>
 
@@ -101,19 +105,6 @@ $ sudo reboot
 </div>
 
 <p>El proceso de actualización es similar a los sistemas operativos de escritorio de Linux.</p>
-
-<p><em>Actualización de firmware.</em></p>
-
-<p>Una vez actualizado el sistema y sin error alguno, se procede a la actualización del firmware para utilizar la pantalla Tontec.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ cd /boot/overlays
-$ sudo rm mz61581-overlay.dtb
-$ sudo wget http://www.itontec.com/mz61581-overlay.dtb
-$ sudo reboot
-</code></pre>
-</div>
-
-<p>De este modo se actualiza el firmware de la pantalla con el recomendado por Tontec y no utilizando el incluido con Raspbian</p>
 
 <p><em>Habilitar SPI e indicar pantalla Tontec a overlay.</em></p>
 

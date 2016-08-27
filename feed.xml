@@ -6,9 +6,324 @@
 </description>
     <link>http://librebit.github.io/</link>
     <atom:link href="http://librebit.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 27 Aug 2016 05:52:09 +0000</pubDate>
-    <lastBuildDate>Sat, 27 Aug 2016 05:52:09 +0000</lastBuildDate>
+    <pubDate>Sat, 27 Aug 2016 13:57:11 +0000</pubDate>
+    <lastBuildDate>Sat, 27 Aug 2016 13:57:11 +0000</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>Instalación De Octopress 3.0</title>
+        <description>&lt;p&gt;&lt;em&gt;Introducción.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://octopress.org/&quot;&gt;Octopress&lt;/a&gt; ha anunciado en su blog la llegada de &lt;a href=&quot;https://github.com/octopress/octopress&quot;&gt;Octopress 3.0 – Jekyll’s Ferrari&lt;/a&gt;, como se puede interpretar, Octopress en un plugin de &lt;a href=&quot;https://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; y la forma en como se desarrollan los blogs en esta nueva versión ha cambiado de forma sustancial, ya que la integración con Jekyll es mucho mayor.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;&lt;em&gt;Instalación&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Para instalar Octopress se requieren los siguientes prerequisitos:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt-get install build-essential git rbenv ruby-full nodejs
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;A través de &lt;a href=&quot;https://rubygems.org/&quot;&gt;gem&lt;/a&gt;, que es un instalador de paquetes de [ruby](https://www.ruby-lang.org/es/, se procede a instalar el plugin de Octopress.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo gem install octopress
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Una vez instalado el proyecto, se procede a crear los archivos del sitio para la publicación de blogs, primeramente se crea la carpeta que albergará los archivos del sitio y dentro de ella se indicará a Octopress que será la carpeta raíz del sitio a través del comando &lt;code class=&quot;highlighter-rouge&quot;&gt;octopress new .&lt;/code&gt;, donde el &lt;code class=&quot;highlighter-rouge&quot;&gt;.&lt;/code&gt; indica que ahí es la ubicación de la raíz del sitio.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir librebit
+cd librebit
+octopress new .
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Debido a que Octopress se encuentra en fase beta, hay varios plugins que deben ser instalados adicionalmente al proyecto, estos plugins sólo tendrán efecto en el sitio que se desarrolle bajo esta carpeta. Para indicar los plugins se modifica el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt;, y se descomenta la sección de &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll_plugins&lt;/code&gt;, tal como se muestra a continuación.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ nano Gemfile
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; group :jekyll_plugins do
+   gem &quot;octopress-image-tag&quot;
+   gem &quot;octopress-quote-tag&quot;
+   gem &quot;octopress-codeblock&quot;
+   gem &quot;octopress-social&quot;
+   gem &quot;octopress-filter-tag&quot;
+   gem &quot;octopress-filters&quot;
+   gem &quot;octopress-comment-tag&quot;
+   gem &quot;jekyll-sitemap&quot;
+   gem &quot;jekyll-paginate&quot;
+ end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Una vez modificado el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; se procede a la instalación de los plugins para el sitio, para ello se utiliza el comando &lt;a href=&quot;http://bundler.io/&quot;&gt;bundler&lt;/a&gt;, que es un instalador de paquetes.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ bundler install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;En caso de que no se instale algun gem por medio de bundler, se puede utilizar el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;gem&lt;/code&gt; para su instalación.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo gem install octopress-image-tag
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Si se requiere agregar o eliminar algunos plugins para el sitio, se debe modificar nuevamente el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt;, eliminar el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile.lock&lt;/code&gt; y ejecutar nuevamente &lt;code class=&quot;highlighter-rouge&quot;&gt;bundler&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ nano Gemfile
+$ rm Gemfile.lock 
+$ bundler install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Una vez instalado todos los plugins para el sitio, se procede a generar los archivos que conformarán el sitio, esto se hace utilizando el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll&lt;/code&gt;, con la opción &lt;code class=&quot;highlighter-rouge&quot;&gt;build&lt;/code&gt; genera los archivos del sitio, la opción &lt;code class=&quot;highlighter-rouge&quot;&gt;serve&lt;/code&gt; habilita un servidor web en el puerto 4000 para obtener una vista previa el sitio, la opción &lt;code class=&quot;highlighter-rouge&quot;&gt;--h 0.0.0.0&lt;/code&gt; permite que el servidor web pueda ser observado desde computadoras remotas y finalmente &lt;code class=&quot;highlighter-rouge&quot;&gt;--watch&lt;/code&gt; es para que el sitio se actualice en tiempo real ante las modificaciones que se hagan a los archivos del sitio.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jekyll build
+jekyll serve --h 0.0.0.0 --watch
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Para modificar el título del blog y otros parámetros, el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; contiene varios datos de configuración para la generación del sitio.&lt;/p&gt;
+
+&lt;p&gt;Para agregar un post al sitio, se utiliza el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;octopress new post&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;octopress new post &quot;Mi título&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Este comando creará un archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;.markdown&lt;/code&gt; en la carpeta de &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts/&lt;/code&gt; en donde se guardarán los posts que conforman el sitio.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Modificación de Minima.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Por default, el tema que viene con Octopress es &lt;a href=&quot;https://github.com/jekyll/minima&quot;&gt;Minima&lt;/a&gt; de Jekyll, es una tema básico que puede ser modificado para integrarle los diferentes plugins que se requieran en el sitio.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Favicon.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Para agregar un favicon al sitio, solo se tiene que agregar el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;.ico&lt;/code&gt; en la raíz del sitio.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Integración de redes sociales.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Para integrar los botones y otras opciones de las redes sociales en el blog se utiliza el plugin de &lt;code class=&quot;highlighter-rouge&quot;&gt;octopress-social&lt;/code&gt;, este plugin permite la fácil integración de estos elementos sin recurrir a los codigos embebidos.&lt;/p&gt;
+
+&lt;p&gt;Para agregar los sitios de Facebook, Twitter y Google Plus, se tiene que modificar el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;default.html&lt;/code&gt; del proyecto &lt;code class=&quot;highlighter-rouge&quot;&gt;Minima&lt;/code&gt;, los archivos del proyecto se ubican en &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/lib/gems/2.1.0/gems/minima-1.0.1/_layouts&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo nano /var/lib/gems/2.1.0/gems/minima-1.0.1/_layouts/default.html
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Dentro de &lt;code class=&quot;highlighter-rouge&quot;&gt;body&lt;/code&gt; se agregan las siguientes líneas.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;twitter_script_tag&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;facebook_script_tag&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;gplus_script_tag&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Si se ejecuta el comando de &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt; se observará que no hay ningún cambio en la página, ya que estos comandos solo habilitan el servicio de las redes sociales dentro del sitio.&lt;/p&gt;
+
+&lt;p&gt;Para agregar los botones de like y compartir se debe de modificar el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;post.html&lt;/code&gt; de &lt;code class=&quot;highlighter-rouge&quot;&gt;Minima&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo nano /var/lib/gems/2.1.0/gems/minima-1.0.1/_layouts/post.html
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Y agregar los botones después de &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;tweet_button&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;gplus_one_button&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;gplus_share_button&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;facebook_like_button&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;facebook_send_button&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Si se desea integrar la herramienta de &lt;a href=&quot;https://disqus.com/&quot;&gt;Disqus&lt;/a&gt; para agregar comentarios a los posts, primero se tiene que configurar los parámetros de conexión en el archivo de &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;disqus:
+  shortname: librebitblog                          # Your site's disqus identifier
+  comments_link_text: Comments                     # Text label for comments link
+  comments_disabled_link_text: Comments disabled   # Set to '' to not output a comments link when disabled
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;y agregar el comando  &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;disqus_comments&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;  en el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/lib/gems/2.1.0/gems/minima-1.0.1/_layouts/post.html&lt;/code&gt; después de los botones de las redes sociales.&lt;/p&gt;
+
+&lt;p&gt;Existen más parámetros de configuración para las redes sociales en Octopress, estos se agregan al archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;. Para conocerlos, se puede consultar la página de &lt;a href=&quot;https://github.com/octopress/social&quot;&gt;Octopress-social&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Visualización del blog.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Por default, el tema de &lt;code class=&quot;highlighter-rouge&quot;&gt;minima&lt;/code&gt; despliega todos los títulos de los posts en una sola página, sin poner un extracto de los contenidos y sin agregar paginación a los blogs. Para agregar estas características se debe de modificar los archivos &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; e &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt; del sitio.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Vista previa del post.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Para indicar la palabra que limitará el tamaño del extracto del post, se debe agregar la variable &lt;code class=&quot;highlighter-rouge&quot;&gt;excerpt_separator&lt;/code&gt; en el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ nano _config.yml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;excerpt_separator: &amp;lt;!-- more --&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Para que el sitio reconozca el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;!-- more --&amp;gt;&lt;/code&gt; como indicador del extracto del post, es necesario agregar el comando `` después del título del post dentro del archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nano index.html
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;site.posts&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;lt;span&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;post-meta&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;post.date&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;date:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;%b %-d, %Y&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}}&amp;lt;/span&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+        &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;lt;h&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+          &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;lt;a&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;post-link&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{{ post.url | prepend: site.baseurl }}&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;post.excerpt&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;De este modo se mostrará un extracto del post en la página principal del blog.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Paginación de los posts.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;La paginación puede ser útil para no saturar la página principal del blog, para ello se utiliza el plugin &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll-paginate&lt;/code&gt;. Los parámetros de la paginación se indican en el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;paginate: 5
+paginate_path: &quot;/blog/page:num/&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Para que el sitio reconozca la paginación, es necesario agregar el siguiente código al archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt; del sitio.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;!-- Pagination links --&amp;gt;
+&amp;lt;div class=&quot;pagination&quot;&amp;gt;
+  {% if paginator.previous_page %}
+    &amp;lt;a href=&quot;{{ paginator.previous_page_path }}&quot; class=&quot;previous&quot;&amp;gt;Previous&amp;lt;/a&amp;gt;
+  {% else %}
+    &amp;lt;span class=&quot;previous&quot;&amp;gt;Previous&amp;lt;/span&amp;gt;
+  {% endif %}
+  &amp;lt;span class=&quot;page_number &quot;&amp;gt;Page: {{ paginator.page }} of {{ paginator.total_pages }}&amp;lt;/span&amp;gt;
+  {% if paginator.next_page %}
+    &amp;lt;a href=&quot;{{ paginator.next_page_path }}&quot; class=&quot;next&quot;&amp;gt;Next&amp;lt;/a&amp;gt;
+  {% else %}
+    &amp;lt;span class=&quot;next &quot;&amp;gt;Next&amp;lt;/span&amp;gt;
+  {% endif %}
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;La versión final de la página principal donde se incluye el extracto del post y la paginación es la siguiente:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+layout: default
+---
+
+
+&amp;lt;!-- This loops through the paginated posts --&amp;gt;
+{% for post in paginator.posts %}
+  &amp;lt;h2&amp;gt;
+     &amp;lt;a class=&quot;post-link&quot; href=&quot;{{ post.url | prepend: site.baseurl }}&quot;&amp;gt;{{ post.title | escape }}&amp;lt;/a&amp;gt;
+  &amp;lt;/h2&amp;gt;
+  &amp;lt;p class=&quot;author&quot;&amp;gt;
+    &amp;lt;span class=&quot;post-meta&quot;&amp;gt;{{ post.date | date: &quot;%b %-d, %Y&quot; }}&amp;lt;/span&amp;gt;
+  &amp;lt;/p&amp;gt;
+    {{ post.excerpt }}
+    {% if post.content contains site.excerpt_separator %}
+        &amp;lt;a href=&quot;{{ post.url | prepend: site.baseurl }}&quot;&amp;gt;Leer m&amp;amp;aacutes&amp;lt;/a&amp;gt;
+        &amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;
+    {% endif %}
+{% endfor %}
+
+&amp;lt;!-- Pagination links --&amp;gt;
+&amp;lt;div class=&quot;pagination&quot;&amp;gt;
+  {% if paginator.previous_page %}
+    &amp;lt;a href=&quot;{{ paginator.previous_page_path }}&quot; class=&quot;previous&quot;&amp;gt;Anterior&amp;lt;/a&amp;gt;
+  {% else %}
+    &amp;lt;span class=&quot;previous&quot;&amp;gt;Anterior&amp;lt;/span&amp;gt;
+  {% endif %}
+  &amp;lt;span class=&quot;page_number &quot;&amp;gt;P&amp;amp;aacutegina: {{ paginator.page }} de {{ paginator.total_pages }}&amp;lt;/span&amp;gt;
+  {% if paginator.next_page %}
+    &amp;lt;a href=&quot;{{ paginator.next_page_path }}&quot; class=&quot;next&quot;&amp;gt;Siguiente&amp;lt;/a&amp;gt;
+  {% else %}
+    &amp;lt;span class=&quot;next &quot;&amp;gt;Siguiente&amp;lt;/span&amp;gt;
+  {% endif %}
+&amp;lt;/div&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p class=&quot;rss-subscribe&quot;&amp;gt;suscribirse &amp;lt;a href=&quot;{{ &quot;/feed.xml&quot; | prepend: site.baseurl }}&quot;&amp;gt;via RSS&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Se puede observar que se modificaron varios parámetros para que la página principal muestre los enlaces en español, así como una etiqueta de &lt;code class=&quot;highlighter-rouge&quot;&gt;Leer más&lt;/code&gt; al final de los extractos.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Configuración de Github&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Para configurar el servidor de Github para hospedaje de la página, se ejecuta el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;octopress deploy init git&lt;/code&gt;, el cuál generará un archivo de configuración &lt;code class=&quot;highlighter-rouge&quot;&gt;_deploy.yml&lt;/code&gt; con los parámetros de configuración de la conexión con los servidores de Github.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ octopress deploy init git git@github.com:librebit/librebit.github.io.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;En caso de que indique que no hay archivos de git, estos se pueden generar con:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git init
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Además se tienen que configurar los parámetros globales de la conexión git para indentificarse con los servidores&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git config --global user.email &quot;micorreo&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git config --global user.name &quot;minombre&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;La conexión se realiza mediante &lt;code class=&quot;highlighter-rouge&quot;&gt;ssh&lt;/code&gt;, por lo que es necesario indicar que el sitio de github es un sitio de confianza.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ssh-keyscan github.com &amp;gt;&amp;gt; ~/.ssh/known_hosts
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Ya configurado los parámetros de conexión, se procede a realizar la sincronización de los archivos del sitio con el servidor de Github, para ello se utiliza el comando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ octopress deploy
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;En caso de que indique que la conexión requiere guardar una llave de ssh, se le indica que si.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Conclusión.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Aunque el proyecto de Octopress 3.0 no ha madurado todavía, las mejores que presenta con respecto a versiones anteriores resultan bastante prometedoras, aunque hay muchos detalles por corregir. Por lo que puedo mencionar algunos puntos.&lt;/p&gt;
+
+&lt;p&gt;El uso del tema de Minima permite tener un sitio bastante sencillo y elegante en pocos pasos, según el proyecto de Octopress están trabajado en un tema propio llamado Octopress Genesis, aunque he tratado de instalarlo para concerlo, tuve muchos problemas para hacerlo funcionar.&lt;/p&gt;
+
+&lt;p&gt;La integración de los diferentes plugins, tanto de jekyll como de octopress ha resultado bastante transparente, pero la documentación es muy poca.&lt;/p&gt;
+
+&lt;p&gt;Finalmente, realizar la migración de Octopress 2.0 a 3.0 puede ser un poco confusa, ya que las herramientas utilizadas para generar el sitio ahora son diferentes.&lt;/p&gt;
+
+&lt;p&gt;Por lo pronto, podemos tener una muestra de lo que es Octopress en esta nueva versión.&lt;/p&gt;
+
+&lt;p&gt;viktorivan@openmailbox.org&lt;/p&gt;
+
+&lt;p&gt;@viktor_ivan&lt;/p&gt;
+</description>
+        <pubDate>Sat, 27 Aug 2016 08:02:05 +0000</pubDate>
+        <link>http://librebit.github.io/octopress/jekyll/blog/2016/08/27/instalacin-de-octopress-3-0.html</link>
+        <guid isPermaLink="true">http://librebit.github.io/octopress/jekyll/blog/2016/08/27/instalacin-de-octopress-3-0.html</guid>
+        
+        
+        <category>octopress</category>
+        
+        <category>jekyll</category>
+        
+        <category>blog</category>
+        
+      </item>
     
       <item>
         <title>Instalación de Matlab en Ubuntu</title>
@@ -137,19 +452,6 @@ $ sudo reboot
 &lt;/div&gt;
 
 &lt;p&gt;El proceso de actualización es similar a los sistemas operativos de escritorio de Linux.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Actualización de firmware.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Una vez actualizado el sistema y sin error alguno, se procede a la actualización del firmware para utilizar la pantalla Tontec.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd /boot/overlays
-$ sudo rm mz61581-overlay.dtb
-$ sudo wget http://www.itontec.com/mz61581-overlay.dtb
-$ sudo reboot
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;De este modo se actualiza el firmware de la pantalla con el recomendado por Tontec y no utilizando el incluido con Raspbian&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Habilitar SPI e indicar pantalla Tontec a overlay.&lt;/em&gt;&lt;/p&gt;
 
@@ -751,14 +1053,14 @@ installation should now be secure.
       </item>
     
       <item>
-        <title>Instalar Octopress en Ubuntu</title>
+        <title>Instalar Octopress 2.0 en Ubuntu</title>
         <description>&lt;p&gt;Para la instalar &lt;a href=&quot;http://www.octopress.org&quot;&gt;Octopress&lt;/a&gt; en un sistema operativo basado en Ubuntu o Linux Mint, es necesario instalar unos prerequisitos desde una terminal de linux. 
 &lt;!-- more --&gt;&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt-get install build-essential git rbenv ruby-full nodejs
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;Una vez actualizado el sistema, se procede con la descarga de octopress por medio de &lt;a href=&quot;http://www.github.com&quot;&gt;git&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git clone git://github.com/imathis/octopress.git octopress
+&lt;p&gt;Una vez actualizado el sistema, se procede con la descarga de octopress por medio de &lt;a href=&quot;http://www.github.com&quot;&gt;git&lt;/a&gt;, verificando previamente que se descargue la versión que se desea, esto se puede realizar a través de alguna &lt;code class=&quot;highlighter-rouge&quot;&gt;branch&lt;/code&gt; de &lt;code class=&quot;highlighter-rouge&quot;&gt;github&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git clone -b branch git://github.com/imathis/octopress.git octopress
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;Una vez descargado octopress se realiza el proceso para instalar el proyecto desde la terminal de linux.&lt;/p&gt;
@@ -936,43 +1238,6 @@ $ rake deploy
         <category>DeepWeb</category>
         
         <category>InternetProfunda</category>
-        
-        <category>opinión</category>
-        
-      </item>
-    
-      <item>
-        <title>Conocimiento Libre</title>
-        <description>&lt;blockquote&gt;
-  &lt;p&gt;“El conocimiento libre es aquel que puede adquirirse libremente, sin requerir ningún permiso, que puede compartirse con otros, puede modificarse de acuerdo a las necesidades, y permite que esas modificaciones se distribuyan de nuevo para beneficiar a todos.” 
-&lt;cite&gt;Filosofía Libre Knowledge &lt;/cite&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;Aunque el concepto de conocimiento no puede definirse como un producto que pueda ser patentado o protegido, más bien, es relacionado con la información que uno adquiere a través de la educación y experiencia de la realidad que vivimos, como seres humanos, que somos seres sociables por naturaleza, buscamos compartir nuestros conocimientos ya sea para trascendencia o simplemente realización propia como persona.&lt;/p&gt;
-
-&lt;p&gt;El fin de toda persona poseedora de conocimientos debería ser transmitir sus experiencias, enseñanzas, sus conocimientos mismos a otras personas, para que juntos como sociedad o grupo de trabajo, puedan alcanzar objetivos más grandes que como individuo serian difíciles de lograr.&lt;/p&gt;
-
-&lt;p&gt;La corriente del conocimiento libre maneja cuatro libertades:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;El conocimiento libre puede ser libremente adquirido y libremente usado, con cualquier propósito y sin necesitar permiso de nadie (libertad 0).&lt;/li&gt;
-  &lt;li&gt;El conocimiento libre puede adaptarse libremente a las necesidades del adquisidor (libertad 1). El acceso a una fuente modificable del conocimiento es una precondición para ello.&lt;/li&gt;
-  &lt;li&gt;El conocimiento libre puede compartirse libremente con los demás (libertad 2).&lt;/li&gt;
-  &lt;li&gt;El conocimiento libre es tal que puede mejorarse y sus versiones adaptadas y mejoradas pueden compartirse libremente con los demás, para que así se beneficie la comunidad entera (libertad 3). El acceso a una fuente modificable del conocimiento es una precondición para ello.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Aunque estas cuatro libertades suponen que el conocimiento es un producto que debe de ser libre y de total acceso para la sociedad, esto debido a la lucha que la corriente de libre knlowledge y copyleft mantienen contra la propiedad intelectual y los derechos de autor, me gustaría pensar que el conocimiento es el legado que dejamos a la sociedad como una muestra de agradecimiento por las oportunidades que nos ha dado para estar trabajando en las áreas que nos motivan y por ende nos llenan y realizan como personas, supondría que es la forma que buscamos para transcender como personas en una sociedad donde es fácil olvidar nuestro pasado y legado.&lt;/p&gt;
-
-&lt;p&gt;viktorivan@openmailbox.org&lt;/p&gt;
-
-&lt;p&gt;@viktor_ivan&lt;/p&gt;
-</description>
-        <pubDate>Wed, 07 May 2014 16:16:19 +0000</pubDate>
-        <link>http://librebit.github.io/opini%C3%B3n/2014/05/07/conocimiento-libre.html</link>
-        <guid isPermaLink="true">http://librebit.github.io/opini%C3%B3n/2014/05/07/conocimiento-libre.html</guid>
-        
         
         <category>opinión</category>
         

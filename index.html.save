@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Acerca de</title>
+  <title>LibreBit</title>
   <meta name="description" content="Un blog sobre el conocimiento libre.">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://librebit.github.io/about/">
+  <link rel="canonical" href="http://librebit.github.io/.save">
   <link rel="alternate" type="application/rss+xml" title="LibreBit" href="http://librebit.github.io/feed.xml">
 </head>
 
@@ -60,18 +60,21 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <article class="post">
+        <!-- This loops through the paginated posts -->
 
-  <header class="post-header">
-    <h1 class="post-title">Acerca de</h1>
-  </header>
 
-  <div class="post-content">
-    <p>Somos un grupo de profesionales que nos dedicamos a resolver problemas relacionados con las tecnologías de la información, en este espacio compartimos algunas experiencias para la solución de diversos problemas.</p>
-
-  </div>
-
-</article>
+<!-- Pagination links -->
+<div class="pagination">
+  
+    <span class="previous">Anterior</span>
+  
+  <span class="page_number ">Page:  of </span>
+  
+    <span class="next ">Siguiente</span>
+  
+</div>
+<p></p>
+<p class="rss-subscribe">suscribirse <a href="/feed.xml">via RSS</a></p>
 
       </div>
     </main>

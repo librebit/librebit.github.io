@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Instalación De Octopress 3.0</title>
+  <meta name="description" content="Introducción. Octopress ha anunciado en su blog la llegada de Octopress 3.0 – Jekyll’s Ferrari, como se puede interpretar, Octopress en un plugin de Jekyll y...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://librebit.github.io/octopress/jekyll/blog/2016/08/27/instalacin-de-octopress-3-0.html">
+  <link rel="alternate" type="application/rss+xml" title="LibreBit" href="http://librebit.github.io/feed.xml">
+</head>
+
+
+  <body>
+
+    <header class="site-header" role="banner">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">LibreBit</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">Acerca de</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Instalación De Octopress 3.0</h1>
+    <p class="post-meta"><time datetime="2016-08-27T08:02:05+00:00" itemprop="datePublished">Aug 27, 2016</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Iván Rodríguez</span></span></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p><em>Introducción.</em></p>
+
+<p><a href="http://octopress.org/">Octopress</a> ha anunciado en su blog la llegada de <a href="https://github.com/octopress/octopress">Octopress 3.0 – Jekyll’s Ferrari</a>, como se puede interpretar, Octopress en un plugin de <a href="https://jekyllrb.com">Jekyll</a> y la forma en como se desarrollan los blogs en esta nueva versión ha cambiado de forma sustancial, ya que la integración con Jekyll es mucho mayor.</p>
+
+<!-- more -->
+
+<p><em>Instalación</em></p>
+
+<p>Para instalar Octopress se requieren los siguientes prerequisitos:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo apt-get install build-essential git rbenv ruby-full nodejs
+</code></pre>
+</div>
+
+<p>A través de <a href="https://rubygems.org/">gem</a>, que es un instalador de paquetes de [ruby](https://www.ruby-lang.org/es/, se procede a instalar el plugin de Octopress.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo gem install octopress
+</code></pre>
+</div>
+
+<p>Una vez instalado el proyecto, se procede a crear los archivos del sitio para la publicación de blogs, primeramente se crea la carpeta que albergará los archivos del sitio y dentro de ella se indicará a Octopress que será la carpeta raíz del sitio a través del comando <code class="highlighter-rouge">octopress new .</code>, donde el <code class="highlighter-rouge">.</code> indica que ahí es la ubicación de la raíz del sitio.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>mkdir librebit
+cd librebit
+octopress new .
+</code></pre>
+</div>
+
+<p>Debido a que Octopress se encuentra en fase beta, hay varios plugins que deben ser instalados adicionalmente al proyecto, estos plugins sólo tendrán efecto en el sitio que se desarrolle bajo esta carpeta. Para indicar los plugins se modifica el archivo <code class="highlighter-rouge">Gemfile</code>, y se descomenta la sección de <code class="highlighter-rouge">jekyll_plugins</code>, tal como se muestra a continuación.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ nano Gemfile
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> group :jekyll_plugins do
+   gem "octopress-image-tag"
+   gem "octopress-quote-tag"
+   gem "octopress-codeblock"
+   gem "octopress-social"
+   gem "octopress-filter-tag"
+   gem "octopress-filters"
+   gem "octopress-comment-tag"
+   gem "jekyll-sitemap"
+   gem "jekyll-paginate"
+ end
+</code></pre>
+</div>
+
+<p>Una vez modificado el archivo <code class="highlighter-rouge">Gemfile</code> se procede a la instalación de los plugins para el sitio, para ello se utiliza el comando <a href="http://bundler.io/">bundler</a>, que es un instalador de paquetes.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ bundler install
+</code></pre>
+</div>
+
+<p>En caso de que no se instale algun gem por medio de bundler, se puede utilizar el comando <code class="highlighter-rouge">gem</code> para su instalación.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo gem install octopress-image-tag
+</code></pre>
+</div>
+
+<p>Si se requiere agregar o eliminar algunos plugins para el sitio, se debe modificar nuevamente el archivo <code class="highlighter-rouge">Gemfile</code>, eliminar el archivo <code class="highlighter-rouge">Gemfile.lock</code> y ejecutar nuevamente <code class="highlighter-rouge">bundler</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ nano Gemfile
+$ rm Gemfile.lock 
+$ bundler install
+</code></pre>
+</div>
+
+<p>Una vez instalado todos los plugins para el sitio, se procede a generar los archivos que conformarán el sitio, esto se hace utilizando el comando <code class="highlighter-rouge">jekyll</code>, con la opción <code class="highlighter-rouge">build</code> genera los archivos del sitio, la opción <code class="highlighter-rouge">serve</code> habilita un servidor web en el puerto 4000 para obtener una vista previa el sitio, la opción <code class="highlighter-rouge">--h 0.0.0.0</code> permite que el servidor web pueda ser observado desde computadoras remotas y finalmente <code class="highlighter-rouge">--watch</code> es para que el sitio se actualice en tiempo real ante las modificaciones que se hagan a los archivos del sitio.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>jekyll build
+jekyll serve --h 0.0.0.0 --watch
+</code></pre>
+</div>
+<p>Para modificar el título del blog y otros parámetros, el archivo <code class="highlighter-rouge">_config.yml</code> contiene varios datos de configuración para la generación del sitio.</p>
+
+<p>Para agregar un post al sitio, se utiliza el comando <code class="highlighter-rouge">octopress new post</code>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>octopress new post "Mi título"
+</code></pre>
+</div>
+
+<p>Este comando creará un archivo <code class="highlighter-rouge">.markdown</code> en la carpeta de <code class="highlighter-rouge">_posts/</code> en donde se guardarán los posts que conforman el sitio.</p>
+
+<p><em>Modificación de Minima.</em></p>
+
+<p>Por default, el tema que viene con Octopress es <a href="https://github.com/jekyll/minima">Minima</a> de Jekyll, es una tema básico que puede ser modificado para integrarle los diferentes plugins que se requieran en el sitio.</p>
+
+<p><em>Favicon.</em></p>
+
+<p>Para agregar un favicon al sitio, solo se tiene que agregar el archivo <code class="highlighter-rouge">.ico</code> en la raíz del sitio.</p>
+
+<p><em>Integración de redes sociales.</em></p>
+
+<p>Para integrar los botones y otras opciones de las redes sociales en el blog se utiliza el plugin de <code class="highlighter-rouge">octopress-social</code>, este plugin permite la fácil integración de estos elementos sin recurrir a los codigos embebidos.</p>
+
+<p>Para agregar los sitios de Facebook, Twitter y Google Plus, se tiene que modificar el archivo <code class="highlighter-rouge">default.html</code> del proyecto <code class="highlighter-rouge">Minima</code>, los archivos del proyecto se ubican en <code class="highlighter-rouge">/var/lib/gems/2.1.0/gems/minima-1.0.1/_layouts</code>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo nano /var/lib/gems/2.1.0/gems/minima-1.0.1/_layouts/default.html
+</code></pre>
+</div>
+<p>Dentro de <code class="highlighter-rouge">body</code> se agregan las siguientes líneas.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="err">twitter_script_tag</span><span class="w"> </span><span class="err">%</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="err">facebook_script_tag</span><span class="w"> </span><span class="err">%</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="err">gplus_script_tag</span><span class="w"> </span><span class="err">%</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>Si se ejecuta el comando de <code class="highlighter-rouge">jekyll serve</code> se observará que no hay ningún cambio en la página, ya que estos comandos solo habilitan el servicio de las redes sociales dentro del sitio.</p>
+
+<p>Para agregar los botones de like y compartir se debe de modificar el archivo <code class="highlighter-rouge">post.html</code> de <code class="highlighter-rouge">Minima</code>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo nano /var/lib/gems/2.1.0/gems/minima-1.0.1/_layouts/post.html
+</code></pre>
+</div>
+
+<p>Y agregar los botones después de <code class="highlighter-rouge"><span class="p">{</span><span class="err">{</span><span class="w"> </span><span class="err">content</span><span class="w"> </span><span class="p">}</span><span class="err">}</span></code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="err">tweet_button</span><span class="w"> </span><span class="err">%</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="err">gplus_one_button</span><span class="w"> </span><span class="err">%</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="err">gplus_share_button</span><span class="w"> </span><span class="err">%</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="err">facebook_like_button</span><span class="w"> </span><span class="err">%</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="err">facebook_send_button</span><span class="w"> </span><span class="err">%</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>Si se desea integrar la herramienta de <a href="https://disqus.com/">Disqus</a> para agregar comentarios a los posts, primero se tiene que configurar los parámetros de conexión en el archivo de <code class="highlighter-rouge">_config.yml</code>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>disqus:
+  shortname: librebitblog                          # Your site's disqus identifier
+  comments_link_text: Comments                     # Text label for comments link
+  comments_disabled_link_text: Comments disabled   # Set to '' to not output a comments link when disabled
+</code></pre>
+</div>
+
+<p>y agregar el comando  <code class="highlighter-rouge"><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="err">disqus_comments</span><span class="w"> </span><span class="err">%</span><span class="p">}</span></code>  en el archivo <code class="highlighter-rouge">/var/lib/gems/2.1.0/gems/minima-1.0.1/_layouts/post.html</code> después de los botones de las redes sociales.</p>
+
+<p>Existen más parámetros de configuración para las redes sociales en Octopress, estos se agregan al archivo <code class="highlighter-rouge">_config.yml</code>. Para conocerlos, se puede consultar la página de <a href="https://github.com/octopress/social">Octopress-social</a>.</p>
+
+<p><em>Visualización del blog.</em></p>
+
+<p>Por default, el tema de <code class="highlighter-rouge">minima</code> despliega todos los títulos de los posts en una sola página, sin poner un extracto de los contenidos y sin agregar paginación a los blogs. Para agregar estas características se debe de modificar los archivos <code class="highlighter-rouge">_config.yml</code> e <code class="highlighter-rouge">index.html</code> del sitio.</p>
+
+<p><em>Vista previa del post.</em></p>
+
+<p>Para indicar la palabra que limitará el tamaño del extracto del post, se debe agregar la variable <code class="highlighter-rouge">excerpt_separator</code> en el archivo <code class="highlighter-rouge">_config.yml</code>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ nano _config.yml
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>excerpt_separator: &lt;!-- more --&gt;
+</code></pre>
+</div>
+
+<p>Para que el sitio reconozca el comando <code class="highlighter-rouge">&lt;!-- more --&gt;</code> como indicador del extracto del post, es necesario agregar el comando `` después del título del post dentro del archivo <code class="highlighter-rouge">index.html</code>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>nano index.html
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="w">    </span><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">post</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">site.posts</span><span class="w"> </span><span class="err">%</span><span class="p">}</span><span class="w">
+      </span><span class="err">&lt;li&gt;</span><span class="w">
+        </span><span class="err">&lt;span</span><span class="w"> </span><span class="err">class=</span><span class="s2">"post-meta"</span><span class="err">&gt;</span><span class="p">{</span><span class="err">{</span><span class="w"> </span><span class="err">post.date</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">date:</span><span class="w"> </span><span class="nt">"%b %-d, %Y"</span><span class="w"> </span><span class="err">}}&lt;/span&gt;</span><span class="w">
+
+        </span><span class="err">&lt;h</span><span class="mi">2</span><span class="err">&gt;</span><span class="w">
+          </span><span class="err">&lt;a</span><span class="w"> </span><span class="err">class=</span><span class="s2">"post-link"</span><span class="w"> </span><span class="err">href=</span><span class="s2">"{{ post.url | prepend: site.baseurl }}"</span><span class="err">&gt;</span><span class="p">{</span><span class="err">{$</span><span class="w">
+        </span><span class="err">&lt;/h2&gt;</span><span class="w">
+        </span><span class="err">{{</span><span class="w"> </span><span class="err">post.excerpt</span><span class="w"> </span><span class="p">}</span><span class="err">}</span><span class="w">
+      </span><span class="err">&lt;/li&gt;</span><span class="w">
+    </span><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="err">endfor</span><span class="w"> </span><span class="err">%</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>De este modo se mostrará un extracto del post en la página principal del blog.</p>
+
+<p><em>Paginación de los posts.</em></p>
+
+<p>La paginación puede ser útil para no saturar la página principal del blog, para ello se utiliza el plugin <code class="highlighter-rouge">jekyll-paginate</code>. Los parámetros de la paginación se indican en el archivo <code class="highlighter-rouge">_config.yml</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>paginate: 5
+paginate_path: "/blog/page:num/"
+</code></pre>
+</div>
+
+<p>Para que el sitio reconozca la paginación, es necesario agregar el siguiente código al archivo <code class="highlighter-rouge">index.html</code> del sitio.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;!-- Pagination links --&gt;
+&lt;div class="pagination"&gt;
+  {% if paginator.previous_page %}
+    &lt;a href="{{ paginator.previous_page_path }}" class="previous"&gt;Previous&lt;/a&gt;
+  {% else %}
+    &lt;span class="previous"&gt;Previous&lt;/span&gt;
+  {% endif %}
+  &lt;span class="page_number "&gt;Page: {{ paginator.page }} of {{ paginator.total_pages }}&lt;/span&gt;
+  {% if paginator.next_page %}
+    &lt;a href="{{ paginator.next_page_path }}" class="next"&gt;Next&lt;/a&gt;
+  {% else %}
+    &lt;span class="next "&gt;Next&lt;/span&gt;
+  {% endif %}
+&lt;/div&gt;
+</code></pre>
+</div>
+
+<p>La versión final de la página principal donde se incluye el extracto del post y la paginación es la siguiente:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>---
+layout: default
+---
+
+
+&lt;!-- This loops through the paginated posts --&gt;
+{% for post in paginator.posts %}
+  &lt;h2&gt;
+     &lt;a class="post-link" href="{{ post.url | prepend: site.baseurl }}"&gt;{{ post.title | escape }}&lt;/a&gt;
+  &lt;/h2&gt;
+  &lt;p class="author"&gt;
+    &lt;span class="post-meta"&gt;{{ post.date | date: "%b %-d, %Y" }}&lt;/span&gt;
+  &lt;/p&gt;
+    {{ post.excerpt }}
+    {% if post.content contains site.excerpt_separator %}
+        &lt;a href="{{ post.url | prepend: site.baseurl }}"&gt;Leer m&amp;aacutes&lt;/a&gt;
+        &lt;p&gt;&lt;/p&gt;
+    {% endif %}
+{% endfor %}
+
+&lt;!-- Pagination links --&gt;
+&lt;div class="pagination"&gt;
+  {% if paginator.previous_page %}
+    &lt;a href="{{ paginator.previous_page_path }}" class="previous"&gt;Anterior&lt;/a&gt;
+  {% else %}
+    &lt;span class="previous"&gt;Anterior&lt;/span&gt;
+  {% endif %}
+  &lt;span class="page_number "&gt;P&amp;aacutegina: {{ paginator.page }} de {{ paginator.total_pages }}&lt;/span&gt;
+  {% if paginator.next_page %}
+    &lt;a href="{{ paginator.next_page_path }}" class="next"&gt;Siguiente&lt;/a&gt;
+  {% else %}
+    &lt;span class="next "&gt;Siguiente&lt;/span&gt;
+  {% endif %}
+&lt;/div&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p class="rss-subscribe"&gt;suscribirse &lt;a href="{{ "/feed.xml" | prepend: site.baseurl }}"&gt;via RSS&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+</div>
+
+<p>Se puede observar que se modificaron varios parámetros para que la página principal muestre los enlaces en español, así como una etiqueta de <code class="highlighter-rouge">Leer más</code> al final de los extractos.</p>
+
+<p><em>Configuración de Github</em></p>
+
+<p>Para configurar el servidor de Github para hospedaje de la página, se ejecuta el comando <code class="highlighter-rouge">octopress deploy init git</code>, el cuál generará un archivo de configuración <code class="highlighter-rouge">_deploy.yml</code> con los parámetros de configuración de la conexión con los servidores de Github.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ octopress deploy init git git@github.com:librebit/librebit.github.io.git
+</code></pre>
+</div>
+<p>En caso de que indique que no hay archivos de git, estos se pueden generar con:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ git init
+</code></pre>
+</div>
+
+<p>Además se tienen que configurar los parámetros globales de la conexión git para indentificarse con los servidores</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ git config --global user.email "micorreo"
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ git config --global user.name "minombre"
+</code></pre>
+</div>
+
+<p>La conexión se realiza mediante <code class="highlighter-rouge">ssh</code>, por lo que es necesario indicar que el sitio de github es un sitio de confianza.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ ssh-keyscan github.com &gt;&gt; ~/.ssh/known_hosts
+</code></pre>
+</div>
+
+<p>Ya configurado los parámetros de conexión, se procede a realizar la sincronización de los archivos del sitio con el servidor de Github, para ello se utiliza el comando:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ octopress deploy
+</code></pre>
+</div>
+
+<p>En caso de que indique que la conexión requiere guardar una llave de ssh, se le indica que si.</p>
+
+<p><em>Conclusión.</em></p>
+
+<p>Aunque el proyecto de Octopress 3.0 no ha madurado todavía, las mejores que presenta con respecto a versiones anteriores resultan bastante prometedoras, aunque hay muchos detalles por corregir. Por lo que puedo mencionar algunos puntos.</p>
+
+<p>El uso del tema de Minima permite tener un sitio bastante sencillo y elegante en pocos pasos, según el proyecto de Octopress están trabajado en un tema propio llamado Octopress Genesis, aunque he tratado de instalarlo para concerlo, tuve muchos problemas para hacerlo funcionar.</p>
+
+<p>La integración de los diferentes plugins, tanto de jekyll como de octopress ha resultado bastante transparente, pero la documentación es muy poca.</p>
+
+<p>Finalmente, realizar la migración de Octopress 2.0 a 3.0 puede ser un poco confusa, ya que las herramientas utilizadas para generar el sitio ahora son diferentes.</p>
+
+<p>Por lo pronto, podemos tener una muestra de lo que es Octopress en esta nueva versión.</p>
+
+<p>viktorivan@openmailbox.org</p>
+
+<p>@viktor_ivan</p>
+
+    <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-url="http://librebit.github.io/octopress/jekyll/blog/2016/08/27/instalacin-de-octopress-3-0.html" data-text="Instalación De Octopress 3.0 -" data-dnt="true">Twitter</a>
+    <div class="g-plusone" data-href="http://librebit.github.io/octopress/jekyll/blog/2016/08/27/instalacin-de-octopress-3-0.html" data-annotation="none" data-width="" data-size="medium"></div>
+    <div class="g-plus" data-action="share" data-href="http://librebit.github.io/octopress/jekyll/blog/2016/08/27/instalacin-de-octopress-3-0.html" data-annotation="none" data-width="" data-size="medium"></div>
+    <div class="fb-like" data-href="http://librebit.github.io/octopress/jekyll/blog/2016/08/27/instalacin-de-octopress-3-0.html" data-layout="button" data-action="like" data-show-faces="false" data-colorscheme="light" data-kid-directed-site="false" data-share="false"></div>
+    <div class="fb-send" data-href="http://librebit.github.io/octopress/jekyll/blog/2016/08/27/instalacin-de-octopress-3-0.html" data-colorscheme="light" data-kid-directed-site="false"></div>
+    <div id="disqus_thread"></div> <script type="text/javascript"> var disqus_shortname = 'librebitblog'; var disqus_url = 'http://librebit.github.io/octopress/jekyll/blog/2016/08/27/instalacin-de-octopress-3-0.html'; var disqus_identifier = 'http://librebit.github.io/octopress/jekyll/blog/2016/08/27/instalacin-de-octopress-3-0.html'; var disqus_title = 'Instalación De Octopress 3.0'; (function () { var s = document.createElement('script'); s.async = true; s.type = 'text/javascript'; s.src = '//librebitblog.disqus.com/embed.js'; (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s); }()); </script> <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </div>
+
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">LibreBit</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>LibreBit</li>
+          <li><a href="mailto:"></a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/librebit"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">librebit</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/viktor_ivan"><span class="icon icon--twitter"><svg viewBox="0 0 16 16"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">viktor_ivan</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Un blog sobre el conocimiento libre.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <script type="text/javascript"> (function() { var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true; po.src = 'https://apis.google.com/js/platform.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s); })(); </script>
+    <div id="fb-root"></div> <script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
+  </body>
+
+</html>
