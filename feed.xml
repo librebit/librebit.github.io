@@ -6,8 +6,8 @@
 </description>
     <link>http://librebit.github.io/</link>
     <atom:link href="http://librebit.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 27 Aug 2016 13:57:11 +0000</pubDate>
-    <lastBuildDate>Sat, 27 Aug 2016 13:57:11 +0000</lastBuildDate>
+    <pubDate>Sat, 27 Aug 2016 14:05:54 +0000</pubDate>
+    <lastBuildDate>Sat, 27 Aug 2016 14:05:54 +0000</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -62,7 +62,7 @@ octopress new .
 
 &lt;p&gt;Una vez modificado el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; se procede a la instalación de los plugins para el sitio, para ello se utiliza el comando &lt;a href=&quot;http://bundler.io/&quot;&gt;bundler&lt;/a&gt;, que es un instalador de paquetes.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ bundler install
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ bundle install
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -76,7 +76,7 @@ octopress new .
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ nano Gemfile
 $ rm Gemfile.lock 
-$ bundler install
+$ bundle install
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
