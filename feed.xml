@@ -6,9 +6,123 @@
 </description>
     <link>http://librebit.github.io/</link>
     <atom:link href="http://librebit.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 27 Aug 2016 14:05:54 +0000</pubDate>
-    <lastBuildDate>Sat, 27 Aug 2016 14:05:54 +0000</lastBuildDate>
+    <pubDate>Mon, 19 Sep 2016 18:07:46 +0000</pubDate>
+    <lastBuildDate>Mon, 19 Sep 2016 18:07:46 +0000</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>Habilitar VNC Server en Raspberry Pi</title>
+        <description>&lt;p&gt;&lt;em&gt;Introducción.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;El uso de aplicaciones de acceso a escritorio remoto permiten tener el control total de una computadora remota desde cualquier computadora o dispositivo, sin importar el sistema operativo del dispositivo con el que se quiere acceder.&lt;/p&gt;
+
+&lt;p&gt;La ventaja de configurar este servicio en la Raspberry es que permite utilizarla sin dispositivos conectadas a ella y tampoco es necesario configurar el firewall ya que no cuenta con uno.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;&lt;em&gt;Instalación.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Para instalar el servidor de &lt;code class=&quot;highlighter-rouge&quot;&gt;VNC&lt;/code&gt; en la Raspbery Pi se utiliza el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;apt&lt;/code&gt; desde una terminal de comandos.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt install tightvncserver
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Para la configuración inicial, se ejecuta el servico de &lt;code class=&quot;highlighter-rouge&quot;&gt;tightvnc&lt;/code&gt;, en este caso pedirá una contraseña que no pase de 8 caracteres.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ tightvncserver
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;En caso de querer cambiar la contraseña de acceso al servidor remoto, se puede utilizar el siguiente comando.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ vncpasswd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;Configuración de VNC server como un servicio de arranque automático.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Existen diferentes modos de invocar el servicio de VNC server, ya sea una línea de comando indicando todos los parámetros de configuración, en un archivo de comando para su ejecución rápida desde una terminal o como un servicio que se ejecute de modo automático al iniciar el sistema operativo. En este caso, instalaremos el servicio de VNC para que se ejecute al arrancar el sistema operativo.&lt;/p&gt;
+
+&lt;p&gt;Para ello se requiere crear un archivo llamado &lt;code class=&quot;highlighter-rouge&quot;&gt;vncboot&lt;/code&gt; en la carpeta de &lt;code class=&quot;highlighter-rouge&quot;&gt;init.d&lt;/code&gt;, en el se indicarán los parámetros de configuración del servidor de VNC.&lt;/p&gt;
+
+&lt;p&gt;Desde una terminal de comandos se crea un archivo con el editor de texto.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo nano /etc/init.d/vncboot
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;En el se copia el siguiente código, si se desea cambiar la resolución del monitor o los colores del mismo, se tiene que modificar la línea donde se indica &lt;code class=&quot;highlighter-rouge&quot;&gt;-geometry&lt;/code&gt; y &lt;code class=&quot;highlighter-rouge&quot;&gt;-depth&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#! /bin/sh&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# /etc/init.d/vncboot&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;### BEGIN INIT INFO&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Provides: vncboot&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Required-Start: $remote_fs $syslog&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Required-Stop: $remote_fs $syslog&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Default-Start: 2 3 4 5&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Default-Stop: 0 1 6&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Short-Description: Start VNC Server at boot time&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Description: Start VNC Server at boot time.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;### END INIT INFO&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;USER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;pi
+&lt;span class=&quot;nv&quot;&gt;HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/home/pi
+
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;USER HOME
+
+&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in
+ &lt;/span&gt;start&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Starting VNC Server&quot;&lt;/span&gt;
+  &lt;span class=&quot;c&quot;&gt;#Insert your favoured settings for a VNC session&lt;/span&gt;
+  su - &lt;span class=&quot;nv&quot;&gt;$USER&lt;/span&gt; -c &lt;span class=&quot;s2&quot;&gt;&quot;/usr/bin/vncserver :1 -geometry 1280x800 -depth 16 -pixelformat rgb565&quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+
+ stop&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Stopping VNC Server&quot;&lt;/span&gt;
+  /usr/bin/vncserver -kill :1
+  &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+
+ &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Usage: /etc/init.d/vncboot {start|stop}&quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;1
+  &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;esac&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Finalmente, se tienen que cambiar los permisos de ejecución del archivo, para que de este modo el sistema operativo pueda ejecutarlo.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo chmod 755 /etc/init.d/vncboot
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Para actualizar las reglas, se ejecutan los siguientes comandos y se reinicia la Raspberry.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo update-rc.d -f lightdm remove
+$ sudo update-rc.d vncboot default
+$ sudo reboot
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;De este modo se tiene activado el servicio de VNC en la Raspberry Pi, y con cualquier cliente de VNC es posible realizar la conexion, solo se tiene que indicar el puerto VNC al final de la dirección &lt;code class=&quot;highlighter-rouge&quot;&gt;IP&lt;/code&gt;, el puerto de conexión VNC es &lt;code class=&quot;highlighter-rouge&quot;&gt;:1&lt;/code&gt;,&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Conclusión.&lt;/em&gt;
+Aunque la Raspberry Pi ya tiene activado por default la conexion &lt;code class=&quot;highlighter-rouge&quot;&gt;SSH&lt;/code&gt;, muchas veces es útil tener acceso al entorno gráfico del sistema operativo, cabe mencionar, que ha diferencia del tradicional escritorio remoto, no se va a tomar posesion del escritorio que se observa en el monitor, sino que se crea un monitor nuevo en el puerto &lt;code class=&quot;highlighter-rouge&quot;&gt;:1&lt;/code&gt;, de este modo, se podrían crear múltiples monitores para los accesos remotos de VNC.&lt;/p&gt;
+
+&lt;p&gt;viktorivan@openmailbox.org&lt;/p&gt;
+
+&lt;p&gt;@viktor_ivan&lt;/p&gt;
+</description>
+        <pubDate>Wed, 14 Sep 2016 17:32:39 +0000</pubDate>
+        <link>http://librebit.github.io/raspberry/raspbian/vnc/server/2016/09/14/habilitar-vnc-server-en-raspberry-pi.html</link>
+        <guid isPermaLink="true">http://librebit.github.io/raspberry/raspbian/vnc/server/2016/09/14/habilitar-vnc-server-en-raspberry-pi.html</guid>
+        
+        
+        <category>raspberry</category>
+        
+        <category>raspbian</category>
+        
+        <category>vnc</category>
+        
+        <category>server</category>
+        
+      </item>
     
       <item>
         <title>Instalación De Octopress 3.0</title>
@@ -26,9 +140,9 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;A través de &lt;a href=&quot;https://rubygems.org/&quot;&gt;gem&lt;/a&gt;, que es un instalador de paquetes de [ruby](https://www.ruby-lang.org/es/, se procede a instalar el plugin de Octopress.&lt;/p&gt;
+&lt;p&gt;A través de &lt;a href=&quot;https://rubygems.org/&quot;&gt;gem&lt;/a&gt;, que es un instalador de paquetes de &lt;a href=&quot;https://www.ruby-lang.org/es/&quot;&gt;ruby&lt;/a&gt;, se procede a instalar el plugin de Octopress.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo gem install octopress
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo gem install octopress bundler
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -54,9 +168,16 @@ octopress new .
    gem &quot;octopress-filter-tag&quot;
    gem &quot;octopress-filters&quot;
    gem &quot;octopress-comment-tag&quot;
+   gem &quot;octopress-render-code&quot;
    gem &quot;jekyll-sitemap&quot;
    gem &quot;jekyll-paginate&quot;
  end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Adicionalmente hay que indicar la version de &lt;code class=&quot;highlighter-rouge&quot;&gt;minima&lt;/code&gt; que se va a utilizar para el blog.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem &quot;minima&quot;, &quot;1.0.1&quot;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -326,94 +447,6 @@ layout: default
       </item>
     
       <item>
-        <title>Instalación de Matlab en Ubuntu</title>
-        <description>&lt;p&gt;&lt;em&gt;Introducción.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Aunque en el entorno de software libre existen varias alternativas a los diversos programas de uso común, un ejemplo de ello es &lt;a href=&quot;https://es.libreoffice.org/&quot;&gt;LibreOffice&lt;/a&gt;, no es extraño ver el uso de programas reconocidos como &lt;a href=&quot;https://mathworks.com&quot;&gt;Matlab&lt;/a&gt; en este ambiente, esto se debe a que estas empresas han liberado versiones compatibles con diferentes sistemas operativos.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;Un detalle que suele a relucir en Linux es, aunque la instalación de estos programas suele ser sencilla, la existencia de diversos aspectos que no hacen que la instalación del programa sea tan transparente, como es el caso de Matlab para Linux, donde pequeños detalles como la disponibilidad de un acceso directo no se instala por default poniendo en duda al usuario si en realidad se instaló el programa.&lt;/p&gt;
-
-&lt;p&gt;A continuación se mostrarán los pasos de como agregar o solucionar errores a la hora de instalar Matlab para Linux.&lt;/p&gt;
-
-&lt;p&gt;Una vez instalado Matlab, se procede a crear un enlace simbólico, de este modo permitirá invocar el programa desde la ventana de comandos sin tener que buscar el archivo ejecutable.&lt;/p&gt;
-
-&lt;p&gt;Con el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;ln&lt;/code&gt; para crear enlaces simbólicos y con permisos de super usuario, se teclea en una terminal la ubicación del archivo ejecutable que fue instalado de Matlab y la ubicación destino del archivo simbólico.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo ln -s /usr/local/MATLAB/R2016a/bin/matlab /usr/local/bin/matlab
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Esto creará un archivo llamado matlab en &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/bin&lt;/code&gt; el cual permitirá invocar el programa de Matlab desde la ventana de comando o en su defecto crear un acceso directo para el escritorio.&lt;/p&gt;
-
-&lt;p&gt;Para corroborar el correcto funcionamiento del enlace simbólico, desde una terminal invoque el programa.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ matlab
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;em&gt;Acceso directo del menú.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Para descargar el archivo del acceso directo para el menú&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo wget 'https://help.ubuntu.com/community/MATLAB?action=AttachFile&amp;amp;do=get&amp;amp;target=matlab-r2012a.desktop' -O /usr/share/applications/matlab.desktop
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;El archivo .desktop que se descargó es para la versión R2012a, para cambiarlo solo se requiere editar el archivo con un editor de textos con permisos de super usuario, en este caso se modifica utilizando el editor xed.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo xed /usr/share/applications/matlab.desktop
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;El archivo .desktop solo contiene la información para llamar el programa de Matlab, para el ícono es necesario descargar el archivo y guardarlo en la carpetas de los íconos del sistema operativo.&lt;/p&gt;
-
-&lt;p&gt;Para descargar el icono&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo wget http://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png -O /usr/share/icons/matlab.png
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;em&gt;Formas de ejecutar Matlab.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Existen diferentes maneras de invocar el programa de Matlab, ya sea desde el ambiente tradicional con entorno gráfico hasta solo la terminal de comandos.&lt;/p&gt;
-
-&lt;p&gt;En el caso de la terminal de comandos se puede llamar sin splash o sin el entorno gráfico, entre los comandos reconocidos por Matlab son:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ matlab -nosplash -nodesktop -minimize -r test
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;em&gt;Errores al ejecutar Matlab.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Muchas veces el entorno gráfico de Matlab puede presentar errores al ejecutarse por incompatibilidad con la maquina virtual de Java, por lo que es necesario indicar la ubicación de las librerías para el correcto funcionamiento del la interfaz gráfica.&lt;/p&gt;
-
-&lt;p&gt;Para instalar los archivos necesarios para ejecutar Matlab en caso de que exista un error al ejecutar matlab -desktop&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt-get install matlab-support
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;Se ejecutará un script que localizará el directorio de instalación de Matlab, en caso de no encontrarlo será necesario indicarlo, por lo general es &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/MATLAB/R201xx/&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Una vez realizado esto empezará a redireccionar los archivos de las librerías que requiere para su funcionamiento.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Conclusión.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Aunque estos detalles no están relacionados con el desempeño de Matlab en Linux, son útiles para tener de una manera agradable el acceso a estos programas, tal como en otros sistemas operativos.&lt;/p&gt;
-
-&lt;p&gt;@viktor_ivan&lt;/p&gt;
-
-&lt;p&gt;viktorivan@openmailbox.org&lt;/p&gt;
-</description>
-        <pubDate>Tue, 12 Jul 2016 18:35:39 +0000</pubDate>
-        <link>http://librebit.github.io/matlab/linux/instalacion/2016/07/12/instalacion-de-matlab-en-ubuntu.html</link>
-        <guid isPermaLink="true">http://librebit.github.io/matlab/linux/instalacion/2016/07/12/instalacion-de-matlab-en-ubuntu.html</guid>
-        
-        
-        <category>matlab</category>
-        
-        <category>linux</category>
-        
-        <category>instalacion</category>
-        
-      </item>
-    
-      <item>
         <title>Instalación de touchscreen Tontec en Raspberry Pi</title>
         <description>&lt;p&gt;&lt;em&gt;Introducción.&lt;/em&gt;&lt;/p&gt;
 
@@ -429,17 +462,17 @@ layout: default
 
 &lt;p&gt;La pantalla incluye un case para poder montarse junto a la tarjeta de la raspberry, el cuál quedaría de la siguiente manera.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/downloads/images/pantalla_perfil.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/pantalla_perfil.jpg&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/downloads/images/pantalla_frente.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/pantalla_frente.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;El conector que utiliza la pantalla es el GPIO, pero no ocupa todos los pines.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/downloads/images/pantalla_conector.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/pantalla_conector.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Finalmente, la pantalla quedaría instalada de la siguiente manera.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/downloads/images/pantalla_cerrada.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/pantalla_cerrada.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Actualización de Raspbian.&lt;/em&gt;&lt;/p&gt;
 
@@ -504,11 +537,11 @@ dtoverlay=mz61581
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/downloads/images/pantalla_on.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/pantalla_on.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Con el dedo o con la ayuda de una pluma, se puede acceder a los menús del sistema operativo.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/downloads/images/pantalla_touch.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/pantalla_touch.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Conclusión.&lt;/em&gt;&lt;/p&gt;
 
@@ -545,7 +578,7 @@ dtoverlay=mz61581
 
 &lt;p&gt;&lt;em&gt;Instalación.&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/downloads/images/spotify-receta-original.png&quot; /&gt;
+&lt;p&gt;&lt;img src=&quot;/images/spotify-receta-original.png&quot; /&gt;
 Tras seguir los pasos ahi indicados me encuentro que al ejecutar la aplicación no se abre, entonces voy a una terminal y lo ejecuto&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ spotify
 &lt;/code&gt;&lt;/pre&gt;
@@ -566,7 +599,7 @@ $ sudo apt-get update
 $ sudo apt-get install spotify-client
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;/downloads/images/spotify-linux.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/spotify-linux.png&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Éxito :)&lt;/p&gt;
 
@@ -991,43 +1024,43 @@ installation should now be secure.
 
 &lt;p&gt;Una vez dentro de la página de instalación de Ampache, se selecciona continuar.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/downloads/images/installation.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/installation.png&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;En la siguiente pantalla, Ampache verificará que se cumplan con los prerequisitos necesarios para que funcione correctamente el sistema, en caso de que todos los servicios funcionen correctamente se mostrará la siguiente pantalla. En la parte inferior de la página se selecciona continuar.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/downloads/images/requerimientos.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/requerimientos.png&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;El primer paso en la instalación es capturar los datos de inicio de sesión de la base de datos MySQL, puede utilizarse los datos de &lt;code class=&quot;highlighter-rouge&quot;&gt;root&lt;/code&gt; o crearse un usuario específico para Ampache. Una vez capturados los datos se selecciona continuar.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/downloads/images/basededatos.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/basededatos.png&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;El siguiente paso consiste en crear los archivos de configuración de Ampache, tal como se muestra en la siguiente pantalla.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/downloads/images/configuracion.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/configuracion.png&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;En este paso es importante que los permisos de escritura sobre las carpetas de &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/www/html&lt;/code&gt; mencionadas al principio se haya realizado correctamente, de lo contrario no se permitirá la escritura de los archivos de configuración en sus respectivas carpetas al momento de presionar el boton de write, de igual manera puede descargar los archivos de configuración y copiarlos de manera manual a través de &lt;code class=&quot;highlighter-rouge&quot;&gt;nautilus&lt;/code&gt;. Si todo se realizó correctamente, se observará lo siguiente en la parte inferior de la pantalla de configuración.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/downloads/images/escribir.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/escribir.png&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Como último paso se creará una cuenta para iniciar sesión en la página de Ampache, tal como se muestra a continuación.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/downloads/images/cuenta.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/cuenta.png&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Una vez realizado lo anterior, Ampache buscará actualizaciones disponibles del sistema en la web.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/downloads/images/actualiza.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/actualiza.png&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;De esta manera, se concluye la instalación del servidor Ampache en CentOS. Para iniciar sesión, ingrese la dirección de red del servidor Ampache e ingrese los datos de la cuenta de inicio de sesión capturados en el último paso durante la instalación de Ampache.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/downloads/images/sesion.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/sesion.png&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;La primera pantalla muestra los archivos de audio y video dentro del servidor, en caso de la nueva instalación esta se mostrará vacia.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/downloads/images/indice.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/indice.png&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Para agregar canciones y videos, es necesario dar de alta los catálogos donde se indicará la ubicación de los archivos.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/downloads/images/catalogo.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/catalogo.png&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Conclusión&lt;/em&gt;&lt;/p&gt;
 

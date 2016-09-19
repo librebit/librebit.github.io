@@ -46,10 +46,6 @@
         
           
         
-          
-        
-          
-        
       </div>
     </nav>
 
@@ -82,9 +78,9 @@
 </code></pre>
 </div>
 
-<p>A través de <a href="https://rubygems.org/">gem</a>, que es un instalador de paquetes de [ruby](https://www.ruby-lang.org/es/, se procede a instalar el plugin de Octopress.</p>
+<p>A través de <a href="https://rubygems.org/">gem</a>, que es un instalador de paquetes de <a href="https://www.ruby-lang.org/es/">ruby</a>, se procede a instalar el plugin de Octopress.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo gem install octopress
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo gem install octopress bundler
 </code></pre>
 </div>
 
@@ -110,9 +106,16 @@ octopress new .
    gem "octopress-filter-tag"
    gem "octopress-filters"
    gem "octopress-comment-tag"
+   gem "octopress-render-code"
    gem "jekyll-sitemap"
    gem "jekyll-paginate"
  end
+</code></pre>
+</div>
+
+<p>Adicionalmente hay que indicar la version de <code class="highlighter-rouge">minima</code> que se va a utilizar para el blog.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>gem "minima", "1.0.1"
 </code></pre>
 </div>
 
@@ -380,7 +383,9 @@ layout: default
 
       </div>
     </main>
-
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <div id="fb-root"></div> <script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
+    <script type="text/javascript"> (function() { var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true; po.src = 'https://apis.google.com/js/platform.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s); })(); </script>
     <footer class="site-footer">
 
   <div class="wrapper">
@@ -425,9 +430,7 @@ layout: default
 
 </footer>
 
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-    <script type="text/javascript"> (function() { var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true; po.src = 'https://apis.google.com/js/platform.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s); })(); </script>
-    <div id="fb-root"></div> <script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
+
   </body>
 
 </html>
