@@ -6,8 +6,8 @@
 </description>
     <link>http://librebit.github.io/</link>
     <atom:link href="http://librebit.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 19 Sep 2016 20:49:00 +0000</pubDate>
-    <lastBuildDate>Mon, 19 Sep 2016 20:49:00 +0000</lastBuildDate>
+    <pubDate>Tue, 20 Sep 2016 20:31:58 +0000</pubDate>
+    <lastBuildDate>Tue, 20 Sep 2016 20:31:58 +0000</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -272,6 +272,20 @@ jekyll serve --h 0.0.0.0 --watch
 &lt;p&gt;y agregar el comando  &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;disqus_comments&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;  en el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/lib/gems/2.1.0/gems/minima-1.0.1/_layouts/post.html&lt;/code&gt; después de los botones de las redes sociales.&lt;/p&gt;
 
 &lt;p&gt;Existen más parámetros de configuración para las redes sociales en Octopress, estos se agregan al archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;. Para conocerlos, se puede consultar la página de &lt;a href=&quot;https://github.com/octopress/social&quot;&gt;Octopress-social&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Integración de Mathjax.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.mathjax.org/&quot;&gt;Mathjax&lt;/a&gt; es una herramienta que permite desplegar ecuaciones matemáticas en las páginas de jekyll, para agregar esta función solo se copia el siguiente script en el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;head.html&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo nano /var/lib/gems/2.1.0/gems/minima-1.0.1/_includes/head.html
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;script type=&quot;text/javascript&quot; async
+  src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML&quot;&amp;gt;
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;&lt;em&gt;Visualización del blog.&lt;/em&gt;&lt;/p&gt;
 
