@@ -6,8 +6,8 @@
 </description>
     <link>http://librebit.github.io/</link>
     <atom:link href="http://librebit.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 20 Sep 2016 20:31:58 +0000</pubDate>
-    <lastBuildDate>Tue, 20 Sep 2016 20:31:58 +0000</lastBuildDate>
+    <pubDate>Wed, 21 Sep 2016 15:23:52 +0000</pubDate>
+    <lastBuildDate>Wed, 21 Sep 2016 15:23:52 +0000</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -457,6 +457,95 @@ layout: default
         <category>jekyll</category>
         
         <category>blog</category>
+        
+      </item>
+    
+      <item>
+        <title>Instalación de Matlab en Ubuntu</title>
+        <description>&lt;p&gt;&lt;em&gt;Introducción.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Aunque en el entorno de software libre existen varias alternativas a los diversos programas de uso común, un ejemplo de ello es &lt;a href=&quot;https://es.libreoffice.org/&quot;&gt;LibreOffice&lt;/a&gt;, no es extraño ver el uso de programas reconocidos como &lt;a href=&quot;https://mathworks.com&quot;&gt;Matlab&lt;/a&gt; en este ambiente, esto se debe a que estas empresas han liberado versiones compatibles con diferentes sistemas operativos.&lt;/p&gt;
+
+&lt;p&gt;Un detalle que suele a relucir en Linux es, aunque la instalación de estos programas suele ser sencilla, la existencia de diversos aspectos que no hacen que la instalación del programa sea tan transparente, como es el caso de Matlab para Linux, donde pequeños detalles como la disponibilidad de un acceso directo no se instala por default poniendo en duda al usuario si en realidad se instaló el programa.&lt;/p&gt;
+
+&lt;p&gt;A continuación se mostrarán los pasos de como agregar o solucionar errores a la hora de instalar Matlab para Linux.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;Une vez instalado Matlab, se procede a crear un enlace simbólico, de este modo permitirá invocar el programa desde la ventana de comandos sin tener que buscar el archivo ejecutable.&lt;/p&gt;
+
+&lt;p&gt;Con el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;ln&lt;/code&gt; para crear enlaces simbólicos y con permisos de super usuario, se teclea en una terminal la ubicación del archivo ejecutable que fue instalado de Matlab y la ubicación destino del archivo simbólico.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo ln -s /usr/local/MATLAB/R2016a/bin/matlab /usr/local/bin/matlab
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Esto creará un archivo llamado matlab en &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/bin&lt;/code&gt; el cual permitirá invocar el programa de Matlab desde la ventana de comando o en su defecto crear un acceso directo para el escritorio.&lt;/p&gt;
+
+&lt;p&gt;Para corroborar el correcto funcionamiento del enlace simbólico, desde una terminal invoque el programa.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ matlab
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;Acceso directo del menú.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Para descargar el archivo del acceso directo para el menú&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo wget 'https://help.ubuntu.com/community/MATLAB?action=AttachFile&amp;amp;do=get&amp;amp;target=matlab-r2012a.desktop' -O /usr/share/applications/matlab.desktop
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;El archivo .desktop que se descargó es para la versión R2012a, para cambiarlo solo se requiere editar el archivo con un editor de textos con permisos de super usuario, en este caso se modifica utilizando el editor xed.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo xed /usr/share/applications/matlab.desktop
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;El archivo .desktop solo contiene la información para llamar el programa de Matlab, para el ícono es necesario descargar el archivo y guardarlo en la carpetas de los íconos del sistema operativo.&lt;/p&gt;
+
+&lt;p&gt;Para descargar el icono&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo wget http://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png -O /usr/share/icons/matlab.png
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;Formas de ejecutar Matlab.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Existen diferentes maneras de invocar el programa de Matlab, ya sea desde el ambiente tradicional con entorno gráfico hasta solo la terminal de comandos.&lt;/p&gt;
+
+&lt;p&gt;En el caso de la terminal de comandos se puede llamar sin splash o sin el entorno gráfico, entre los comandos reconocidos por Matlab son:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ matlab -nosplash -nodesktop -minimize -r test
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;Errores al ejecutar Matlab.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Muchas veces el entorno gráfico de Matlab puede presentar errores al ejecutarse por incompatibilidad con la maquina virtual de Java, por lo que es necesario indicar la ubicación de las librerías para el correcto funcionamiento del la interfaz gráfica.&lt;/p&gt;
+
+&lt;p&gt;Para instalar los archivos necesarios para ejecutar Matlab en caso de que exista un error al ejecutar matlab -desktop&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt-get install matlab-support
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Se ejecutará un script que localizará el directorio de instalación de Matlab, en caso de no encontrarlo será necesario indicarlo, por lo general es &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/MATLAB/R201xx/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Una vez realizado esto empezará a redireccionar los archivos de las librerías que requiere para su funcionamiento.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Conclusión.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Aunque estos detalles no están relacionados con el desempeño de Matlab en Linux, son útiles para tener de una manera agradable el acceso a estos programas, tal como en otros sistemas operativos.&lt;/p&gt;
+
+&lt;p&gt;@viktor_ivan&lt;/p&gt;
+
+&lt;p&gt;viktorivan@openmailbox.org&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 12 Jul 2016 18:35:39 +0000</pubDate>
+        <link>http://librebit.github.io/matlab/linux/instalacion/2016/07/12/instalacion-de-matlab-en-ubuntu.html</link>
+        <guid isPermaLink="true">http://librebit.github.io/matlab/linux/instalacion/2016/07/12/instalacion-de-matlab-en-ubuntu.html</guid>
+        
+        
+        <category>matlab</category>
+        
+        <category>linux</category>
+        
+        <category>instalacion</category>
         
       </item>
     
@@ -1212,81 +1301,6 @@ $ rake deploy
         <category>ubuntu</category>
         
         <category>howto</category>
-        
-      </item>
-    
-      <item>
-        <title>Anonimato en Internet</title>
-        <description>&lt;blockquote&gt;
-  &lt;p&gt;Cobarde es quien se escuda en el anonimato para escupir su pobreza espiritual.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;En primera parte, cabe mencionar que el anonimato sirve para poder discutir temas públicamente sin temor a represalias. En cuanto a el anonimato en Internet podemos referirnos a que este medio tecnológico no pueda usarse de forma que los mensajes enviados a través de él revelen la identidad de los usuarios. Es decir, que no se pueda rastrear la información que envía un usuario para poder llegar a él.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;Mucho se ha hablado sobre la privacidad en Internet, sobre la verdadera seguridad de nuestros datos al momento de navegar por la web, y aunque creamos que nuestra información no es importante, los diferentes buscadores como google, facebook o los mismos proveedores de servicios de Internet (ISP) pueden saber que páginas visitamos, a que servicios nos conectamos, y determinar nuestra vida digital reconociendo diferentes patrones de comportamiento al navegar en la web, si a esto le hacemos una analogía con nuestra vida real (para poder diferenciarla de nuestra vida virtual, digital o en Internet), se podría decir que hay un ente que sabe a que hora vamos a la tienda, que películas vemos en el cine, con quienes nos juntamos e incluso nuestra opinión con respecto a ciertos temas y eventos.&lt;/p&gt;
-
-&lt;p&gt;Es posible obtener un reporte detallado de lo que hacemos en diferentes periodos de tiempo, sin necesidad de hackear o entrar a la computadora o dispositivo móvil de la persona, sólo se requiere determinar la dirección IP o MAC del individuo a investigar, y mediante el uso de herramientas como sniffers o analizadores de paquetes, se puede capturar todos los paquetes de datos (mensajes, conversaciones, transacciones, llamadas VoIP) dentro de una red de computadoras.&lt;/p&gt;
-
-&lt;p&gt;Muchos paises han desarrollado tecnología de vigilancia donde restringen el acceso a páginas como twitter, google o foros con la finalidad de limitar el acceso a la información o dificultar la propagación de la misma, de esta manera se evita la organización de movimientos contra algún sistema de gobierno.&lt;/p&gt;
-
-&lt;p&gt;Aunque limitar el acceso a la información del usuario convencional es sencilla (debido a los pocos o nulos conocimientos sobre opciones de anonimato en Internet), existen alternativas que permiten lograr un verdadero anonimato en nuestros dispositivos de comunicación (smartphones, tablets y computadoras).&lt;/p&gt;
-
-&lt;p&gt;El uso de estas herramientas puede involucrar el acceso a un segmento de la red conocida como Deep Web o Internet Profunda, esto depende de cuál método se utilice para navegar por una red segura o encriptada, ya que algunas opciones sólo encriptan los datos para simular que uno se conecta desde una ubicación diferente y así burlar las politicas de vigilancia del lugar donde uno se conecta (puede ser un país o simplemente la empresa donde uno trabaja) y otras permite la navegación a través de una red oculta. La Internet Profunda es una red donde la primicia es el anonimato, permite el acceso a información y sitios que desde un buscador convencional no es posible encontrar (google, yahoo, bing), ya que es necesario el uso de proxys o routers que sepan donde se ubican estos sitios, que dirección IP tienen y como llegar a ese destino dentro de este segmento oculto de la red, según estudios la Internet Profunda representa cerca del 90% de toda la información en la web y el resto es lo que conocemos como Internet Visible o Superficial.&lt;/p&gt;
-
-&lt;p&gt;En la Internet Profunda se puede encontrar con hackers, información confidencial e incluso redes de pornografía (abusando del mismo anonimato que ofrecen estas redes). Puede llegar a representar una experiencia interesante, pero a su vez un riesgo con respecto a la información que uno puede llegar a encontrar.&lt;/p&gt;
-
-&lt;p&gt;Cómo se mencionó previamente, existe diversas alternativas para proteger los datos cuando uno navega por Internet:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Tor Project&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The Onion Router, en su forma abreviada Tor, es un proyecto cuyo objetivo principal es el desarrollo de una red superpuesta en Internet en la que el enrutamiento de los mensajes entre los usuarios no revela su identidad, es decir, su dirección IP. Además, mantiene la integridad y el secreto de la información que viaja a través de ella. Esta tecnología pertenece a la llamada darknet o red oscura también conocida con el nombre de deep web o Internet profunda.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;VPN&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Una red privada virtual o VPN (Virtual Private Network) es una tecnología de red que permite una acceder de una forma segura a la red de área local (LAN) del trabajo u organización a través de Internet. Permite que el usuario envíe y reciba datos por medio de redes públicas como si fuera una red privada con toda la funcionalidad, seguridad y políticas de gestión de una red privada. Esto se realiza estableciendo una conexión virtual punto a punto mediante el uso de conexiones encriptadas.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Dispositivos encriptados&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;La utilización de dispositivos móviles para navegar en la red y realizar transacciones es algo muy común hoy en día, por medio de ellos se puede revisar el correo, las redes sociales y estados de cuenta, por lo que incrementar la seguridad en los dispositivos móviles es una prioridad. Existen diversos programas compatibles con Android e iOS, aunque la compañia que mayor tiempo tiene trabajando en cuestíon de seguridad y privacidad en móviles es Blackberry.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Web Proxy&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Un web proxy es un intermediario entre el usuario y el servidor destino, de tal forma que el proxy puede permitir esconder al servidor web la identidad del que solicita cierto contenido. El servidor web lo único que detecta es la IP del proxy, de esta manera no es posible determinar la IP origen de la petición. Además, si se usa una web caché en el servidor proxy, el contenido puede ser accedido muchas más veces que las solicitadas al servidor web que aloja el contenido originalmente.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Sistemas Operativos&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Existen sistemas operativos dedicados al anonimato, un ejemplo es The Amnesic Incognito Live System o Tails. Esta es una distribución Linux diseñada para preservar la privacidad y el anonimato, ya que odas las conexiones salientes son forzadas a salir a través de Tor. El sistema puede ser utilizado como Live CD o Live USB sin dejar ningún rastro en la computadora donde se ejecutó.&lt;/p&gt;
-
-&lt;p&gt;El uso de algún método para lograr el anonimato en Internet nos permite usar la red sin el temor a ser vigilados, pero támpoco el anonimato es una invitación a abusar de ello para realizar operaciones ilegales o daño alguno.&lt;/p&gt;
-
-&lt;p&gt;viktorivan@openmailbox.org&lt;/p&gt;
-
-&lt;p&gt;@viktor_ivan&lt;/p&gt;
-</description>
-        <pubDate>Sat, 10 May 2014 23:11:06 +0000</pubDate>
-        <link>http://librebit.github.io/anonimato/deepweb/internetprofunda/opini%C3%B3n/2014/05/10/anonimato-en-internet.html</link>
-        <guid isPermaLink="true">http://librebit.github.io/anonimato/deepweb/internetprofunda/opini%C3%B3n/2014/05/10/anonimato-en-internet.html</guid>
-        
-        
-        <category>Anonimato</category>
-        
-        <category>DeepWeb</category>
-        
-        <category>InternetProfunda</category>
-        
-        <category>opinión</category>
         
       </item>
     
