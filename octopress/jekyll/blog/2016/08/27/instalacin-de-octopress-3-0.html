@@ -63,7 +63,7 @@
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">Instalación De Octopress 3.0</h1>
-    <p class="post-meta"><time datetime="2016-08-27T08:02:05+00:00" itemprop="datePublished">Aug 27, 2016</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Iván Rodríguez</span></span></p>
+    <p class="post-meta"><time datetime="2016-08-27T03:02:05-05:00" itemprop="datePublished">Aug 27, 2016</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Iván Rodríguez</span></span></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
@@ -89,9 +89,9 @@
 
 <p>Una vez instalado el proyecto, se procede a crear los archivos del sitio para la publicación de blogs, primeramente se crea la carpeta que albergará los archivos del sitio y dentro de ella se indicará a Octopress que será la carpeta raíz del sitio a través del comando <code class="highlighter-rouge">octopress new .</code>, donde el <code class="highlighter-rouge">.</code> indica que ahí es la ubicación de la raíz del sitio.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>mkdir librebit
-cd librebit
-octopress new .
+<div class="highlighter-rouge"><pre class="highlight"><code>$ mkdir librebit
+$ cd librebit
+$ octopress new .
 </code></pre>
 </div>
 
@@ -144,15 +144,15 @@ $ bundle install
 
 <p>Una vez instalado todos los plugins para el sitio, se procede a generar los archivos que conformarán el sitio, esto se hace utilizando el comando <code class="highlighter-rouge">jekyll</code>, con la opción <code class="highlighter-rouge">build</code> genera los archivos del sitio, la opción <code class="highlighter-rouge">serve</code> habilita un servidor web en el puerto 4000 para obtener una vista previa el sitio, la opción <code class="highlighter-rouge">--h 0.0.0.0</code> permite que el servidor web pueda ser observado desde computadoras remotas y finalmente <code class="highlighter-rouge">--watch</code> es para que el sitio se actualice en tiempo real ante las modificaciones que se hagan a los archivos del sitio.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>jekyll build
-jekyll serve --h 0.0.0.0 --watch
+<div class="highlighter-rouge"><pre class="highlight"><code>$ jekyll build
+$ jekyll serve --h 0.0.0.0 --watch
 </code></pre>
 </div>
 <p>Para modificar el título del blog y otros parámetros, el archivo <code class="highlighter-rouge">_config.yml</code> contiene varios datos de configuración para la generación del sitio.</p>
 
 <p>Para agregar un post al sitio, se utiliza el comando <code class="highlighter-rouge">octopress new post</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>octopress new post "Mi título"
+<div class="highlighter-rouge"><pre class="highlight"><code>$ octopress new post "Mi título"
 </code></pre>
 </div>
 
@@ -218,7 +218,7 @@ jekyll serve --h 0.0.0.0 --watch
 
 <p><a href="https://www.mathjax.org/">Mathjax</a> es una herramienta que permite desplegar ecuaciones matemáticas en las páginas de jekyll, para agregar esta función solo se copia el siguiente script en el archivo <code class="highlighter-rouge">head.html</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo nano /var/lib/gems/2.1.0/gems/minima-1.0.1/_includes/head.html
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo nano /var/lib/gems/2.1.0/gems/minima-1.0.1/_includes/head.html
 </code></pre>
 </div>
 
@@ -246,7 +246,7 @@ jekyll serve --h 0.0.0.0 --watch
 
 <p>Para que el sitio reconozca el comando <code class="highlighter-rouge">&lt;!-- more --&gt;</code> como indicador del extracto del post, es necesario agregar el comando `` después del título del post dentro del archivo <code class="highlighter-rouge">index.html</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>nano index.html
+<div class="highlighter-rouge"><pre class="highlight"><code>$ nano index.html
 </code></pre>
 </div>
 

@@ -6,8 +6,8 @@
 </description>
     <link>http://librebit.github.io/</link>
     <atom:link href="http://librebit.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 21 Sep 2016 15:23:52 +0000</pubDate>
-    <lastBuildDate>Wed, 21 Sep 2016 15:23:52 +0000</lastBuildDate>
+    <pubDate>Tue, 01 Nov 2016 12:16:26 -0600</pubDate>
+    <lastBuildDate>Tue, 01 Nov 2016 12:16:26 -0600</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -109,7 +109,7 @@ Aunque la Raspberry Pi ya tiene activado por default la conexion &lt;code class=
 
 &lt;p&gt;@viktor_ivan&lt;/p&gt;
 </description>
-        <pubDate>Wed, 14 Sep 2016 17:32:39 +0000</pubDate>
+        <pubDate>Wed, 14 Sep 2016 12:32:39 -0500</pubDate>
         <link>http://librebit.github.io/raspberry/raspbian/vnc/server/2016/09/14/habilitar-vnc-server-en-raspberry-pi.html</link>
         <guid isPermaLink="true">http://librebit.github.io/raspberry/raspbian/vnc/server/2016/09/14/habilitar-vnc-server-en-raspberry-pi.html</guid>
         
@@ -148,9 +148,9 @@ Aunque la Raspberry Pi ya tiene activado por default la conexion &lt;code class=
 
 &lt;p&gt;Una vez instalado el proyecto, se procede a crear los archivos del sitio para la publicación de blogs, primeramente se crea la carpeta que albergará los archivos del sitio y dentro de ella se indicará a Octopress que será la carpeta raíz del sitio a través del comando &lt;code class=&quot;highlighter-rouge&quot;&gt;octopress new .&lt;/code&gt;, donde el &lt;code class=&quot;highlighter-rouge&quot;&gt;.&lt;/code&gt; indica que ahí es la ubicación de la raíz del sitio.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir librebit
-cd librebit
-octopress new .
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ mkdir librebit
+$ cd librebit
+$ octopress new .
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -203,15 +203,15 @@ $ bundle install
 
 &lt;p&gt;Una vez instalado todos los plugins para el sitio, se procede a generar los archivos que conformarán el sitio, esto se hace utilizando el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll&lt;/code&gt;, con la opción &lt;code class=&quot;highlighter-rouge&quot;&gt;build&lt;/code&gt; genera los archivos del sitio, la opción &lt;code class=&quot;highlighter-rouge&quot;&gt;serve&lt;/code&gt; habilita un servidor web en el puerto 4000 para obtener una vista previa el sitio, la opción &lt;code class=&quot;highlighter-rouge&quot;&gt;--h 0.0.0.0&lt;/code&gt; permite que el servidor web pueda ser observado desde computadoras remotas y finalmente &lt;code class=&quot;highlighter-rouge&quot;&gt;--watch&lt;/code&gt; es para que el sitio se actualice en tiempo real ante las modificaciones que se hagan a los archivos del sitio.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jekyll build
-jekyll serve --h 0.0.0.0 --watch
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ jekyll build
+$ jekyll serve --h 0.0.0.0 --watch
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;Para modificar el título del blog y otros parámetros, el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; contiene varios datos de configuración para la generación del sitio.&lt;/p&gt;
 
 &lt;p&gt;Para agregar un post al sitio, se utiliza el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;octopress new post&lt;/code&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;octopress new post &quot;Mi título&quot;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ octopress new post &quot;Mi título&quot;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -277,7 +277,7 @@ jekyll serve --h 0.0.0.0 --watch
 
 &lt;p&gt;&lt;a href=&quot;https://www.mathjax.org/&quot;&gt;Mathjax&lt;/a&gt; es una herramienta que permite desplegar ecuaciones matemáticas en las páginas de jekyll, para agregar esta función solo se copia el siguiente script en el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;head.html&lt;/code&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo nano /var/lib/gems/2.1.0/gems/minima-1.0.1/_includes/head.html
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo nano /var/lib/gems/2.1.0/gems/minima-1.0.1/_includes/head.html
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -305,7 +305,7 @@ jekyll serve --h 0.0.0.0 --watch
 
 &lt;p&gt;Para que el sitio reconozca el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;!-- more --&amp;gt;&lt;/code&gt; como indicador del extracto del post, es necesario agregar el comando `` después del título del post dentro del archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nano index.html
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ nano index.html
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -447,7 +447,7 @@ layout: default
 
 &lt;p&gt;@viktor_ivan&lt;/p&gt;
 </description>
-        <pubDate>Sat, 27 Aug 2016 08:02:05 +0000</pubDate>
+        <pubDate>Sat, 27 Aug 2016 03:02:05 -0500</pubDate>
         <link>http://librebit.github.io/octopress/jekyll/blog/2016/08/27/instalacin-de-octopress-3-0.html</link>
         <guid isPermaLink="true">http://librebit.github.io/octopress/jekyll/blog/2016/08/27/instalacin-de-octopress-3-0.html</guid>
         
@@ -536,7 +536,7 @@ layout: default
 &lt;p&gt;viktorivan@openmailbox.org&lt;/p&gt;
 
 </description>
-        <pubDate>Tue, 12 Jul 2016 18:35:39 +0000</pubDate>
+        <pubDate>Tue, 12 Jul 2016 13:35:39 -0500</pubDate>
         <link>http://librebit.github.io/matlab/linux/instalacion/2016/07/12/instalacion-de-matlab-en-ubuntu.html</link>
         <guid isPermaLink="true">http://librebit.github.io/matlab/linux/instalacion/2016/07/12/instalacion-de-matlab-en-ubuntu.html</guid>
         
@@ -654,7 +654,7 @@ dtoverlay=mz61581
 
 &lt;p&gt;@viktor_ivan&lt;/p&gt;
 </description>
-        <pubDate>Fri, 18 Mar 2016 16:15:51 +0000</pubDate>
+        <pubDate>Fri, 18 Mar 2016 10:15:51 -0600</pubDate>
         <link>http://librebit.github.io/tontec/touchscreen/raspberry/raspbian/2016/03/18/instalacion-de-touchscreen-tontec-en-raspberry-pi.html</link>
         <guid isPermaLink="true">http://librebit.github.io/tontec/touchscreen/raspberry/raspbian/2016/03/18/instalacion-de-touchscreen-tontec-en-raspberry-pi.html</guid>
         
@@ -708,7 +708,7 @@ $ sudo apt-get install spotify-client
 
 &lt;p&gt;@Y0_Soy&lt;/p&gt;
 </description>
-        <pubDate>Fri, 11 Mar 2016 18:29:00 +0000</pubDate>
+        <pubDate>Fri, 11 Mar 2016 12:29:00 -0600</pubDate>
         <link>http://librebit.github.io/spotify/linux/applications/2016/03/11/spotify-linux.html</link>
         <guid isPermaLink="true">http://librebit.github.io/spotify/linux/applications/2016/03/11/spotify-linux.html</guid>
         
@@ -785,9 +785,9 @@ $ sudo apt-get install spotify-client
 
 &lt;p&gt;@viktor_ivan&lt;/p&gt;
 </description>
-        <pubDate>Wed, 04 Nov 2015 01:17:11 +0000</pubDate>
-        <link>http://librebit.github.io/github/repositorios/alojamiento/linux/2015/11/04/alojamiento-de-proyectos-en-github-desde-linux.html</link>
-        <guid isPermaLink="true">http://librebit.github.io/github/repositorios/alojamiento/linux/2015/11/04/alojamiento-de-proyectos-en-github-desde-linux.html</guid>
+        <pubDate>Tue, 03 Nov 2015 19:17:11 -0600</pubDate>
+        <link>http://librebit.github.io/github/repositorios/alojamiento/linux/2015/11/03/alojamiento-de-proyectos-en-github-desde-linux.html</link>
+        <guid isPermaLink="true">http://librebit.github.io/github/repositorios/alojamiento/linux/2015/11/03/alojamiento-de-proyectos-en-github-desde-linux.html</guid>
         
         
         <category>github</category>
@@ -862,7 +862,7 @@ El poder tener escritorios remotos compartidos hoy en día es una herramienta ú
 
 &lt;p&gt;@viktor_ivan&lt;/p&gt;
 </description>
-        <pubDate>Mon, 31 Aug 2015 05:08:45 +0000</pubDate>
+        <pubDate>Mon, 31 Aug 2015 00:08:45 -0500</pubDate>
         <link>http://librebit.github.io/vnc/howto/linux/fedora/2015/08/31/servidor-vnc-en-fedora.html</link>
         <guid isPermaLink="true">http://librebit.github.io/vnc/howto/linux/fedora/2015/08/31/servidor-vnc-en-fedora.html</guid>
         
@@ -1069,7 +1069,7 @@ installation should now be secure.
 
 &lt;p&gt;@viktor_ivan&lt;/p&gt;
 </description>
-        <pubDate>Thu, 12 Jun 2014 12:50:29 +0000</pubDate>
+        <pubDate>Thu, 12 Jun 2014 07:50:29 -0500</pubDate>
         <link>http://librebit.github.io/lamp/servidor/linux/instalacion/2014/06/12/instalacion-de-servidor-lamp.html</link>
         <guid isPermaLink="true">http://librebit.github.io/lamp/servidor/linux/instalacion/2014/06/12/instalacion-de-servidor-lamp.html</guid>
         
@@ -1173,7 +1173,7 @@ installation should now be secure.
 
 &lt;p&gt;@viktor_ivan&lt;/p&gt;
 </description>
-        <pubDate>Thu, 22 May 2014 14:48:00 +0000</pubDate>
+        <pubDate>Thu, 22 May 2014 09:48:00 -0500</pubDate>
         <link>http://librebit.github.io/ampache/howto/linux/centos/2014/05/22/instalacion-de-ampache-en-centos.html</link>
         <guid isPermaLink="true">http://librebit.github.io/ampache/howto/linux/centos/2014/05/22/instalacion-de-ampache-en-centos.html</guid>
         
@@ -1289,7 +1289,7 @@ $ rake deploy
 
 &lt;p&gt;@viktor_ivan&lt;/p&gt;
 </description>
-        <pubDate>Thu, 15 May 2014 05:42:03 +0000</pubDate>
+        <pubDate>Thu, 15 May 2014 00:42:03 -0500</pubDate>
         <link>http://librebit.github.io/tutorial/octopress/ubuntu/howto/2014/05/15/instalar-octopress-en-ubuntu.html</link>
         <guid isPermaLink="true">http://librebit.github.io/tutorial/octopress/ubuntu/howto/2014/05/15/instalar-octopress-en-ubuntu.html</guid>
         
