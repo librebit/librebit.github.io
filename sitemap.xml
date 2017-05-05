@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://librebit.github.io/atom/editor/texto/ssh/remoto/2017/03/31/editor-de-textos-a-traves-de-ssh-y-atom.html</loc>
+<lastmod>2017-03-31T13:19:01-06:00</lastmod>
+</url>
+<url>
+<loc>http://librebit.github.io/vmware/esxi/respaldo/virtualizacion/2017/03/31/respaldo-y-actualizacin-de-servidores-esxi-de-vmware.html</loc>
+<lastmod>2017-03-31T11:22:12-06:00</lastmod>
+</url>
+<url>
 <loc>http://librebit.github.io/raspberry/raspbian/vnc/server/2016/09/14/habilitar-vnc-server-en-raspberry-pi.html</loc>
 <lastmod>2016-09-14T12:32:39-05:00</lastmod>
 </url>

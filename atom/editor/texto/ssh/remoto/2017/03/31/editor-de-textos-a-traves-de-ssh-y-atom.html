@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Editor De Textos a Través De SSH Y Atom</title>
+  <meta name="description" content="Introducción. El uso de editores de texto sencillos es una práctica que no ha disminuido, ya que por medio de esta herramienta es posible editar diversos tip...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://librebit.github.io/atom/editor/texto/ssh/remoto/2017/03/31/editor-de-textos-a-traves-de-ssh-y-atom.html">
+  <link rel="alternate" type="application/rss+xml" title="LibreBit" href="http://librebit.github.io/feed.xml">
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+
+
+  <body>
+
+    <header class="site-header" role="banner">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">LibreBit</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">Acerca de</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Editor De Textos a Través De SSH Y Atom</h1>
+    <p class="post-meta"><time datetime="2017-03-31T13:19:01-06:00" itemprop="datePublished">Mar 31, 2017</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Iván Rodríguez</span></span></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p><em>Introducción.</em></p>
+
+<p>El uso de editores de texto sencillos es una práctica que no ha disminuido, ya que por medio de esta herramienta es posible editar diversos tipos de archivos ya sea de configuración o de programación a través de una interfaz sencilla y liviana.</p>
+
+<!-- more -->
+
+<p>A diferencia de los modernos editores de texto, donde la presentación e imagen es importante para los usuarios, estos editores sencillos son populares entre programadores y administradores de redes. Su uso puede ser variado, ya sea para escribir código en C, python, ruby, incluso para generar documentos o presentaciones a través de Latex o para modificar archivos de configuración de servidores sin importar el sistema operativo que este instalado.</p>
+
+<p>Existen editores de texto de terminal, tales como <code class="highlighter-rouge">vi</code>, <code class="highlighter-rouge">nano</code>, <code class="highlighter-rouge">pico</code>, que permiten modificar archivos ya sea de forma local o remota a través de <code class="highlighter-rouge">SSH</code>, siendo esta una ventaja contra los editores de texto modernos.</p>
+
+<p>El uso de editores de texto de terminal suele requerir de usuarios con un poco de experiencia para su uso, donde el usuario debe estar familiarizado con los comandos para modificar, crear, guardar o eliminar archivos, ya que no suelen ser intuitivos como los editores con interfaz gráfica.</p>
+
+<p>Existen algunos editores que en combinación con herramientas como <code class="highlighter-rouge">rmate</code> permiten la edición de archivos remotos a través de SSH, permitiendo a los usuarios disponer de un editor de textos con interfaz gráfica. Este tipo de herramientas es útil, ya que los usuarios que no esten familiarizados con los editores de texto de terminal pueden utilizar de un editor de texto con mayores herramientas.</p>
+
+<p><a href="https://atom.io/">Atom</a> es un editor de texto hackeable multiplataforma que permite instalar diversos tipos de herramientas que son desarrollados por otros usuarios, del mismo modo permite que uno pueda desarrollar herramientas de acuerdo a necesidades particulares, y si es voluntad del usuario, compartirlo con la comunidad de Atom.</p>
+
+<p><a href="https://github.com/aurora/rmate">rmate</a> es una aplicación que permite a los editores de texto modificar archivos a través de conexiones SSH, es compatible con TextMate, Sublime Text y Atom.</p>
+
+<p><em>Instalación de Atom.</em></p>
+
+<p>La instalación de <a href="https://atom.io/">Atom</a> se realiza de forma tradicional con un archivo de instalación. Una vez instalado la aplicación se debe de instalar el paquete de <code class="highlighter-rouge">remote-atom</code>, el cual permite que el editor de texto escuche el puerto <code class="highlighter-rouge">52698</code>, que es por donde <code class="highlighter-rouge">rmate</code> se comunica con el editor.</p>
+
+<p><em>Configuración en Atom.</em></p>
+
+<p>Para instalar paquetes dentro de Atom se hace click en: <code class="highlighter-rouge">Edit &gt; Preferences &gt; Install</code>, otra forma es con: <code class="highlighter-rouge">ctrl + , &gt; Install</code> en esta pestaña aparecerá un buscador de paquetes, solo hay que escribir <code class="highlighter-rouge">Remote Atom</code> y aparecerá un paquete llamado <code class="highlighter-rouge">remote-atom</code>, para instalar se hace click en <code class="highlighter-rouge">Install</code>.</p>
+
+<p>También se puede instalar el paquete a través del gestor de paquetes de Atom.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo apm install remote-atom
+</code></pre>
+</div>
+
+<p>Una vez instalado el paquete, este se debe de reflejar en la lista de <code class="highlighter-rouge">Packages</code>, en la misma pestaña de <code class="highlighter-rouge">Preferences</code>.</p>
+
+<p><em>Configuración en el servidor remoto.</em></p>
+
+<p>En el servidor remoto se debe de habilitar el servicio de SSH, en el caso de los servidores basados en Linux, este se instala con el comando:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt install ssh
+</code></pre>
+</div>
+
+<p>Una vez iniciada la sesión de SSH en el servidor remoto o en la terminal del mismo, se procede a la instalación de <code class="highlighter-rouge">rmate</code>. La instalación consiste en la descarga de la aplicación a través de <code class="highlighter-rouge">curl</code>, el cambio de los permisos de la aplicación descargada con <code class="highlighter-rouge">chmod</code> y finalmente el cambio del nombre de <code class="highlighter-rouge">rmate</code> a <code class="highlighter-rouge">ratom</code>. Este último paso puede ser opcional.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo curl -o /usr/local/bin/rmate https://raw.githubusercontent.com/aurora/rmate/master/rmate
+sudo chmod +x /usr/local/bin/rmate
+sudo mv /usr/local/bin/rmate /usr/local/bin/ratom
+</code></pre>
+</div>
+
+<p><em>Uso.</em></p>
+
+<p>Para la edición remota de archivos a través de SSH se debe de habilitar el servidor de Remote Atom en la aplicación de Atom, esto se hace en <code class="highlighter-rouge">Packages &gt; Remote Atom &gt; Start Server</code>.</p>
+
+<p>En una terminal se realiza la conexión SSH, replicando el puerto <code class="highlighter-rouge">52698</code> del servidor remoto en la computadora local.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ssh -R 52698:localhost:52698 usuario@servidor
+</code></pre>
+</div>
+
+<p>Finalmente, se ejecuta la aplicación de <code class="highlighter-rouge">ratom</code> o <code class="highlighter-rouge">rmate</code> en el servidor remoto.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ratom archivo.txt
+</code></pre>
+</div>
+
+<p>La conexión SSH debe de permanecer abierta durante la edición del archivo. El editor de texto se utiliza de forma normal, sin importar que el archivo se ubique en un servidor remoto.</p>
+
+<p>viktorivan@openmailbox.org</p>
+
+<p>@viktor_ivan</p>
+
+    <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-url="http://librebit.github.io/atom/editor/texto/ssh/remoto/2017/03/31/editor-de-textos-a-traves-de-ssh-y-atom.html" data-text="Editor De Textos a Través De SSH Y Atom -" data-dnt="true">Twitter</a>
+    <div class="g-plusone" data-href="http://librebit.github.io/atom/editor/texto/ssh/remoto/2017/03/31/editor-de-textos-a-traves-de-ssh-y-atom.html" data-annotation="none" data-width="" data-size="medium"></div>
+    <div class="g-plus" data-action="share" data-href="http://librebit.github.io/atom/editor/texto/ssh/remoto/2017/03/31/editor-de-textos-a-traves-de-ssh-y-atom.html" data-annotation="none" data-width="" data-size="medium"></div>
+    <div class="fb-like" data-href="http://librebit.github.io/atom/editor/texto/ssh/remoto/2017/03/31/editor-de-textos-a-traves-de-ssh-y-atom.html" data-layout="button" data-action="like" data-show-faces="false" data-colorscheme="light" data-kid-directed-site="false" data-share="false"></div>
+    <div class="fb-send" data-href="http://librebit.github.io/atom/editor/texto/ssh/remoto/2017/03/31/editor-de-textos-a-traves-de-ssh-y-atom.html" data-colorscheme="light" data-kid-directed-site="false"></div>
+    <div id="disqus_thread"></div> <script type="text/javascript"> var disqus_shortname = 'librebitblog'; var disqus_url = 'http://librebit.github.io/atom/editor/texto/ssh/remoto/2017/03/31/editor-de-textos-a-traves-de-ssh-y-atom.html'; var disqus_identifier = 'http://librebit.github.io/atom/editor/texto/ssh/remoto/2017/03/31/editor-de-textos-a-traves-de-ssh-y-atom.html'; var disqus_title = 'Editor De Textos a Través De SSH Y Atom'; (function () { var s = document.createElement('script'); s.async = true; s.type = 'text/javascript'; s.src = '//librebitblog.disqus.com/embed.js'; (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s); }()); </script> <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </div>
+
+</article>
+
+      </div>
+    </main>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <div id="fb-root"></div> <script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
+    <script type="text/javascript"> (function() { var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true; po.src = 'https://apis.google.com/js/platform.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s); })(); </script>
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">LibreBit</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>LibreBit</li>
+          <li><a href="mailto:"></a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/librebit"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">librebit</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/viktor_ivan"><span class="icon icon--twitter"><svg viewBox="0 0 16 16"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">viktor_ivan</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Un blog sobre el conocimiento libre.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
