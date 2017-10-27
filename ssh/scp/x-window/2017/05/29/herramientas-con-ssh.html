@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Servidor VNC en Fedora 22</title>
-  <meta name="description" content="Resumen Hoy en día, el acceso remoto a lugares de trabajo a través de enlaces seguros nos permiten entrar a plataformas y redes de una manera sencilla y tran...">
+  <title>Herramientas Con SSH</title>
+  <meta name="description" content="Introducción. SSH es una herramienta que permite el acceso remoto a servidores a través de una terminal de comandos, esta conexión tiene la capacidad de gest...">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://0.0.0.0:4000/vnc/howto/linux/fedora/2015/08/31/servidor-vnc-en-fedora.html">
+  <link rel="canonical" href="http://0.0.0.0:4000/ssh/scp/x-window/2017/05/29/herramientas-con-ssh.html">
   <link rel="alternate" type="application/rss+xml" title="LibreBit" href="/feed.xml">
   <script type="text/javascript" async
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
@@ -78,11 +78,11 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Servidor VNC en Fedora 22</h1>
+    <h1 class="post-title" itemprop="name headline">Herramientas Con SSH</h1>
     <p class="post-meta">
-      <time datetime="2015-08-31T05:08:45+00:00" itemprop="datePublished">
+      <time datetime="2017-05-29T20:41:41+00:00" itemprop="datePublished">
         
-        Aug 31, 2015
+        May 29, 2017
       </time>
       
         • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Iván Rodríguez</span></span>
@@ -90,65 +90,86 @@
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p><em>Resumen</em></p>
+    <p><em>Introducción.</em></p>
 
-<p>Hoy en día, el acceso remoto a lugares de trabajo a través de enlaces seguros nos permiten entrar a plataformas y redes de una manera sencilla y transparente para el usuario. Entre las diferentes tecnologías empleadas para los accesos remotos están las conexiones de computación virtual en red (VNC) que es un tipo de escritorio remoto compartido, el cuál permite a los dispositivos remotos tener una acceso virtual a la computadora de trabajo, de tal modo que parezca que está frente a la equipo físicamente. En cierto modo, existe una desconfianza a este tipo de tecnologías por las noticias relacionadas a ciberataques y hackeos dejando en entre dicho la efectividad de los mismos. Ante estas vulnerabilidades se han desarrollado nuevos esquemas de seguridad que evitan que usuarios no autorizados tengan control sobre los equipos con escritorios remotos compartidos.</p>
+<p>SSH es una herramienta que permite el acceso remoto a servidores a través de una terminal de comandos, esta conexión tiene la capacidad de gestionar el servidor como si se estuviera en sitio, permitiendo al usuario tener control total o restringido del servidor.</p>
 
 <!-- more -->
 
-<p><em>Instalando servidor de VNC en Linux</em></p>
+<p>Aunque SSH es una herramienta útil para los administradores de redes en cuanto a gestión y acceso remoto, esta no tiene las mismas capacidades que los escritorios remotos, por lo que se han desarrollado otras herramientas, que basados en SSH, pemiten realizar una amplia diversidad de taréas desde la terminal de comandos.</p>
 
-<p>Los escritorios remotos son servicios que se pueden activar facilmente en sistemas operativos como Windows, pero la cantidad de conexiones activas en la computadora está limitada por la licencia, por lo general solo permiten un usuario a la vez. En los sistemas operativos Linux no existe la restricción por licencia de las conexiones activas de VNC debido a la licencia de software libre.</p>
+<p><em>Instalación.</em></p>
 
-<p>A continuación se muestra la instalación de un servidor VNC en la distribución de <a href="https://getfedora.org/">Fedora</a>.</p>
+<p>La instalación de <code class="highlighter-rouge">SSH</code> en un servidor basado en Ubuntu se realiza a través de <code class="highlighter-rouge">apt</code>.</p>
 
-<p>Desde una terminal, se ejecuta el comando para instalar tiger vnc desde los repositorios:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo dnf install tigervnc-server
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt install openssh-server
 </code></pre></div></div>
 
-<p>Con este comando se define la contraseña del servicio de VNC, se debe ejecutar en la terminal del usuario que se desea que ingrese por VNC.</p>
+<p>Existen varios clientes que pueden conectarse con <code class="highlighter-rouge">SSH</code>, en caso de Windows es muy popular el programa <code class="highlighter-rouge">Putty</code>, en Android <code class="highlighter-rouge">JuiceSSH</code>, para Ubuntu se puede utilizar tanto el programa de <code class="highlighter-rouge">Putty</code> como el cliente de <code class="highlighter-rouge">openSSH</code>. La instalación del cliente de <code class="highlighter-rouge">openSSH</code> se puede realizar a través de <code class="highlighter-rouge">apt</code></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ vncpasswd
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt install openssh-client
 </code></pre></div></div>
 
-<p>Para iniciar y verificar el estado del servicio de VNC, se ejecuta los siguientes comandos, la parte de :1 indica que el puerto de VNC es 5901.</p>
+<p>Una vez instalado el cliente, se realiza la conexión <code class="highlighter-rouge">SSH</code> con un usuario del servidor <code class="highlighter-rouge">SSH</code>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo systemctl start vncserver@:1.service
-$ sudo systemctl status vncserver@:1.service
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh usuario@direccionip
 </code></pre></div></div>
 
-<p>Para cargar de nuevo el servicio</p>
+<p><em>Transferencia de archivos.</em></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo systemctl daemon-reload
+<p><code class="highlighter-rouge">SCP</code> es una herramienta que permite el envío de archivos a través de <code class="highlighter-rouge">SSH</code>, ya sea desde el servidor al cliente o viceversa.</p>
+
+<p>Para subir un archivo al servidor de SSH</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ scp archivo usuario@direccionip:direcciondestino
 </code></pre></div></div>
 
-<p>Para habilitar el servicio de VNC para conexiones externas, hay que revisar los permisos en el firewall de Fedora, el firewall es gestionado por SElinux</p>
+<p>Para descargar un archivo del servidor SSH</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sestatus
-$ sudo grep bash /var/log/audit/audit.log | audit2allow -M mypol
-$ sudo semodule -i mypol.pp
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ scp usuario@direccionip:direccionorigen/archivo direcciondestino
 </code></pre></div></div>
 
-<p>Para que el servicio de VNC se incie junto con el sistema operativo</p>
+<p>Para subir un folder completo al servidor SSH</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo systemctl start vncserver@:1.service
-$ sudo systemctl enable vncserver@:1.service
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ scp -r direccionorigen usuario@direccionip:direcciondestino
 </code></pre></div></div>
-<p>De este modo quedaria funcionando el servicio de VNC en el puerto 5901.</p>
 
-<p><em>Conclusión</em>
-El poder tener escritorios remotos compartidos hoy en día es una herramienta útil, ya que es posible tener acceso a ellos a través de dispositivos móviles como tabletas o celulares. De igual modo facilita la solución de problemas ya que no es necesario tener presencia física en el equipo.</p>
+<p>Para copiar un archivo entre dos servidores SSH</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ scp usuario1@direccionip1:direccionorigen/archivo usuario2@direccionip2:direcciondestino
+</code></pre></div></div>
+
+<p><em>Modo gráfico X11Forwarding.</em></p>
+
+<p>Aunque no es comparable con VNC, en el sentido de acceder al escritorio remotamente, es posible traer al cliente una ventana o programa que se ejecuta en el servidor, para ello se debe de habilitar la opción de <code class="highlighter-rouge">X11Forwarding</code> en el archivo de configuración de SSH.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo nano /etc/ssh/sshd_config
+</code></pre></div></div>
+
+<p>Se descomenta <code class="highlighter-rouge"># X11Forwarding no</code> y se remplaza por <code class="highlighter-rouge">X11Forwarding yes</code>, una vez hecho esto se debe de reiniciar el servicio de <code class="highlighter-rouge">SSH</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo /etc/init.d/sshd restart
+</code></pre></div></div>
+
+<p>De este modo, queda habilitado <code class="highlighter-rouge">X11Forwarding</code> en los enlaces SSH, sin embargo es necesario indicar <code class="highlighter-rouge">-X</code> en la configuración de la conexión.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh -X usuario@direccionip
+</code></pre></div></div>
+
+<p>Para comprobar el correcto funcionamiento del ambiente gráfico, se puede ejecutar una aplicación que tenga interfaz gráfica, tal como <code class="highlighter-rouge">Firefox</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ firefox
+</code></pre></div></div>
 
 <p>viktorivan@openmailbox.org</p>
 
 <p>@viktor_ivan</p>
 
-    <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-url="http://0.0.0.0:4000/vnc/howto/linux/fedora/2015/08/31/servidor-vnc-en-fedora.html" data-text="Servidor VNC en Fedora 22 -" data-dnt="true">Twitter</a>
-    <div class="g-plusone" data-href="http://0.0.0.0:4000/vnc/howto/linux/fedora/2015/08/31/servidor-vnc-en-fedora.html" data-annotation="none" data-width="" data-size="medium"></div>
-    <div class="g-plus" data-action="share" data-href="http://0.0.0.0:4000/vnc/howto/linux/fedora/2015/08/31/servidor-vnc-en-fedora.html" data-annotation="none" data-width="" data-size="medium"></div>
-    <div class="fb-like" data-href="http://0.0.0.0:4000/vnc/howto/linux/fedora/2015/08/31/servidor-vnc-en-fedora.html" data-layout="button" data-action="like" data-show-faces="false" data-colorscheme="light" data-kid-directed-site="false" data-share="false"></div>
-    <div class="fb-send" data-href="http://0.0.0.0:4000/vnc/howto/linux/fedora/2015/08/31/servidor-vnc-en-fedora.html" data-colorscheme="light" data-kid-directed-site="false"></div>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-url="http://0.0.0.0:4000/ssh/scp/x-window/2017/05/29/herramientas-con-ssh.html" data-text="Herramientas Con SSH -" data-dnt="true">Twitter</a>
+    <div class="g-plusone" data-href="http://0.0.0.0:4000/ssh/scp/x-window/2017/05/29/herramientas-con-ssh.html" data-annotation="none" data-width="" data-size="medium"></div>
+    <div class="g-plus" data-action="share" data-href="http://0.0.0.0:4000/ssh/scp/x-window/2017/05/29/herramientas-con-ssh.html" data-annotation="none" data-width="" data-size="medium"></div>
+    <div class="fb-like" data-href="http://0.0.0.0:4000/ssh/scp/x-window/2017/05/29/herramientas-con-ssh.html" data-layout="button" data-action="like" data-show-faces="false" data-colorscheme="light" data-kid-directed-site="false" data-share="false"></div>
+    <div class="fb-send" data-href="http://0.0.0.0:4000/ssh/scp/x-window/2017/05/29/herramientas-con-ssh.html" data-colorscheme="light" data-kid-directed-site="false"></div>
   </div>
 
   

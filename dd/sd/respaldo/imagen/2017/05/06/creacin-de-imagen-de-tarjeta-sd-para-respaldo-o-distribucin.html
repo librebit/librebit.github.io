@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Servidor VNC en Fedora 22</title>
-  <meta name="description" content="Resumen Hoy en día, el acceso remoto a lugares de trabajo a través de enlaces seguros nos permiten entrar a plataformas y redes de una manera sencilla y tran...">
+  <title>Creación De Imagen De Tarjeta SD Para Respaldo O Distribución</title>
+  <meta name="description" content="Introducción. Una filosofía presente en las distribuciones de Linux es la diversidad de sabores que existen, ya sea para auditorías de redes, diseño gráfico,...">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://0.0.0.0:4000/vnc/howto/linux/fedora/2015/08/31/servidor-vnc-en-fedora.html">
+  <link rel="canonical" href="http://0.0.0.0:4000/dd/sd/respaldo/imagen/2017/05/06/creacin-de-imagen-de-tarjeta-sd-para-respaldo-o-distribucin.html">
   <link rel="alternate" type="application/rss+xml" title="LibreBit" href="/feed.xml">
   <script type="text/javascript" async
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
@@ -78,11 +78,11 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Servidor VNC en Fedora 22</h1>
+    <h1 class="post-title" itemprop="name headline">Creación De Imagen De Tarjeta SD Para Respaldo O Distribución</h1>
     <p class="post-meta">
-      <time datetime="2015-08-31T05:08:45+00:00" itemprop="datePublished">
+      <time datetime="2017-05-06T02:38:01+00:00" itemprop="datePublished">
         
-        Aug 31, 2015
+        May 6, 2017
       </time>
       
         • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Iván Rodríguez</span></span>
@@ -90,65 +90,52 @@
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p><em>Resumen</em></p>
+    <p><em>Introducción.</em></p>
 
-<p>Hoy en día, el acceso remoto a lugares de trabajo a través de enlaces seguros nos permiten entrar a plataformas y redes de una manera sencilla y transparente para el usuario. Entre las diferentes tecnologías empleadas para los accesos remotos están las conexiones de computación virtual en red (VNC) que es un tipo de escritorio remoto compartido, el cuál permite a los dispositivos remotos tener una acceso virtual a la computadora de trabajo, de tal modo que parezca que está frente a la equipo físicamente. En cierto modo, existe una desconfianza a este tipo de tecnologías por las noticias relacionadas a ciberataques y hackeos dejando en entre dicho la efectividad de los mismos. Ante estas vulnerabilidades se han desarrollado nuevos esquemas de seguridad que evitan que usuarios no autorizados tengan control sobre los equipos con escritorios remotos compartidos.</p>
+<p>Una filosofía presente en las distribuciones de Linux es la diversidad de sabores que existen, ya sea para auditorías de redes, diseño gráfico, gaming, multimedia, entre otros. Esta peculiaridad es un arma de doble filo, ya que los nuevos usuarios no saben escoger entre tantas opciones, pero para los usuarios con experiencia es una ventaja al momento de escoger una distribución en particular.</p>
 
 <!-- more -->
 
-<p><em>Instalando servidor de VNC en Linux</em></p>
+<p>El poder crear una distribución de Linux no es privativo para una empresa u organización en particular, sino una oportunidad para cada usuario de poder crear un Linux de acuerdo a sus necesidades, y en su defecto, una distribución mas para compartir con la comunidad.</p>
 
-<p>Los escritorios remotos son servicios que se pueden activar facilmente en sistemas operativos como Windows, pero la cantidad de conexiones activas en la computadora está limitada por la licencia, por lo general solo permiten un usuario a la vez. En los sistemas operativos Linux no existe la restricción por licencia de las conexiones activas de VNC debido a la licencia de software libre.</p>
+<p>Siguiendo esta filosofía, las distribuciones basados en Linux de los sistemas embebidos también existen en diferentes sabores de acuerdo a necesidades particulares, permitiendo del mismo modo la creación de una distribución a cada usuario.</p>
 
-<p>A continuación se muestra la instalación de un servidor VNC en la distribución de <a href="https://getfedora.org/">Fedora</a>.</p>
+<p><em>Imágenes de Sistemas Operativos Embebidos.</em></p>
 
-<p>Desde una terminal, se ejecuta el comando para instalar tiger vnc desde los repositorios:</p>
+<p>A diferencia de las imágenes de los sistemas operativos Linux para computadora, que son archivos <code class="highlighter-rouge">.iso</code> que se pueden montar en una memoria USB para su instalación o versión LIVE, las imágenes de los sistemas embebidos son archivos <code class="highlighter-rouge">.img</code>. Estos archivos son imágenes de las memorias SD donde se instala el sistema operativo embebido.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo dnf install tigervnc-server
+<p>Uno como usuario puede utilizar cualquier distribución como sistema operativo base, pero de acuerdo a las necesidades particulares de cada quien, uno puede realizar la instalación de diferentes tipos de servicios y aplicaciones en el sistema embebido, por lo que es útil tener una imagen de respaldo con dichas modificaciones y de este modo evitar el tener que realizar una instalación desde cero en caso de fallo.</p>
+
+<p>Del mismo modo, se puede crear una imagen del sistema operativo personalizado para compartirlo entre diferentes usuarios, y así facilitar su distribución.</p>
+
+<p><em>Creación de imágenes de memorias SD.</em></p>
+
+<p>Existen diferentes métodos para crear imágenes de memorias SD, en caso de Linux, la imagen puede crearse desde la terminal de comandos con el programa <code class="highlighter-rouge">dd</code>, el resultado es un archivo <code class="highlighter-rouge">.img</code> que es una copia exacta de la memoria SD, por lo tanto, es del tamaño de la memoria SD sin importar que tanto espacio ocupen los archivos en realidad. Para comprimir esta imagen se utiliza el programa <code class="highlighter-rouge">xz</code>, que es el compresor tradicional en estos casos.</p>
+
+<p>Para crear la imagen en la terminal de comandos, primero se debe identificar la ubicación de la memoria SD, para ello se utiliza el comando <code class="highlighter-rouge">lsblk</code>, el cual lista los dispositivos conectados en la computadora. Los valores comunes de las memorias SD son <code class="highlighter-rouge">sdX</code> o <code class="highlighter-rouge">mmcblkX</code>, los cuales se interpretan como <code class="highlighter-rouge">/dev/sdX</code> o <code class="highlighter-rouge">/dev/mmcblkX</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lsblk
+sudo dd if=/dev/sdb of=sdimage.img
+xz sdimage.img
 </code></pre></div></div>
 
-<p>Con este comando se define la contraseña del servicio de VNC, se debe ejecutar en la terminal del usuario que se desea que ingrese por VNC.</p>
+<p><em>Instalación de imágenes de memorias SD.</em></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ vncpasswd
+<p>La instalación de la imagen en una memoria SD se realiza con el comando <code class="highlighter-rouge">unxz</code>, el cual es utilizado para descomprimir el archivo <code class="highlighter-rouge">.xz</code> y el comando <code class="highlighter-rouge">dd</code> para la copia de la imagen en la memoria SD. El comando <code class="highlighter-rouge">dd</code> realiza una copia exacta de la imagen, esto quiere decir que no se puede utilizar una memoria de menor tamaño de la que fue creada, y en caso de utilizar una memoria de mayor tamaño, se tiene que utilizar un programa como <code class="highlighter-rouge">gparted</code> para ajustar los tamaños de las particiones.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unxz sdimage.img.xz
+sudo dd if=sdimage.img of=/dev/sdb bs=4194304
 </code></pre></div></div>
-
-<p>Para iniciar y verificar el estado del servicio de VNC, se ejecuta los siguientes comandos, la parte de :1 indica que el puerto de VNC es 5901.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo systemctl start vncserver@:1.service
-$ sudo systemctl status vncserver@:1.service
-</code></pre></div></div>
-
-<p>Para cargar de nuevo el servicio</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo systemctl daemon-reload
-</code></pre></div></div>
-
-<p>Para habilitar el servicio de VNC para conexiones externas, hay que revisar los permisos en el firewall de Fedora, el firewall es gestionado por SElinux</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sestatus
-$ sudo grep bash /var/log/audit/audit.log | audit2allow -M mypol
-$ sudo semodule -i mypol.pp
-</code></pre></div></div>
-
-<p>Para que el servicio de VNC se incie junto con el sistema operativo</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo systemctl start vncserver@:1.service
-$ sudo systemctl enable vncserver@:1.service
-</code></pre></div></div>
-<p>De este modo quedaria funcionando el servicio de VNC en el puerto 5901.</p>
-
-<p><em>Conclusión</em>
-El poder tener escritorios remotos compartidos hoy en día es una herramienta útil, ya que es posible tener acceso a ellos a través de dispositivos móviles como tabletas o celulares. De igual modo facilita la solución de problemas ya que no es necesario tener presencia física en el equipo.</p>
 
 <p>viktorivan@openmailbox.org</p>
 
 <p>@viktor_ivan</p>
 
-    <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-url="http://0.0.0.0:4000/vnc/howto/linux/fedora/2015/08/31/servidor-vnc-en-fedora.html" data-text="Servidor VNC en Fedora 22 -" data-dnt="true">Twitter</a>
-    <div class="g-plusone" data-href="http://0.0.0.0:4000/vnc/howto/linux/fedora/2015/08/31/servidor-vnc-en-fedora.html" data-annotation="none" data-width="" data-size="medium"></div>
-    <div class="g-plus" data-action="share" data-href="http://0.0.0.0:4000/vnc/howto/linux/fedora/2015/08/31/servidor-vnc-en-fedora.html" data-annotation="none" data-width="" data-size="medium"></div>
-    <div class="fb-like" data-href="http://0.0.0.0:4000/vnc/howto/linux/fedora/2015/08/31/servidor-vnc-en-fedora.html" data-layout="button" data-action="like" data-show-faces="false" data-colorscheme="light" data-kid-directed-site="false" data-share="false"></div>
-    <div class="fb-send" data-href="http://0.0.0.0:4000/vnc/howto/linux/fedora/2015/08/31/servidor-vnc-en-fedora.html" data-colorscheme="light" data-kid-directed-site="false"></div>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-url="http://0.0.0.0:4000/dd/sd/respaldo/imagen/2017/05/06/creacin-de-imagen-de-tarjeta-sd-para-respaldo-o-distribucin.html" data-text="Creación De Imagen De Tarjeta SD Para Respaldo O Distribución -" data-dnt="true">Twitter</a>
+    <div class="g-plusone" data-href="http://0.0.0.0:4000/dd/sd/respaldo/imagen/2017/05/06/creacin-de-imagen-de-tarjeta-sd-para-respaldo-o-distribucin.html" data-annotation="none" data-width="" data-size="medium"></div>
+    <div class="g-plus" data-action="share" data-href="http://0.0.0.0:4000/dd/sd/respaldo/imagen/2017/05/06/creacin-de-imagen-de-tarjeta-sd-para-respaldo-o-distribucin.html" data-annotation="none" data-width="" data-size="medium"></div>
+    <div class="fb-like" data-href="http://0.0.0.0:4000/dd/sd/respaldo/imagen/2017/05/06/creacin-de-imagen-de-tarjeta-sd-para-respaldo-o-distribucin.html" data-layout="button" data-action="like" data-show-faces="false" data-colorscheme="light" data-kid-directed-site="false" data-share="false"></div>
+    <div class="fb-send" data-href="http://0.0.0.0:4000/dd/sd/respaldo/imagen/2017/05/06/creacin-de-imagen-de-tarjeta-sd-para-respaldo-o-distribucin.html" data-colorscheme="light" data-kid-directed-site="false"></div>
   </div>
 
   

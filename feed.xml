@@ -1,19 +1,118 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>LibreBit</title>
-    <description>Un blog sobre el conocimiento libre.
-</description>
-    <link>http://librebit.github.io/</link>
-    <atom:link href="http://librebit.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 01 Apr 2017 16:48:47 -0600</pubDate>
-    <lastBuildDate>Sat, 01 Apr 2017 16:48:47 -0600</lastBuildDate>
-    <generator>Jekyll v3.2.1</generator>
-    
-      <item>
-        <title>Editor De Textos a Través De SSH Y Atom</title>
-        <description>&lt;p&gt;&lt;em&gt;Introducción.&lt;/em&gt;
-El uso de editores de texto sencillos es una práctica que no ha disminuido, ya que por medio de esta herramienta es posible editar diversos tipos de archivos ya sea de configuración o de programación a través de una interfaz sencilla y liviana.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2017-10-27T22:53:42+00:00</updated><id>http://0.0.0.0:4000/</id><title type="html">LibreBit</title><subtitle>Un blog sobre el conocimiento libre.</subtitle><entry><title type="html">Herramientas Con SSH</title><link href="http://0.0.0.0:4000/ssh/scp/x-window/2017/05/29/herramientas-con-ssh.html" rel="alternate" type="text/html" title="Herramientas Con SSH" /><published>2017-05-29T20:41:41+00:00</published><updated>2017-05-29T20:41:41+00:00</updated><id>http://0.0.0.0:4000/ssh/scp/x-window/2017/05/29/herramientas-con-ssh</id><content type="html" xml:base="http://0.0.0.0:4000/ssh/scp/x-window/2017/05/29/herramientas-con-ssh.html">&lt;p&gt;&lt;em&gt;Introducción.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;SSH es una herramienta que permite el acceso remoto a servidores a través de una terminal de comandos, esta conexión tiene la capacidad de gestionar el servidor como si se estuviera en sitio, permitiendo al usuario tener control total o restringido del servidor.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;Aunque SSH es una herramienta útil para los administradores de redes en cuanto a gestión y acceso remoto, esta no tiene las mismas capacidades que los escritorios remotos, por lo que se han desarrollado otras herramientas, que basados en SSH, pemiten realizar una amplia diversidad de taréas desde la terminal de comandos.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Instalación.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;La instalación de &lt;code class=&quot;highlighter-rouge&quot;&gt;SSH&lt;/code&gt; en un servidor basado en Ubuntu se realiza a través de &lt;code class=&quot;highlighter-rouge&quot;&gt;apt&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt install openssh-server
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Existen varios clientes que pueden conectarse con &lt;code class=&quot;highlighter-rouge&quot;&gt;SSH&lt;/code&gt;, en caso de Windows es muy popular el programa &lt;code class=&quot;highlighter-rouge&quot;&gt;Putty&lt;/code&gt;, en Android &lt;code class=&quot;highlighter-rouge&quot;&gt;JuiceSSH&lt;/code&gt;, para Ubuntu se puede utilizar tanto el programa de &lt;code class=&quot;highlighter-rouge&quot;&gt;Putty&lt;/code&gt; como el cliente de &lt;code class=&quot;highlighter-rouge&quot;&gt;openSSH&lt;/code&gt;. La instalación del cliente de &lt;code class=&quot;highlighter-rouge&quot;&gt;openSSH&lt;/code&gt; se puede realizar a través de &lt;code class=&quot;highlighter-rouge&quot;&gt;apt&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt install openssh-client
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Una vez instalado el cliente, se realiza la conexión &lt;code class=&quot;highlighter-rouge&quot;&gt;SSH&lt;/code&gt; con un usuario del servidor &lt;code class=&quot;highlighter-rouge&quot;&gt;SSH&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ssh usuario@direccionip
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;Transferencia de archivos.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SCP&lt;/code&gt; es una herramienta que permite el envío de archivos a través de &lt;code class=&quot;highlighter-rouge&quot;&gt;SSH&lt;/code&gt;, ya sea desde el servidor al cliente o viceversa.&lt;/p&gt;
+
+&lt;p&gt;Para subir un archivo al servidor de SSH&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ scp archivo usuario@direccionip:direcciondestino
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Para descargar un archivo del servidor SSH&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ scp usuario@direccionip:direccionorigen/archivo direcciondestino
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Para subir un folder completo al servidor SSH&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ scp -r direccionorigen usuario@direccionip:direcciondestino
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Para copiar un archivo entre dos servidores SSH&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ scp usuario1@direccionip1:direccionorigen/archivo usuario2@direccionip2:direcciondestino
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;Modo gráfico X11Forwarding.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Aunque no es comparable con VNC, en el sentido de acceder al escritorio remotamente, es posible traer al cliente una ventana o programa que se ejecuta en el servidor, para ello se debe de habilitar la opción de &lt;code class=&quot;highlighter-rouge&quot;&gt;X11Forwarding&lt;/code&gt; en el archivo de configuración de SSH.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo nano /etc/ssh/sshd_config
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Se descomenta &lt;code class=&quot;highlighter-rouge&quot;&gt;# X11Forwarding no&lt;/code&gt; y se remplaza por &lt;code class=&quot;highlighter-rouge&quot;&gt;X11Forwarding yes&lt;/code&gt;, una vez hecho esto se debe de reiniciar el servicio de &lt;code class=&quot;highlighter-rouge&quot;&gt;SSH&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo /etc/init.d/sshd restart
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;De este modo, queda habilitado &lt;code class=&quot;highlighter-rouge&quot;&gt;X11Forwarding&lt;/code&gt; en los enlaces SSH, sin embargo es necesario indicar &lt;code class=&quot;highlighter-rouge&quot;&gt;-X&lt;/code&gt; en la configuración de la conexión.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ssh -X usuario@direccionip
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Para comprobar el correcto funcionamiento del ambiente gráfico, se puede ejecutar una aplicación que tenga interfaz gráfica, tal como &lt;code class=&quot;highlighter-rouge&quot;&gt;Firefox&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ firefox
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;viktorivan@openmailbox.org&lt;/p&gt;
+
+&lt;p&gt;@viktor_ivan&lt;/p&gt;</content><author><name>Iván Rodríguez</name></author><summary type="html">Introducción. SSH es una herramienta que permite el acceso remoto a servidores a través de una terminal de comandos, esta conexión tiene la capacidad de gestionar el servidor como si se estuviera en sitio, permitiendo al usuario tener control total o restringido del servidor.</summary></entry><entry><title type="html">Creación De Imagen De Tarjeta SD Para Respaldo O Distribución</title><link href="http://0.0.0.0:4000/dd/sd/respaldo/imagen/2017/05/06/creacin-de-imagen-de-tarjeta-sd-para-respaldo-o-distribucin.html" rel="alternate" type="text/html" title="Creación De Imagen De Tarjeta SD Para Respaldo O Distribución" /><published>2017-05-06T02:38:01+00:00</published><updated>2017-05-06T02:38:01+00:00</updated><id>http://0.0.0.0:4000/dd/sd/respaldo/imagen/2017/05/06/creacin-de-imagen-de-tarjeta-sd-para-respaldo-o-distribucin</id><content type="html" xml:base="http://0.0.0.0:4000/dd/sd/respaldo/imagen/2017/05/06/creacin-de-imagen-de-tarjeta-sd-para-respaldo-o-distribucin.html">&lt;p&gt;&lt;em&gt;Introducción.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Una filosofía presente en las distribuciones de Linux es la diversidad de sabores que existen, ya sea para auditorías de redes, diseño gráfico, gaming, multimedia, entre otros. Esta peculiaridad es un arma de doble filo, ya que los nuevos usuarios no saben escoger entre tantas opciones, pero para los usuarios con experiencia es una ventaja al momento de escoger una distribución en particular.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;El poder crear una distribución de Linux no es privativo para una empresa u organización en particular, sino una oportunidad para cada usuario de poder crear un Linux de acuerdo a sus necesidades, y en su defecto, una distribución mas para compartir con la comunidad.&lt;/p&gt;
+
+&lt;p&gt;Siguiendo esta filosofía, las distribuciones basados en Linux de los sistemas embebidos también existen en diferentes sabores de acuerdo a necesidades particulares, permitiendo del mismo modo la creación de una distribución a cada usuario.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Imágenes de Sistemas Operativos Embebidos.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;A diferencia de las imágenes de los sistemas operativos Linux para computadora, que son archivos &lt;code class=&quot;highlighter-rouge&quot;&gt;.iso&lt;/code&gt; que se pueden montar en una memoria USB para su instalación o versión LIVE, las imágenes de los sistemas embebidos son archivos &lt;code class=&quot;highlighter-rouge&quot;&gt;.img&lt;/code&gt;. Estos archivos son imágenes de las memorias SD donde se instala el sistema operativo embebido.&lt;/p&gt;
+
+&lt;p&gt;Uno como usuario puede utilizar cualquier distribución como sistema operativo base, pero de acuerdo a las necesidades particulares de cada quien, uno puede realizar la instalación de diferentes tipos de servicios y aplicaciones en el sistema embebido, por lo que es útil tener una imagen de respaldo con dichas modificaciones y de este modo evitar el tener que realizar una instalación desde cero en caso de fallo.&lt;/p&gt;
+
+&lt;p&gt;Del mismo modo, se puede crear una imagen del sistema operativo personalizado para compartirlo entre diferentes usuarios, y así facilitar su distribución.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Creación de imágenes de memorias SD.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Existen diferentes métodos para crear imágenes de memorias SD, en caso de Linux, la imagen puede crearse desde la terminal de comandos con el programa &lt;code class=&quot;highlighter-rouge&quot;&gt;dd&lt;/code&gt;, el resultado es un archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;.img&lt;/code&gt; que es una copia exacta de la memoria SD, por lo tanto, es del tamaño de la memoria SD sin importar que tanto espacio ocupen los archivos en realidad. Para comprimir esta imagen se utiliza el programa &lt;code class=&quot;highlighter-rouge&quot;&gt;xz&lt;/code&gt;, que es el compresor tradicional en estos casos.&lt;/p&gt;
+
+&lt;p&gt;Para crear la imagen en la terminal de comandos, primero se debe identificar la ubicación de la memoria SD, para ello se utiliza el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;lsblk&lt;/code&gt;, el cual lista los dispositivos conectados en la computadora. Los valores comunes de las memorias SD son &lt;code class=&quot;highlighter-rouge&quot;&gt;sdX&lt;/code&gt; o &lt;code class=&quot;highlighter-rouge&quot;&gt;mmcblkX&lt;/code&gt;, los cuales se interpretan como &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/sdX&lt;/code&gt; o &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/mmcblkX&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;lsblk
+sudo dd if=/dev/sdb of=sdimage.img
+xz sdimage.img
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;Instalación de imágenes de memorias SD.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;La instalación de la imagen en una memoria SD se realiza con el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;unxz&lt;/code&gt;, el cual es utilizado para descomprimir el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;.xz&lt;/code&gt; y el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;dd&lt;/code&gt; para la copia de la imagen en la memoria SD. El comando &lt;code class=&quot;highlighter-rouge&quot;&gt;dd&lt;/code&gt; realiza una copia exacta de la imagen, esto quiere decir que no se puede utilizar una memoria de menor tamaño de la que fue creada, y en caso de utilizar una memoria de mayor tamaño, se tiene que utilizar un programa como &lt;code class=&quot;highlighter-rouge&quot;&gt;gparted&lt;/code&gt; para ajustar los tamaños de las particiones.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;unxz sdimage.img.xz
+sudo dd if=sdimage.img of=/dev/sdb bs=4194304
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;viktorivan@openmailbox.org&lt;/p&gt;
+
+&lt;p&gt;@viktor_ivan&lt;/p&gt;</content><author><name>Iván Rodríguez</name></author><summary type="html">Introducción. Una filosofía presente en las distribuciones de Linux es la diversidad de sabores que existen, ya sea para auditorías de redes, diseño gráfico, gaming, multimedia, entre otros. Esta peculiaridad es un arma de doble filo, ya que los nuevos usuarios no saben escoger entre tantas opciones, pero para los usuarios con experiencia es una ventaja al momento de escoger una distribución en particular.</summary></entry><entry><title type="html">Editor De Textos a Través De SSH Y Atom</title><link href="http://0.0.0.0:4000/atom/editor/texto/ssh/remoto/2017/03/31/editor-de-textos-a-traves-de-ssh-y-atom.html" rel="alternate" type="text/html" title="Editor De Textos a Través De SSH Y Atom" /><published>2017-03-31T19:19:01+00:00</published><updated>2017-03-31T19:19:01+00:00</updated><id>http://0.0.0.0:4000/atom/editor/texto/ssh/remoto/2017/03/31/editor-de-textos-a-traves-de-ssh-y-atom</id><content type="html" xml:base="http://0.0.0.0:4000/atom/editor/texto/ssh/remoto/2017/03/31/editor-de-textos-a-traves-de-ssh-y-atom.html">&lt;p&gt;&lt;em&gt;Introducción.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;El uso de editores de texto sencillos es una práctica que no ha disminuido, ya que por medio de esta herramienta es posible editar diversos tipos de archivos ya sea de configuración o de programación a través de una interfaz sencilla y liviana.&lt;/p&gt;
 
 &lt;!-- more --&gt;
 
@@ -39,9 +138,8 @@ El uso de editores de texto sencillos es una práctica que no ha disminuido, ya 
 
 &lt;p&gt;También se puede instalar el paquete a través del gestor de paquetes de Atom.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apm install remote-atom
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apm install remote-atom
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Una vez instalado el paquete, este se debe de reflejar en la lista de &lt;code class=&quot;highlighter-rouge&quot;&gt;Packages&lt;/code&gt;, en la misma pestaña de &lt;code class=&quot;highlighter-rouge&quot;&gt;Preferences&lt;/code&gt;.&lt;/p&gt;
 
@@ -49,17 +147,15 @@ El uso de editores de texto sencillos es una práctica que no ha disminuido, ya 
 
 &lt;p&gt;En el servidor remoto se debe de habilitar el servicio de SSH, en el caso de los servidores basados en Linux, este se instala con el comando:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt install ssh
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt install ssh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Una vez iniciada la sesión de SSH en el servidor remoto o en la terminal del mismo, se procede a la instalación de &lt;code class=&quot;highlighter-rouge&quot;&gt;rmate&lt;/code&gt;. La instalación consiste en la descarga de la aplicación a través de &lt;code class=&quot;highlighter-rouge&quot;&gt;curl&lt;/code&gt;, el cambio de los permisos de la aplicación descargada con &lt;code class=&quot;highlighter-rouge&quot;&gt;chmod&lt;/code&gt; y finalmente el cambio del nombre de &lt;code class=&quot;highlighter-rouge&quot;&gt;rmate&lt;/code&gt; a &lt;code class=&quot;highlighter-rouge&quot;&gt;ratom&lt;/code&gt;. Este último paso puede ser opcional.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo curl -o /usr/local/bin/rmate https://raw.githubusercontent.com/aurora/rmate/master/rmate
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo curl -o /usr/local/bin/rmate https://raw.githubusercontent.com/aurora/rmate/master/rmate
 sudo chmod +x /usr/local/bin/rmate
 sudo mv /usr/local/bin/rmate /usr/local/bin/ratom
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;em&gt;Uso.&lt;/em&gt;&lt;/p&gt;
 
@@ -67,42 +163,21 @@ sudo mv /usr/local/bin/rmate /usr/local/bin/ratom
 
 &lt;p&gt;En una terminal se realiza la conexión SSH, replicando el puerto &lt;code class=&quot;highlighter-rouge&quot;&gt;52698&lt;/code&gt; del servidor remoto en la computadora local.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh -R 52698:localhost:52698 usuario@servidor
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh -R 52698:localhost:52698 usuario@servidor
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Finalmente, se ejecuta la aplicación de &lt;code class=&quot;highlighter-rouge&quot;&gt;ratom&lt;/code&gt; o &lt;code class=&quot;highlighter-rouge&quot;&gt;rmate&lt;/code&gt; en el servidor remoto.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ratom archivo.txt
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ratom archivo.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;La conexión SSH debe de permanecer abierta durante la edición del archivo. El editor de texto se utiliza de forma normal, sin importar que el archivo se ubique en un servidor remoto.&lt;/p&gt;
 
-&lt;p&gt;viktorivan@openmailbox.org
-@viktor_ivan&lt;/p&gt;
-</description>
-        <pubDate>Fri, 31 Mar 2017 13:19:01 -0600</pubDate>
-        <link>http://librebit.github.io/atom/editor/texto/ssh/remoto/2017/03/31/editor-de-textos-a-traves-de-ssh-y-atom.html</link>
-        <guid isPermaLink="true">http://librebit.github.io/atom/editor/texto/ssh/remoto/2017/03/31/editor-de-textos-a-traves-de-ssh-y-atom.html</guid>
-        
-        
-        <category>atom</category>
-        
-        <category>editor</category>
-        
-        <category>texto</category>
-        
-        <category>SSH</category>
-        
-        <category>remoto</category>
-        
-      </item>
-    
-      <item>
-        <title>Respaldo Y Actualización De Servidores ESXi De VMWare</title>
-        <description>&lt;p&gt;&lt;em&gt;Introducción.&lt;/em&gt;
-La virtualización es una herramienta que permite que un servidor pueda tener múltiples máquinas virtuales compartiendo el mismo dispositivo físico, esto es, cada máquina virtual es totalmente independiente y tiene sus propios recursos que son gestionados por el servidor físico.&lt;/p&gt;
+&lt;p&gt;viktorivan@openmailbox.org&lt;/p&gt;
+
+&lt;p&gt;@viktor_ivan&lt;/p&gt;</content><author><name>Iván Rodríguez</name></author><summary type="html">Introducción. El uso de editores de texto sencillos es una práctica que no ha disminuido, ya que por medio de esta herramienta es posible editar diversos tipos de archivos ya sea de configuración o de programación a través de una interfaz sencilla y liviana.</summary></entry><entry><title type="html">Respaldo Y Actualización De Servidores ESXi De VMWare</title><link href="http://0.0.0.0:4000/vmware/esxi/respaldo/virtualizacion/2017/03/31/respaldo-y-actualizacin-de-servidores-esxi-de-vmware.html" rel="alternate" type="text/html" title="Respaldo Y Actualización De Servidores ESXi De VMWare" /><published>2017-03-31T17:22:12+00:00</published><updated>2017-03-31T17:22:12+00:00</updated><id>http://0.0.0.0:4000/vmware/esxi/respaldo/virtualizacion/2017/03/31/respaldo-y-actualizacin-de-servidores-esxi-de-vmware</id><content type="html" xml:base="http://0.0.0.0:4000/vmware/esxi/respaldo/virtualizacion/2017/03/31/respaldo-y-actualizacin-de-servidores-esxi-de-vmware.html">&lt;p&gt;&lt;em&gt;Introducción.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;La virtualización es una herramienta que permite que un servidor pueda tener múltiples máquinas virtuales compartiendo el mismo dispositivo físico, esto es, cada máquina virtual es totalmente independiente y tiene sus propios recursos que son gestionados por el servidor físico.&lt;/p&gt;
 
 &lt;!-- more --&gt;
 
@@ -120,9 +195,9 @@ La virtualización es una herramienta que permite que un servidor pueda tener m�
 
 &lt;p&gt;Una vez descargado el archivo iso, se puede crear un CD o DVD, o en su defecto una memoria USB booteable. Para crear una USB booteable se utiliza la herramienta multiplataforma de &lt;a href=&quot;https://unetbootin.github.io/&quot;&gt;UNtebootin&lt;/a&gt;, a la cual solo se le indica la ubicación del USB y el archivo iso a utilizar. En caso de Linux, la instalación de esta herramienta se realiza desde la terminal a través del gestor de paquetes &lt;code class=&quot;highlighter-rouge&quot;&gt;apt&lt;/code&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt install unetbootin
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt install unetbootin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;p&gt;Una vez terminado el proceso, se obtiene una memoria USB booteable con el sistema operativo ESXi.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Instalación de ESXi&lt;/em&gt;&lt;/p&gt;
@@ -131,8 +206,9 @@ La virtualización es una herramienta que permite que un servidor pueda tener m�
 
 &lt;p&gt;Una vez que inicie el instalador desde USB o CD, el procedimiento de instalación es normal.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Respaldo de máquinas virtuales.&lt;/em&gt;
-Como se mencionó anteriormente, las máquinas virtuales son un conjunto de archivos, en donde el archivo de mayor tamaño representa el disco duro, de igual modo, las caracteristísticas de la máquina virtual se representan en otro tipo de archivo. Por lo general, VMware crea una carpeta con el nombre de la máquina virtual y en ella guarda todos los archivos necesarios para el correcto funcionamiento del dispositivo.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Respaldo de máquinas virtuales.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Como se mencionó anteriormente, las máquinas virtuales son un conjunto de archivos, en donde el archivo de mayor tamaño representa el disco duro, de igual modo, las caracteristísticas de la máquina virtual se representan en otro tipo de archivo. Por lo general, VMware crea una carpeta con el nombre de la máquina virtual y en ella guarda todos los archivos necesarios para el correcto funcionamiento del dispositivo.&lt;/p&gt;
 
 &lt;p&gt;El respaldo de las máquinas virtuales se puede realizar con sólo copiar estas carpetas a otra ubicación y regresarlas posteriormente al servidor de máquinas virtuales. Este proceso puede llegar a ser complicado en caso de que las plataformas de virtualización no sean iguales, para ello VMware tiene una herramienta que permite migrar y actualizar las plataformas de hardware de las máquinas virtuales.&lt;/p&gt;
 
@@ -141,10 +217,18 @@ Como se mencionó anteriormente, las máquinas virtuales son un conjunto de arch
 &lt;p&gt;El proceso de migración de máquinas virtuales se puede resumir en los siguientes pasos:&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;Apagar las máquinas virtuales.&lt;/li&gt;
-  &lt;li&gt;Seleccionar el servidor origen.&lt;/li&gt;
-  &lt;li&gt;Seleccionar máquina virtual a migrar.&lt;/li&gt;
-  &lt;li&gt;Seleccionar servidor destino.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Apagar las máquinas virtuales.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Seleccionar el servidor origen.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Seleccionar máquina virtual a migrar.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Seleccionar servidor destino.&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;El proceso de migración puede llevar varias horas dependiendo del tamaño del disco duro de la máquina virtual, se recomienda realizar este proceso por Ethernet y evitar enlaces inalámbricos.&lt;/p&gt;
@@ -197,35 +281,31 @@ Como se mencionó anteriormente, las máquinas virtuales son un conjunto de arch
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# cd /vmfs/volumes/DatastoreName/VMFolderName
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# cd /vmfs/volumes/DatastoreName/VMFolderName
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Realizaer un respaldo del archivo de configuración de la máquina virtual.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cp vmname.vmx vmname.vmx.old
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cp vmname.vmx vmname.vmx.old
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Abrir el archivo de configuración vmx con el editor vi.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vi vmname.vmx
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vi vmname.vmx
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Agregar o cambiar los siguientes parámetros.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ethernetN.checkMACAddress = &quot;false&quot;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ethernetN.checkMACAddress = &quot;false&quot;
 ethernetN.addressType = &quot;static&quot;
 ethernetN.Address = &quot;XX:XX:XX:XX:XX:XX&quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
@@ -245,34 +325,16 @@ ethernetN.Address = &quot;XX:XX:XX:XX:XX:XX&quot;
 
 &lt;p&gt;Para mostrar las diferentes tarjetas instaladas en la máquina virtual, desde una terminal se ejecuta:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ip link
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ip link
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;p&gt;Con este comando se puede observar el nombre de la tarjeta de red, ya sea eth0, ens60 o wlan0.&lt;/p&gt;
 
 &lt;p&gt;Una vez obtenido el nombre del dispositivo de red se modifica el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/network/interfaces&lt;/code&gt; e indica el nuevo nombre de la tarjeta de red.&lt;/p&gt;
 
-&lt;p&gt;viktorivan@openmailbox.org
-@viktor_ivan&lt;/p&gt;
-</description>
-        <pubDate>Fri, 31 Mar 2017 11:22:12 -0600</pubDate>
-        <link>http://librebit.github.io/vmware/esxi/respaldo/virtualizacion/2017/03/31/respaldo-y-actualizacin-de-servidores-esxi-de-vmware.html</link>
-        <guid isPermaLink="true">http://librebit.github.io/vmware/esxi/respaldo/virtualizacion/2017/03/31/respaldo-y-actualizacin-de-servidores-esxi-de-vmware.html</guid>
-        
-        
-        <category>vmware</category>
-        
-        <category>esxi</category>
-        
-        <category>respaldo</category>
-        
-        <category>virtualizacion</category>
-        
-      </item>
-    
-      <item>
-        <title>Habilitar VNC Server en Raspberry Pi</title>
-        <description>&lt;p&gt;&lt;em&gt;Introducción.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;viktorivan@openmailbox.org&lt;/p&gt;
+
+&lt;p&gt;@viktor_ivan&lt;/p&gt;</content><author><name>Iván Rodríguez</name></author><summary type="html">Introducción. La virtualización es una herramienta que permite que un servidor pueda tener múltiples máquinas virtuales compartiendo el mismo dispositivo físico, esto es, cada máquina virtual es totalmente independiente y tiene sus propios recursos que son gestionados por el servidor físico.</summary></entry><entry><title type="html">Habilitar VNC Server en Raspberry Pi</title><link href="http://0.0.0.0:4000/raspberry/raspbian/vnc/server/2016/09/14/habilitar-vnc-server-en-raspberry-pi.html" rel="alternate" type="text/html" title="Habilitar VNC Server en Raspberry Pi" /><published>2016-09-14T17:32:39+00:00</published><updated>2016-09-14T17:32:39+00:00</updated><id>http://0.0.0.0:4000/raspberry/raspbian/vnc/server/2016/09/14/habilitar-vnc-server-en-raspberry-pi</id><content type="html" xml:base="http://0.0.0.0:4000/raspberry/raspbian/vnc/server/2016/09/14/habilitar-vnc-server-en-raspberry-pi.html">&lt;p&gt;&lt;em&gt;Introducción.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;El uso de aplicaciones de acceso a escritorio remoto permiten tener el control total de una computadora remota desde cualquier computadora o dispositivo, sin importar el sistema operativo del dispositivo con el que se quiere acceder.&lt;/p&gt;
 
@@ -284,19 +346,16 @@ ethernetN.Address = &quot;XX:XX:XX:XX:XX:XX&quot;
 
 &lt;p&gt;Para instalar el servidor de &lt;code class=&quot;highlighter-rouge&quot;&gt;VNC&lt;/code&gt; en la Raspbery Pi se utiliza el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;apt&lt;/code&gt; desde una terminal de comandos.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt install tightvncserver
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt install tightvncserver
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Para la configuración inicial, se ejecuta el servico de &lt;code class=&quot;highlighter-rouge&quot;&gt;tightvnc&lt;/code&gt;, en este caso pedirá una contraseña que no pase de 8 caracteres.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ tightvncserver
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ tightvncserver
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;En caso de querer cambiar la contraseña de acceso al servidor remoto, se puede utilizar el siguiente comando.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ vncpasswd
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ vncpasswd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;em&gt;Configuración de VNC server como un servicio de arranque automático.&lt;/em&gt;&lt;/p&gt;
 
@@ -306,12 +365,11 @@ ethernetN.Address = &quot;XX:XX:XX:XX:XX:XX&quot;
 
 &lt;p&gt;Desde una terminal de comandos se crea un archivo con el editor de texto.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo nano /etc/init.d/vncboot
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo nano /etc/init.d/vncboot
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;En el se copia el siguiente código, si se desea cambiar la resolución del monitor o los colores del mismo, se tiene que modificar la línea donde se indica &lt;code class=&quot;highlighter-rouge&quot;&gt;-geometry&lt;/code&gt; y &lt;code class=&quot;highlighter-rouge&quot;&gt;-depth&lt;/code&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#! /bin/sh&lt;/span&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#! /bin/sh&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# /etc/init.d/vncboot&lt;/span&gt;
 
 &lt;span class=&quot;c&quot;&gt;### BEGIN INIT INFO&lt;/span&gt;
@@ -333,12 +391,12 @@ ethernetN.Address = &quot;XX:XX:XX:XX:XX:XX&quot;
  &lt;/span&gt;start&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Starting VNC Server&quot;&lt;/span&gt;
   &lt;span class=&quot;c&quot;&gt;#Insert your favoured settings for a VNC session&lt;/span&gt;
-  su - &lt;span class=&quot;nv&quot;&gt;$USER&lt;/span&gt; -c &lt;span class=&quot;s2&quot;&gt;&quot;/usr/bin/vncserver :1 -geometry 1280x800 -depth 16 -pixelformat rgb565&quot;&lt;/span&gt;
+  su - &lt;span class=&quot;nv&quot;&gt;$USER&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/usr/bin/vncserver :1 -geometry 1280x800 -depth 16 -pixelformat rgb565&quot;&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
 
  stop&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Stopping VNC Server&quot;&lt;/span&gt;
-  /usr/bin/vncserver -kill :1
+  /usr/bin/vncserver &lt;span class=&quot;nt&quot;&gt;-kill&lt;/span&gt; :1
   &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
 
  &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -348,18 +406,15 @@ ethernetN.Address = &quot;XX:XX:XX:XX:XX:XX&quot;
 &lt;span class=&quot;k&quot;&gt;esac&lt;/span&gt;
 
 &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;0
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Finalmente, se tienen que cambiar los permisos de ejecución del archivo, para que de este modo el sistema operativo pueda ejecutarlo.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo chmod 755 /etc/init.d/vncboot
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo chmod 755 /etc/init.d/vncboot
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Para actualizar las reglas, se ejecutan los siguientes comandos y se reinicia la Raspberry.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo update-rc.d -f lightdm remove
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo update-rc.d -f lightdm remove
 $ sudo update-rc.d vncboot defaults
 $ sudo reboot
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;De este modo se tiene activado el servicio de VNC en la Raspberry Pi, y con cualquier cliente de VNC es posible realizar la conexion, solo se tiene que indicar el puerto VNC al final de la dirección &lt;code class=&quot;highlighter-rouge&quot;&gt;IP&lt;/code&gt;, el puerto de conexión VNC es &lt;code class=&quot;highlighter-rouge&quot;&gt;:1&lt;/code&gt;,&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Conclusión.&lt;/em&gt;
@@ -367,26 +422,7 @@ Aunque la Raspberry Pi ya tiene activado por default la conexion &lt;code class=
 
 &lt;p&gt;viktorivan@openmailbox.org&lt;/p&gt;
 
-&lt;p&gt;@viktor_ivan&lt;/p&gt;
-</description>
-        <pubDate>Wed, 14 Sep 2016 12:32:39 -0500</pubDate>
-        <link>http://librebit.github.io/raspberry/raspbian/vnc/server/2016/09/14/habilitar-vnc-server-en-raspberry-pi.html</link>
-        <guid isPermaLink="true">http://librebit.github.io/raspberry/raspbian/vnc/server/2016/09/14/habilitar-vnc-server-en-raspberry-pi.html</guid>
-        
-        
-        <category>raspberry</category>
-        
-        <category>raspbian</category>
-        
-        <category>vnc</category>
-        
-        <category>server</category>
-        
-      </item>
-    
-      <item>
-        <title>Instalación De Octopress 3.0</title>
-        <description>&lt;p&gt;&lt;em&gt;Introducción.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;@viktor_ivan&lt;/p&gt;</content><author><name>Iván Rodríguez</name></author><summary type="html">Introducción. El uso de aplicaciones de acceso a escritorio remoto permiten tener el control total de una computadora remota desde cualquier computadora o dispositivo, sin importar el sistema operativo del dispositivo con el que se quiere acceder. La ventaja de configurar este servicio en la Raspberry es que permite utilizarla sin dispositivos conectadas a ella y tampoco es necesario configurar el firewall ya que no cuenta con uno.</summary></entry><entry><title type="html">Instalación De Octopress 3.0</title><link href="http://0.0.0.0:4000/octopress/jekyll/blog/2016/08/27/instalacin-de-octopress-3-0.html" rel="alternate" type="text/html" title="Instalación De Octopress 3.0" /><published>2016-08-27T08:02:05+00:00</published><updated>2016-08-27T08:02:05+00:00</updated><id>http://0.0.0.0:4000/octopress/jekyll/blog/2016/08/27/instalacin-de-octopress-3-0</id><content type="html" xml:base="http://0.0.0.0:4000/octopress/jekyll/blog/2016/08/27/instalacin-de-octopress-3-0.html">&lt;p&gt;&lt;em&gt;Introducción.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://octopress.org/&quot;&gt;Octopress&lt;/a&gt; ha anunciado en su blog la llegada de &lt;a href=&quot;https://github.com/octopress/octopress&quot;&gt;Octopress 3.0 – Jekyll’s Ferrari&lt;/a&gt;, como se puede interpretar, Octopress en un plugin de &lt;a href=&quot;https://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; y la forma en como se desarrollan los blogs en esta nueva versión ha cambiado de forma sustancial, ya que la integración con Jekyll es mucho mayor.&lt;/p&gt;
 
@@ -396,31 +432,27 @@ Aunque la Raspberry Pi ya tiene activado por default la conexion &lt;code class=
 
 &lt;p&gt;Para instalar Octopress se requieren los siguientes prerequisitos:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt-get install build-essential git rbenv ruby-full nodejs
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt-get install build-essential git rbenv ruby-full nodejs
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;A través de &lt;a href=&quot;https://rubygems.org/&quot;&gt;gem&lt;/a&gt;, que es un instalador de paquetes de &lt;a href=&quot;https://www.ruby-lang.org/es/&quot;&gt;ruby&lt;/a&gt;, se procede a instalar el plugin de Octopress.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo gem install octopress bundler
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo gem install octopress bundler
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Una vez instalado el proyecto, se procede a crear los archivos del sitio para la publicación de blogs, primeramente se crea la carpeta que albergará los archivos del sitio y dentro de ella se indicará a Octopress que será la carpeta raíz del sitio a través del comando &lt;code class=&quot;highlighter-rouge&quot;&gt;octopress new .&lt;/code&gt;, donde el &lt;code class=&quot;highlighter-rouge&quot;&gt;.&lt;/code&gt; indica que ahí es la ubicación de la raíz del sitio.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ mkdir librebit
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ mkdir librebit
 $ cd librebit
 $ octopress new .
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Debido a que Octopress se encuentra en fase beta, hay varios plugins que deben ser instalados adicionalmente al proyecto, estos plugins sólo tendrán efecto en el sitio que se desarrolle bajo esta carpeta. Para indicar los plugins se modifica el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt;, y se descomenta la sección de &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll_plugins&lt;/code&gt;, tal como se muestra a continuación.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ nano Gemfile
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ nano Gemfile
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; group :jekyll_plugins do
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; group :jekyll_plugins do
    gem &quot;octopress-image-tag&quot;
    gem &quot;octopress-quote-tag&quot;
    gem &quot;octopress-codeblock&quot;
@@ -432,48 +464,41 @@ $ octopress new .
    gem &quot;jekyll-sitemap&quot;
    gem &quot;jekyll-paginate&quot;
  end
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Adicionalmente hay que indicar la version de &lt;code class=&quot;highlighter-rouge&quot;&gt;minima&lt;/code&gt; que se va a utilizar para el blog.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem &quot;minima&quot;, &quot;1.0.1&quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem &quot;minima&quot;, &quot;1.0.1&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Una vez modificado el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; se procede a la instalación de los plugins para el sitio, para ello se utiliza el comando &lt;a href=&quot;http://bundler.io/&quot;&gt;bundler&lt;/a&gt;, que es un instalador de paquetes.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ bundle install
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ bundle install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;En caso de que no se instale algun gem por medio de bundler, se puede utilizar el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;gem&lt;/code&gt; para su instalación.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo gem install octopress-image-tag
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo gem install octopress-image-tag
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Si se requiere agregar o eliminar algunos plugins para el sitio, se debe modificar nuevamente el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt;, eliminar el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile.lock&lt;/code&gt; y ejecutar nuevamente &lt;code class=&quot;highlighter-rouge&quot;&gt;bundler&lt;/code&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ nano Gemfile
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ nano Gemfile
 $ rm Gemfile.lock 
 $ bundle install
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Una vez instalado todos los plugins para el sitio, se procede a generar los archivos que conformarán el sitio, esto se hace utilizando el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll&lt;/code&gt;, con la opción &lt;code class=&quot;highlighter-rouge&quot;&gt;build&lt;/code&gt; genera los archivos del sitio, la opción &lt;code class=&quot;highlighter-rouge&quot;&gt;serve&lt;/code&gt; habilita un servidor web en el puerto 4000 para obtener una vista previa el sitio, la opción &lt;code class=&quot;highlighter-rouge&quot;&gt;--h 0.0.0.0&lt;/code&gt; permite que el servidor web pueda ser observado desde computadoras remotas y finalmente &lt;code class=&quot;highlighter-rouge&quot;&gt;--watch&lt;/code&gt; es para que el sitio se actualice en tiempo real ante las modificaciones que se hagan a los archivos del sitio.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ jekyll build
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ jekyll build
 $ jekyll serve --h 0.0.0.0 --watch
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Para modificar el título del blog y otros parámetros, el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; contiene varios datos de configuración para la generación del sitio.&lt;/p&gt;
 
 &lt;p&gt;Para agregar un post al sitio, se utiliza el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;octopress new post&lt;/code&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ octopress new post &quot;Mi título&quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ octopress new post &quot;Mi título&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Este comando creará un archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;.markdown&lt;/code&gt; en la carpeta de &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts/&lt;/code&gt; en donde se guardarán los posts que conforman el sitio.&lt;/p&gt;
 
@@ -491,45 +516,40 @@ $ jekyll serve --h 0.0.0.0 --watch
 
 &lt;p&gt;Para agregar los sitios de Facebook, Twitter y Google Plus, se tiene que modificar el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;default.html&lt;/code&gt; del proyecto &lt;code class=&quot;highlighter-rouge&quot;&gt;Minima&lt;/code&gt;, los archivos del proyecto se ubican en &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/lib/gems/2.1.0/gems/minima-1.0.1/_layouts&lt;/code&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo nano /var/lib/gems/2.1.0/gems/minima-1.0.1/_layouts/default.html
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo nano /var/lib/gems/2.1.0/gems/minima-1.0.1/_layouts/default.html
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Dentro de &lt;code class=&quot;highlighter-rouge&quot;&gt;body&lt;/code&gt; se agregan las siguientes líneas.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;twitter_script_tag&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;facebook_script_tag&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;gplus_script_tag&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% twitter_script_tag %}
+{% facebook_script_tag %}
+{% gplus_script_tag %}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Si se ejecuta el comando de &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt; se observará que no hay ningún cambio en la página, ya que estos comandos solo habilitan el servicio de las redes sociales dentro del sitio.&lt;/p&gt;
 
 &lt;p&gt;Para agregar los botones de like y compartir se debe de modificar el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;post.html&lt;/code&gt; de &lt;code class=&quot;highlighter-rouge&quot;&gt;Minima&lt;/code&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo nano /var/lib/gems/2.1.0/gems/minima-1.0.1/_layouts/post.html
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo nano /var/lib/gems/2.1.0/gems/minima-1.0.1/_layouts/post.html
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Y agregar los botones después de &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Y agregar los botones después de &lt;code class=&quot;highlighter-rouge&quot;&gt;{{ content }}&lt;/code&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;tweet_button&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;gplus_one_button&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;gplus_share_button&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;facebook_like_button&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;facebook_send_button&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% tweet_button %}
+{% gplus_one_button %}
+{% gplus_share_button %}
+{% facebook_like_button %}
+{% facebook_send_button %}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Si se desea integrar la herramienta de &lt;a href=&quot;https://disqus.com/&quot;&gt;Disqus&lt;/a&gt; para agregar comentarios a los posts, primero se tiene que configurar los parámetros de conexión en el archivo de &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;disqus:
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;disqus:
   shortname: librebitblog                          # Your site's disqus identifier
   comments_link_text: Comments                     # Text label for comments link
   comments_disabled_link_text: Comments disabled   # Set to '' to not output a comments link when disabled
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;y agregar el comando  &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;disqus_comments&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;  en el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/lib/gems/2.1.0/gems/minima-1.0.1/_layouts/post.html&lt;/code&gt; después de los botones de las redes sociales.&lt;/p&gt;
+&lt;p&gt;y agregar el comando  &lt;code class=&quot;highlighter-rouge&quot;&gt;{% disqus_comments %}&lt;/code&gt;  en el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/lib/gems/2.1.0/gems/minima-1.0.1/_layouts/post.html&lt;/code&gt; después de los botones de las redes sociales.&lt;/p&gt;
 
 &lt;p&gt;Existen más parámetros de configuración para las redes sociales en Octopress, estos se agregan al archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;. Para conocerlos, se puede consultar la página de &lt;a href=&quot;https://github.com/octopress/social&quot;&gt;Octopress-social&lt;/a&gt;.&lt;/p&gt;
 
@@ -537,15 +557,13 @@ $ jekyll serve --h 0.0.0.0 --watch
 
 &lt;p&gt;&lt;a href=&quot;https://www.mathjax.org/&quot;&gt;Mathjax&lt;/a&gt; es una herramienta que permite desplegar ecuaciones matemáticas en las páginas de jekyll, para agregar esta función solo se copia el siguiente script en el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;head.html&lt;/code&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo nano /var/lib/gems/2.1.0/gems/minima-1.0.1/_includes/head.html
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo nano /var/lib/gems/2.1.0/gems/minima-1.0.1/_includes/head.html
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;script type=&quot;text/javascript&quot; async
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;script type=&quot;text/javascript&quot; async
   src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML&quot;&amp;gt;
 &amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;em&gt;Visualización del blog.&lt;/em&gt;&lt;/p&gt;
 
@@ -555,32 +573,28 @@ $ jekyll serve --h 0.0.0.0 --watch
 
 &lt;p&gt;Para indicar la palabra que limitará el tamaño del extracto del post, se debe agregar la variable &lt;code class=&quot;highlighter-rouge&quot;&gt;excerpt_separator&lt;/code&gt; en el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ nano _config.yml
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ nano _config.yml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;excerpt_separator: &amp;lt;!-- more --&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;excerpt_separator: &amp;lt;!-- more --&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Para que el sitio reconozca el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;!-- more --&amp;gt;&lt;/code&gt; como indicador del extracto del post, es necesario agregar el comando `` después del título del post dentro del archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ nano index.html
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ nano index.html
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;site.posts&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;lt;span&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;post-meta&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;post.date&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;date:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;%b %-d, %Y&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}}&amp;lt;/span&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    {% for post in site.posts %}
+      &amp;lt;li&amp;gt;
+        &amp;lt;span class=&quot;post-meta&quot;&amp;gt;{{ post.date | date: &quot;%b %-d, %Y&quot; }}&amp;lt;/span&amp;gt;
 
-        &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;lt;h&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-          &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;lt;a&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;post-link&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{{ post.url | prepend: site.baseurl }}&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;post.excerpt&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+        &amp;lt;h2&amp;gt;
+          &amp;lt;a class=&quot;post-link&quot; href=&quot;{{ post.url | prepend: site.baseurl }}&quot;&amp;gt;{{$
+        &amp;lt;/h2&amp;gt;
+        {{ post.excerpt }}
+      &amp;lt;/li&amp;gt;
+    {% endfor %}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;De este modo se mostrará un extracto del post en la página principal del blog.&lt;/p&gt;
 
@@ -588,14 +602,13 @@ $ jekyll serve --h 0.0.0.0 --watch
 
 &lt;p&gt;La paginación puede ser útil para no saturar la página principal del blog, para ello se utiliza el plugin &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll-paginate&lt;/code&gt;. Los parámetros de la paginación se indican en el archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;paginate: 5
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;paginate: 5
 paginate_path: &quot;/blog/page:num/&quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Para que el sitio reconozca la paginación, es necesario agregar el siguiente código al archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt; del sitio.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;!-- Pagination links --&amp;gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;!-- Pagination links --&amp;gt;
 &amp;lt;div class=&quot;pagination&quot;&amp;gt;
   {% if paginator.previous_page %}
     &amp;lt;a href=&quot;{{ paginator.previous_page_path }}&quot; class=&quot;previous&quot;&amp;gt;Previous&amp;lt;/a&amp;gt;
@@ -609,12 +622,11 @@ paginate_path: &quot;/blog/page:num/&quot;
     &amp;lt;span class=&quot;next &quot;&amp;gt;Next&amp;lt;/span&amp;gt;
   {% endif %}
 &amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;La versión final de la página principal donde se incluye el extracto del post y la paginación es la siguiente:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
 layout: default
 ---
 
@@ -650,8 +662,7 @@ layout: default
 &amp;lt;/div&amp;gt;
 &amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;
 &amp;lt;p class=&quot;rss-subscribe&quot;&amp;gt;suscribirse &amp;lt;a href=&quot;{{ &quot;/feed.xml&quot; | prepend: site.baseurl }}&quot;&amp;gt;via RSS&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Se puede observar que se modificaron varios parámetros para que la página principal muestre los enlaces en español, así como una etiqueta de &lt;code class=&quot;highlighter-rouge&quot;&gt;Leer más&lt;/code&gt; al final de los extractos.&lt;/p&gt;
 
@@ -659,35 +670,29 @@ layout: default
 
 &lt;p&gt;Para configurar el servidor de Github para hospedaje de la página, se ejecuta el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;octopress deploy init git&lt;/code&gt;, el cuál generará un archivo de configuración &lt;code class=&quot;highlighter-rouge&quot;&gt;_deploy.yml&lt;/code&gt; con los parámetros de configuración de la conexión con los servidores de Github.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ octopress deploy init git https://github.com/librebit/librebit.github.io.git
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ octopress deploy init git https://github.com/librebit/librebit.github.io.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;En caso de que indique que no hay archivos de git, estos se pueden generar con:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git init
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git init
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Además se tienen que configurar los parámetros globales de la conexión git para indentificarse con los servidores&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git config --global user.email &quot;micorreo&quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git config --global user.name &quot;minombre&quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git config --global user.email &quot;micorreo&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git config --global user.name &quot;minombre&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;La conexión se realiza mediante &lt;code class=&quot;highlighter-rouge&quot;&gt;ssh&lt;/code&gt;, por lo que es necesario indicar que el sitio de github es un sitio de confianza.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ssh-keyscan github.com &amp;gt;&amp;gt; ~/.ssh/known_hosts
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ssh-keyscan github.com &amp;gt;&amp;gt; ~/.ssh/known_hosts
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Ya configurado los parámetros de conexión, se procede a realizar la sincronización de los archivos del sitio con el servidor de Github, para ello se utiliza el comando:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ octopress deploy
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ octopress deploy
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;En caso de que indique que la conexión requiere guardar una llave de ssh, se le indica que si.&lt;/p&gt;
 
@@ -705,24 +710,7 @@ layout: default
 
 &lt;p&gt;viktorivan@openmailbox.org&lt;/p&gt;
 
-&lt;p&gt;@viktor_ivan&lt;/p&gt;
-</description>
-        <pubDate>Sat, 27 Aug 2016 03:02:05 -0500</pubDate>
-        <link>http://librebit.github.io/octopress/jekyll/blog/2016/08/27/instalacin-de-octopress-3-0.html</link>
-        <guid isPermaLink="true">http://librebit.github.io/octopress/jekyll/blog/2016/08/27/instalacin-de-octopress-3-0.html</guid>
-        
-        
-        <category>octopress</category>
-        
-        <category>jekyll</category>
-        
-        <category>blog</category>
-        
-      </item>
-    
-      <item>
-        <title>Instalación de Matlab en Ubuntu</title>
-        <description>&lt;p&gt;&lt;em&gt;Introducción.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;@viktor_ivan&lt;/p&gt;</content><author><name>Iván Rodríguez</name></author><summary type="html">Introducción. Octopress ha anunciado en su blog la llegada de Octopress 3.0 – Jekyll’s Ferrari, como se puede interpretar, Octopress en un plugin de Jekyll y la forma en como se desarrollan los blogs en esta nueva versión ha cambiado de forma sustancial, ya que la integración con Jekyll es mucho mayor.</summary></entry><entry><title type="html">Instalación de Matlab en Ubuntu</title><link href="http://0.0.0.0:4000/matlab/linux/instalacion/2016/07/12/instalacion-de-matlab-en-ubuntu.html" rel="alternate" type="text/html" title="Instalación de Matlab en Ubuntu" /><published>2016-07-12T18:35:39+00:00</published><updated>2016-07-12T18:35:39+00:00</updated><id>http://0.0.0.0:4000/matlab/linux/instalacion/2016/07/12/instalacion-de-matlab-en-ubuntu</id><content type="html" xml:base="http://0.0.0.0:4000/matlab/linux/instalacion/2016/07/12/instalacion-de-matlab-en-ubuntu.html">&lt;p&gt;&lt;em&gt;Introducción.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;Aunque en el entorno de software libre existen varias alternativas a los diversos programas de uso común, un ejemplo de ello es &lt;a href=&quot;https://es.libreoffice.org/&quot;&gt;LibreOffice&lt;/a&gt;, no es extraño ver el uso de programas reconocidos como &lt;a href=&quot;https://mathworks.com&quot;&gt;Matlab&lt;/a&gt; en este ambiente, esto se debe a que estas empresas han liberado versiones compatibles con diferentes sistemas operativos.&lt;/p&gt;
 
@@ -736,34 +724,29 @@ layout: default
 
 &lt;p&gt;Con el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;ln&lt;/code&gt; para crear enlaces simbólicos y con permisos de super usuario, se teclea en una terminal la ubicación del archivo ejecutable que fue instalado de Matlab y la ubicación destino del archivo simbólico.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo ln -s /usr/local/MATLAB/R2016a/bin/matlab /usr/local/bin/matlab
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo ln -s /usr/local/MATLAB/R2016a/bin/matlab /usr/local/bin/matlab
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Esto creará un archivo llamado matlab en &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/bin&lt;/code&gt; el cual permitirá invocar el programa de Matlab desde la ventana de comando o en su defecto crear un acceso directo para el escritorio.&lt;/p&gt;
 
 &lt;p&gt;Para corroborar el correcto funcionamiento del enlace simbólico, desde una terminal invoque el programa.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ matlab
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ matlab
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;em&gt;Acceso directo del menú.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;Para descargar el archivo del acceso directo para el menú&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo wget 'https://help.ubuntu.com/community/MATLAB?action=AttachFile&amp;amp;do=get&amp;amp;target=matlab-r2012a.desktop' -O /usr/share/applications/matlab.desktop
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo wget 'https://help.ubuntu.com/community/MATLAB?action=AttachFile&amp;amp;do=get&amp;amp;target=matlab-r2012a.desktop' -O /usr/share/applications/matlab.desktop
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;El archivo .desktop que se descargó es para la versión R2012a, para cambiarlo solo se requiere editar el archivo con un editor de textos con permisos de super usuario, en este caso se modifica utilizando el editor xed.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo xed /usr/share/applications/matlab.desktop
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo xed /usr/share/applications/matlab.desktop
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;El archivo .desktop solo contiene la información para llamar el programa de Matlab, para el ícono es necesario descargar el archivo y guardarlo en la carpetas de los íconos del sistema operativo.&lt;/p&gt;
 
 &lt;p&gt;Para descargar el icono&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo wget http://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png -O /usr/share/icons/matlab.png
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo wget http://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png -O /usr/share/icons/matlab.png
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;em&gt;Formas de ejecutar Matlab.&lt;/em&gt;&lt;/p&gt;
 
@@ -771,18 +754,16 @@ layout: default
 
 &lt;p&gt;En el caso de la terminal de comandos se puede llamar sin splash o sin el entorno gráfico, entre los comandos reconocidos por Matlab son:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ matlab -nosplash -nodesktop -minimize -r test
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ matlab -nosplash -nodesktop -minimize -r test
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;em&gt;Errores al ejecutar Matlab.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;Muchas veces el entorno gráfico de Matlab puede presentar errores al ejecutarse por incompatibilidad con la maquina virtual de Java, por lo que es necesario indicar la ubicación de las librerías para el correcto funcionamiento del la interfaz gráfica.&lt;/p&gt;
 
 &lt;p&gt;Para instalar los archivos necesarios para ejecutar Matlab en caso de que exista un error al ejecutar matlab -desktop&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt-get install matlab-support
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt-get install matlab-support
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Se ejecutará un script que localizará el directorio de instalación de Matlab, en caso de no encontrarlo será necesario indicarlo, por lo general es &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/MATLAB/R201xx/&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;Una vez realizado esto empezará a redireccionar los archivos de las librerías que requiere para su funcionamiento.&lt;/p&gt;
@@ -793,25 +774,7 @@ layout: default
 
 &lt;p&gt;@viktor_ivan&lt;/p&gt;
 
-&lt;p&gt;viktorivan@openmailbox.org&lt;/p&gt;
-
-</description>
-        <pubDate>Tue, 12 Jul 2016 13:35:39 -0500</pubDate>
-        <link>http://librebit.github.io/matlab/linux/instalacion/2016/07/12/instalacion-de-matlab-en-ubuntu.html</link>
-        <guid isPermaLink="true">http://librebit.github.io/matlab/linux/instalacion/2016/07/12/instalacion-de-matlab-en-ubuntu.html</guid>
-        
-        
-        <category>matlab</category>
-        
-        <category>linux</category>
-        
-        <category>instalacion</category>
-        
-      </item>
-    
-      <item>
-        <title>Instalación de touchscreen Tontec en Raspberry Pi</title>
-        <description>&lt;p&gt;&lt;em&gt;Introducción.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;viktorivan@openmailbox.org&lt;/p&gt;</content><author><name>Iván Rodríguez</name></author><summary type="html">Introducción. Aunque en el entorno de software libre existen varias alternativas a los diversos programas de uso común, un ejemplo de ello es LibreOffice, no es extraño ver el uso de programas reconocidos como Matlab en este ambiente, esto se debe a que estas empresas han liberado versiones compatibles con diferentes sistemas operativos. Un detalle que suele a relucir en Linux es, aunque la instalación de estos programas suele ser sencilla, la existencia de diversos aspectos que no hacen que la instalación del programa sea tan transparente, como es el caso de Matlab para Linux, donde pequeños detalles como la disponibilidad de un acceso directo no se instala por default poniendo en duda al usuario si en realidad se instaló el programa. A continuación se mostrarán los pasos de como agregar o solucionar errores a la hora de instalar Matlab para Linux.</summary></entry><entry><title type="html">Instalación de touchscreen Tontec en Raspberry Pi</title><link href="http://0.0.0.0:4000/tontec/touchscreen/raspberry/raspbian/2016/03/18/instalacion-de-touchscreen-tontec-en-raspberry-pi.html" rel="alternate" type="text/html" title="Instalación de touchscreen Tontec en Raspberry Pi" /><published>2016-03-18T16:15:51+00:00</published><updated>2016-03-18T16:15:51+00:00</updated><id>http://0.0.0.0:4000/tontec/touchscreen/raspberry/raspbian/2016/03/18/instalacion-de-touchscreen-tontec-en-raspberry-pi</id><content type="html" xml:base="http://0.0.0.0:4000/tontec/touchscreen/raspberry/raspbian/2016/03/18/instalacion-de-touchscreen-tontec-en-raspberry-pi.html">&lt;p&gt;&lt;em&gt;Introducción.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;El uso de sistemas mínimos o embedidos implica por lo general algún método para su monitoreo o control, que puede ser desde el puerto serial o UART, un enlace SSH o alguna interfaz gráfica. El uso de monitores en dispositivos tan pequeños como los embebidos se ha popularizado, de tal modo que estan pantallas incluyen funciones touch en tan sólo 3.5 pulgadas.&lt;/p&gt;
 
@@ -841,11 +804,10 @@ layout: default
 
 &lt;p&gt;Antes de cualquier instalación, se recomienda la actualización del sistema operativo de la Raspberry, en este caso es &lt;a href=&quot;https://www.raspbian.org/&quot;&gt;Raspbian&lt;/a&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt-get update
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt-get update
 $ sudo apt-get upgrade
 $ sudo reboot
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;El proceso de actualización es similar a los sistemas operativos de escritorio de Linux.&lt;/p&gt;
 
@@ -853,52 +815,44 @@ $ sudo reboot
 
 &lt;p&gt;La pantalla Tontec utiliza el puerto SPI del conector GPIO de la tarjeta Raspberry, por lo que es necesario habilitar el puerto SPI e indicar el dispositivo que se va a conectar en el. Para ello hay que modificar el archivo de configuración.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo nano /boot/config.txt
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo nano /boot/config.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Se busca los parámetros de configuración en el archivo y se habilitan, en caso de no existir, se agregan en el archivo.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dtparam=spi=on
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dtparam=spi=on
 dtoverlay=mz61581
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Para habilitar el inicio del sistema operativo en la pantalla touch se tiene que modificar el archivo de configuración de X11, que es el relacionado con el video del sistema operativo.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo nano /usr/share/X11/xorg.conf.d/99-fbturbo.conf
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo nano /usr/share/X11/xorg.conf.d/99-fbturbo.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Por default la salida de video es el HDMI&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Option &quot;fbdev&quot; &quot;/dev/fb0&quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Option &quot;fbdev&quot; &quot;/dev/fb0&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Para habilitar la pantalla touch se indica que la salida de video es overlay.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Option &quot;fbdev&quot; &quot;/dev/fb1&quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Option &quot;fbdev&quot; &quot;/dev/fb1&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;En caso de que se desee regresar a la salida de HDMI, solo se cambia &lt;code class=&quot;highlighter-rouge&quot;&gt;fb1&lt;/code&gt; a &lt;code class=&quot;highlighter-rouge&quot;&gt;fb0&lt;/code&gt;. Finalmente, se indica al arranque en que momento se manda la señal de video a la pantalla touch, para ello se modifica el archivo de arranque del sistema operativo.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo nano /boot/cmdline.txt
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo nano /boot/cmdline.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Se agrega el siguiente comando al final de la línea, no es necesario agregar una línea adicional.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;fbcon=map:10 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;fbcon=map:10 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Si todos los cambios se hicieron de manera correcta, se manda reiniciar al sistema operativo, desde la línea de comando se puede invocar a la función de reinicio.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo reboot
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo reboot
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/pantalla_on.jpg&quot; /&gt;&lt;/p&gt;
 
@@ -912,78 +866,38 @@ dtoverlay=mz61581
 
 &lt;p&gt;viktorivan@openmailbox.org&lt;/p&gt;
 
-&lt;p&gt;@viktor_ivan&lt;/p&gt;
-</description>
-        <pubDate>Fri, 18 Mar 2016 10:15:51 -0600</pubDate>
-        <link>http://librebit.github.io/tontec/touchscreen/raspberry/raspbian/2016/03/18/instalacion-de-touchscreen-tontec-en-raspberry-pi.html</link>
-        <guid isPermaLink="true">http://librebit.github.io/tontec/touchscreen/raspberry/raspbian/2016/03/18/instalacion-de-touchscreen-tontec-en-raspberry-pi.html</guid>
-        
-        
-        <category>tontec</category>
-        
-        <category>touchscreen</category>
-        
-        <category>raspberry</category>
-        
-        <category>raspbian</category>
-        
-      </item>
-    
-      <item>
-        <title>Spotify en Linux</title>
-        <description>&lt;p&gt;Recientemente instale Ubuntu Gnome para trabajar (me dedico a desarrollar para web), y me hacía falta tener spotify para oir musica para programar ;)&lt;/p&gt;
+&lt;p&gt;@viktor_ivan&lt;/p&gt;</content><author><name>Iván Rodríguez</name></author><summary type="html">Introducción. El uso de sistemas mínimos o embedidos implica por lo general algún método para su monitoreo o control, que puede ser desde el puerto serial o UART, un enlace SSH o alguna interfaz gráfica. El uso de monitores en dispositivos tan pequeños como los embebidos se ha popularizado, de tal modo que estan pantallas incluyen funciones touch en tan sólo 3.5 pulgadas.</summary></entry><entry><title type="html">Spotify en Linux</title><link href="http://0.0.0.0:4000/spotify/linux/applications/2016/03/11/spotify-linux.html" rel="alternate" type="text/html" title="Spotify en Linux" /><published>2016-03-11T18:29:00+00:00</published><updated>2016-03-11T18:29:00+00:00</updated><id>http://0.0.0.0:4000/spotify/linux/applications/2016/03/11/spotify-linux</id><content type="html" xml:base="http://0.0.0.0:4000/spotify/linux/applications/2016/03/11/spotify-linux.html">&lt;p&gt;Recientemente instale Ubuntu Gnome para trabajar (me dedico a desarrollar para web), y me hacía falta tener spotify para oir musica para programar ;)&lt;/p&gt;
 
 &lt;p&gt;Aunque Spotify había dicho que no iban a dar soporte para linux, la verdad es que desde su sitio web se puede descargar, visitando esta url&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://www.spotify.com/mx/download/linux/
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://www.spotify.com/mx/download/linux/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;!-- more --&gt;
 
 &lt;p&gt;&lt;em&gt;Instalación.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/spotify-receta-original.png&quot; /&gt;
 Tras seguir los pasos ahi indicados me encuentro que al ejecutar la aplicación no se abre, entonces voy a una terminal y lo ejecuto&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ spotify
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ spotify
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;y obtengo la siguiente respuesta:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;libgcrypt.so.11: cannot open shared object file: No such file or directory
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;libgcrypt.so.11: cannot open shared object file: No such file or directory
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;em&gt;Solución.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;Por lo que después de leer un rato, resulta que hay que activar el repositorio de ‘testing’, así que procedemos a eliminar el paquete, quitar el repositorio de spotify, poner el repositorio testing de spotify y reinstalar la aplicación:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt-get purge spotify-client
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt-get purge spotify-client
 $ sudo apt-get autoremove
 $ sudo add-apt-repository --remove 'deb http://repository.spotify.com stable non-free'
 $ sudo echo deb http://repository.spotify.com testing non-free | sudo tee /etc/apt/sources.list.d/spotify.list
 $ sudo apt-get update
 $ sudo apt-get install spotify-client
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;&lt;img src=&quot;/images/spotify-linux.png&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Éxito :)&lt;/p&gt;
 
-&lt;p&gt;@Y0_Soy&lt;/p&gt;
-</description>
-        <pubDate>Fri, 11 Mar 2016 12:29:00 -0600</pubDate>
-        <link>http://librebit.github.io/spotify/linux/applications/2016/03/11/spotify-linux.html</link>
-        <guid isPermaLink="true">http://librebit.github.io/spotify/linux/applications/2016/03/11/spotify-linux.html</guid>
-        
-        
-        <category>spotify</category>
-        
-        <category>linux</category>
-        
-        <category>applications</category>
-        
-      </item>
-    
-      <item>
-        <title>Alojamiento de proyectos en GitHub desde Linux</title>
-        <description>&lt;p&gt;&lt;em&gt;Introducción.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;@Y0_Soy&lt;/p&gt;</content><author><name>Fernando Valderrábano</name></author><summary type="html">Recientemente instale Ubuntu Gnome para trabajar (me dedico a desarrollar para web), y me hacía falta tener spotify para oir musica para programar ;) Aunque Spotify había dicho que no iban a dar soporte para linux, la verdad es que desde su sitio web se puede descargar, visitando esta url https://www.spotify.com/mx/download/linux/</summary></entry><entry><title type="html">Alojamiento de proyectos en GitHub desde Linux</title><link href="http://0.0.0.0:4000/github/repositorios/alojamiento/linux/2015/11/04/alojamiento-de-proyectos-en-github-desde-linux.html" rel="alternate" type="text/html" title="Alojamiento de proyectos en GitHub desde Linux" /><published>2015-11-04T01:17:11+00:00</published><updated>2015-11-04T01:17:11+00:00</updated><id>http://0.0.0.0:4000/github/repositorios/alojamiento/linux/2015/11/04/alojamiento-de-proyectos-en-github-desde-linux</id><content type="html" xml:base="http://0.0.0.0:4000/github/repositorios/alojamiento/linux/2015/11/04/alojamiento-de-proyectos-en-github-desde-linux.html">&lt;p&gt;&lt;em&gt;Introducción.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;El desarrollo de software involucra el uso de herramientas que permitan su fácil distribución o acceso, ya sea por sitios web especializados o dispositivos de almacenamiento. Sitios como &lt;a href=&quot;http://www.github.com&quot;&gt;GitHub&lt;/a&gt; permiten además un control de versiones del proyecto, de tal modo que pueden verse las diferentes modificaciones realizadas a los archivos asi como quien las realizó en caso de ser un proyecto en modo colaborativo. De igual modo esta herramienta es multiplataforma, lo que permite que usuarios de diferentes sistemas operativos puedan descargar o colaborar en el proyecto.&lt;/p&gt;
 
@@ -993,15 +907,13 @@ $ sudo apt-get install spotify-client
 
 &lt;p&gt;El uso de &lt;a href=&quot;https://git-scm.com&quot;&gt;Git&lt;/a&gt; en Linux es muy popular ya que muchos desarrolladores de software open-source lo usan para distribuir sus proyectos, además de que es una herramienta muy ligera que se usa desde la terminal de comandos. Su instalación en una distribución de Linux basada en Ubuntu se puede realizar con la herramienta &lt;code class=&quot;highlighter-rouge&quot;&gt;apt-get&lt;/code&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt-get install git
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt-get install git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Aunque carece de un GUI oficial, su uso es sencillo desde una terminal. Para clonar un proyecto se realiza de la siguiente manera:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git clone (carpeta destino) (url fuente)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git clone (carpeta destino) (url fuente)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;La mayoría de las veces se puede omitir la carpeta destino y sólo clonar el url fuente.&lt;/p&gt;
 
@@ -1011,338 +923,31 @@ $ sudo apt-get install spotify-client
 
 &lt;p&gt;Para subir el proyecto a los servidores de GitHub hay que crear el repositorio a través de la página de GitHub. Una vez hecho esto, en la carpeta raíz del proyecto, desde una terminal de Linux se inicializa el git.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git init
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git init
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Este comando creará los archivos necesarios para subir el proyecto al repositorio del servidor de GitHub. Para indicar la ubicación del repositorio se ejecuta el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;add&lt;/code&gt; de &lt;code class=&quot;highlighter-rouge&quot;&gt;git&lt;/code&gt;,de este modo cada vez que se quiera actualizar el repositorio solo se invocará el nombre del acceso remoto, en este caso se llamará &lt;code class=&quot;highlighter-rouge&quot;&gt;origin&lt;/code&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git remote add origin https://github.com/viktorivan/gr-Umbrella.git
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git remote add origin https://github.com/viktorivan/gr-Umbrella.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Con estos comandos, se tiene configurado los datos de los servidores remotos donde se alojará el repositorio. Para empezar a subir el proyecto al repositorio se tienen que ejecutar los siguientes tres comandos. El primero hará un inventario de los archivos presentes en la carpeta raíz, en caso de que ya se hayan subido previamente archivos al repositorio revisará cuales de ellos fueron modificados con respecto a la última versión y los prepará para su actualización en el servidor.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git add .
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git add .
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Una vez realizado el inventario se procede a indentificar la versión del repositorio con el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;, en este caso se indica que es el primero con la palabra &lt;code class=&quot;highlighter-rouge&quot;&gt;initial commit&lt;/code&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git commit -m 'initial commit'
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git commit -m 'initial commit'
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Por último se procede a subir los archivos al repositorio, esto se realiza con el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;push&lt;/code&gt;, de esta manera se indicará que los archivos se pondran en el repositorio previamente configurado en &lt;code class=&quot;highlighter-rouge&quot;&gt;origin&lt;/code&gt; y lo realizará el usuario &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt; del repositorio.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git push origin master
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git push origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;De este modo se puede tener un proyecto de software en un repositorio de GitHub a través de git en Linux.&lt;/p&gt;
 
 &lt;p&gt;viktorivan@openmailbox.org&lt;/p&gt;
 
-&lt;p&gt;@viktor_ivan&lt;/p&gt;
-</description>
-        <pubDate>Tue, 03 Nov 2015 19:17:11 -0600</pubDate>
-        <link>http://librebit.github.io/github/repositorios/alojamiento/linux/2015/11/03/alojamiento-de-proyectos-en-github-desde-linux.html</link>
-        <guid isPermaLink="true">http://librebit.github.io/github/repositorios/alojamiento/linux/2015/11/03/alojamiento-de-proyectos-en-github-desde-linux.html</guid>
-        
-        
-        <category>github</category>
-        
-        <category>repositorios</category>
-        
-        <category>alojamiento</category>
-        
-        <category>linux</category>
-        
-      </item>
-    
-      <item>
-        <title>Servidor VNC en Fedora 22</title>
-        <description>&lt;p&gt;&lt;em&gt;Resumen&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Hoy en día, el acceso remoto a lugares de trabajo a través de enlaces seguros nos permiten entrar a plataformas y redes de una manera sencilla y transparente para el usuario. Entre las diferentes tecnologías empleadas para los accesos remotos están las conexiones de computación virtual en red (VNC) que es un tipo de escritorio remoto compartido, el cuál permite a los dispositivos remotos tener una acceso virtual a la computadora de trabajo, de tal modo que parezca que está frente a la equipo físicamente. En cierto modo, existe una desconfianza a este tipo de tecnologías por las noticias relacionadas a ciberataques y hackeos dejando en entre dicho la efectividad de los mismos. Ante estas vulnerabilidades se han desarrollado nuevos esquemas de seguridad que evitan que usuarios no autorizados tengan control sobre los equipos con escritorios remotos compartidos.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;&lt;em&gt;Instalando servidor de VNC en Linux&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Los escritorios remotos son servicios que se pueden activar facilmente en sistemas operativos como Windows, pero la cantidad de conexiones activas en la computadora está limitada por la licencia, por lo general solo permiten un usuario a la vez. En los sistemas operativos Linux no existe la restricción por licencia de las conexiones activas de VNC debido a la licencia de software libre.&lt;/p&gt;
-
-&lt;p&gt;A continuación se muestra la instalación de un servidor VNC en la distribución de &lt;a href=&quot;https://getfedora.org/&quot;&gt;Fedora&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Desde una terminal, se ejecuta el comando para instalar tiger vnc desde los repositorios:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo dnf install tigervnc-server
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Con este comando se define la contraseña del servicio de VNC, se debe ejecutar en la terminal del usuario que se desea que ingrese por VNC.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ vncpasswd
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Para iniciar y verificar el estado del servicio de VNC, se ejecuta los siguientes comandos, la parte de :1 indica que el puerto de VNC es 5901.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo systemctl start vncserver@:1.service
-$ sudo systemctl status vncserver@:1.service
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Para cargar de nuevo el servicio&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo systemctl daemon-reload
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Para habilitar el servicio de VNC para conexiones externas, hay que revisar los permisos en el firewall de Fedora, el firewall es gestionado por SElinux&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sestatus
-$ sudo grep bash /var/log/audit/audit.log | audit2allow -M mypol
-$ sudo semodule -i mypol.pp
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Para que el servicio de VNC se incie junto con el sistema operativo&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo systemctl start vncserver@:1.service
-$ sudo systemctl enable vncserver@:1.service
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;De este modo quedaria funcionando el servicio de VNC en el puerto 5901.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Conclusión&lt;/em&gt;
-El poder tener escritorios remotos compartidos hoy en día es una herramienta útil, ya que es posible tener acceso a ellos a través de dispositivos móviles como tabletas o celulares. De igual modo facilita la solución de problemas ya que no es necesario tener presencia física en el equipo.&lt;/p&gt;
-
-&lt;p&gt;viktorivan@openmailbox.org&lt;/p&gt;
-
-&lt;p&gt;@viktor_ivan&lt;/p&gt;
-</description>
-        <pubDate>Mon, 31 Aug 2015 00:08:45 -0500</pubDate>
-        <link>http://librebit.github.io/vnc/howto/linux/fedora/2015/08/31/servidor-vnc-en-fedora.html</link>
-        <guid isPermaLink="true">http://librebit.github.io/vnc/howto/linux/fedora/2015/08/31/servidor-vnc-en-fedora.html</guid>
-        
-        
-        <category>VNC</category>
-        
-        <category>howto</category>
-        
-        <category>linux</category>
-        
-        <category>fedora</category>
-        
-      </item>
-    
-      <item>
-        <title>Instalación de servidor LAMP</title>
-        <description>&lt;p&gt;&lt;em&gt;Resumen&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Dentro del ámbito de servidores es común la instalación de un servidor LAMP (Linux Apache MySQL PHP). Esto debido a que existen múltiples aplicaciones que requieren la combinación de estos servicios, ya sea &lt;a href=&quot;http://www.moodle.org&quot;&gt;Moodle&lt;/a&gt;, &lt;a href=&quot;http://www.mediawiki.org/&quot;&gt;MediaWiki&lt;/a&gt;, por mencionar algunos. Estas aplicaciones piden como prerequisitos tener instalados estos servicios para el correcto funcionamiento de ellos mismos.&lt;/p&gt;
-
-&lt;p&gt;A continuación se muestra la configuración de un servidor LAMP tanto para CentOS como para Ubuntu.
-&lt;!-- more --&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Selección de Linux&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;La selección de la distribución o sabor de Linux es importante, una página que puede ser útil en la toma de decisión es &lt;a href=&quot;http://distrowatch.com/&quot;&gt;DistroWatch&lt;/a&gt;, en ella podemos buscar cualquier distribución de Linux disponible en línea, también se muestran las distribuciones organizadas de acuerdo a diferentes necesidades, desde un Linux para principiantes hasta un Linux especializado en análisis de seguridad o para diseño gráfico.&lt;/p&gt;
-
-&lt;p&gt;En lo referente a LAMP, podemos considerar que existen dos vertientes principales, los basados en distribuciones Debian/Ubuntu y los basados en RedHat/CentOS. &lt;a href=&quot;http://www.ubuntu.com&quot;&gt;Ubuntu&lt;/a&gt; se ha manejado como una distribución para usuarios que estan apenas conociendo o viviendo su experiencia en Linux, es un sistema muy versatil y trata de ser lo mas amigable al usuario, en cambio, &lt;a href=&quot;http://www.centos.org/&quot;&gt;CentOS&lt;/a&gt; es una distribución para gente con mas experiencia en Linux, donde la instalación de estos servicios requieren de mas pericia de parte del usuario final.&lt;/p&gt;
-
-&lt;p&gt;En conclusión, escoger entre Ubuntu o CentOS ya es una decisión personal, donde cada usuario determinará que tipo de sistema operativo cubre mejor sus necesidades.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Pasos para preparar un servidor CentOS&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Las aplicaciones en la distribución de CentOS se instalan a través de repositorios, así como la mayoría de las distribuciones de Linux. Una forma sencilla de instalar estas aplicaciones es trabajar desde la terminal con el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;yum&lt;/code&gt; en modo de superusuario. Adicionalmente, los comandos de &lt;code class=&quot;highlighter-rouge&quot;&gt;service&lt;/code&gt; y &lt;code class=&quot;highlighter-rouge&quot;&gt;chkconfig&lt;/code&gt; se utilizan para iniciar el servicio y para que arranque automáticamente al encender el servidor.&lt;/p&gt;
-
-&lt;p&gt;Para iniciar en modo de superusuario, desde una terminal de CentOS se utiliza el siguiente comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ su -
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;El signo de &lt;code class=&quot;highlighter-rouge&quot;&gt;#&lt;/code&gt; en la terminal indica que estamos en modo de superusuario, cabe mencionar que en CentOS no es lo mismo &lt;code class=&quot;highlighter-rouge&quot;&gt;su&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo su&lt;/code&gt; que &lt;code class=&quot;highlighter-rouge&quot;&gt;su -&lt;/code&gt;, el modo correcto es &lt;code class=&quot;highlighter-rouge&quot;&gt;su -&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Instalación del servidor HTTP Apache&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;La aplicación de Apache se encuentra en los repositorios de CentOS, el comando para instalar la aplicación es:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# yum install httpd -y
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Por medio de &lt;code class=&quot;highlighter-rouge&quot;&gt;service&lt;/code&gt; y &lt;code class=&quot;highlighter-rouge&quot;&gt;chkconfig&lt;/code&gt; se arranca el servicio y se indica que el servicio inicie automáticamente al arrancar el sistema operativo.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# service httpd start
-# chkconfig httpd on
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Por default, CentOS tiene deshabilitado el acceso remoto al puerto 80, para habilitar que cualquier usuario pueda ver el puerto 80 es necesario modificar el firewall del equipo. Las modificaciones en el Firewall puede realizarse sobre el archivo de &lt;code class=&quot;highlighter-rouge&quot;&gt;iptables&lt;/code&gt; o de manera gráfica en &lt;code class=&quot;highlighter-rouge&quot;&gt;System -&amp;gt; Administration -&amp;gt; Firewall&lt;/code&gt; y dentro de la sección de &lt;code class=&quot;highlighter-rouge&quot;&gt;trusted services&lt;/code&gt; se selecciona a &lt;code class=&quot;highlighter-rouge&quot;&gt;WWW(HTTP) 80/tcp&lt;/code&gt; para habilitar el servicio y reiniciamos el Firewall.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Instalación del servidor de base de datos MySQL.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Los comandos para instalar y arrancar el servicio de MySQL desde una terminal de superusuario son:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# yum install mysql mysql-server -y
-# service mysqld start
-# chkconfig mysqld on
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Por default, CentOS no pone contraseña de &lt;code class=&quot;highlighter-rouge&quot;&gt;root&lt;/code&gt; en el servidor de MySQL, para agregar una contraseña, se escribe en la terminal el siguiente comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# mysql_secure_installation
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Aparecerá la siguiente pantalla y se responderán las preguntas de acuerdo a los parámetros que se deseen. En caso de que no sepa que respuesta dar, solo presione &lt;code class=&quot;highlighter-rouge&quot;&gt;ENTER&lt;/code&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MySQL
-      SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
-
-
-In order to log into MySQL to secure it, we'll need the current
-password for the root user.  If you've just installed MySQL, and
-you haven't set the root password yet, the password will be blank,
-so you should just press enter here.
-
-Enter current password for root (enter for none): 
-OK, successfully used password, moving on...
-
-Setting the root password ensures that nobody can log into the MySQL
-root user without the proper authorisation.
-
-Set root password? [Y/n] 
-New password: 
-Re-enter new password: 
-Password updated successfully!
-Reloading privilege tables..
- ... Success!
-
-
-By default, a MySQL installation has an anonymous user, allowing anyone
-to log into MySQL without having to have a user account created for
-them.  This is intended only for testing, and to make the installation
-go a bit smoother.  You should remove them before moving into a
-production environment.
-
-Remove anonymous users? [Y/n] 
- ... Success!
-
-Normally, root should only be allowed to connect from 'localhost'.  This
-ensures that someone cannot guess at the root password from the network.
-
-Disallow root login remotely? [Y/n] 
- ... Success!
-
-By default, MySQL comes with a database named 'test' that anyone can
-access.  This is also intended only for testing, and should be removed
-before moving into a production environment.
-
-Remove test database and access to it? [Y/n] 
- - Dropping test database...
- ... Success!
- - Removing privileges on test database...
- ... Success!
-
-Reloading the privilege tables will ensure that all changes made so far
-will take effect immediately.
-
-Reload privilege tables now? [Y/n] 
- ... Success!
-
-Cleaning up...
-
-
-
-All done!  If you've completed all of the above steps, your MySQL
-installation should now be secure.
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;De esta manera, queda configurada una contraseña &lt;code class=&quot;highlighter-rouge&quot;&gt;root&lt;/code&gt; para el servidor MySQL&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Instalación de PHP&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;La instalación de PHP se realiza desde la terminal con el comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# yum install php -y
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Adicionalmente se instalan los siguientes paquetes para el correcto funcionamento de PHP con los otros servicios instalados en el equipo.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# yum install php-mcrypt php-pdo php-cli php-mysql php-gd php-xml libtool-ltdl mhash mcrypt -y
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;De esta manera se ha instalado correctamente un servidor de HTTP, MySQL y PHP en una distribución Linux Centos.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Pasos para preparar un servidor Ubuntu&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;La instalación de los servicios LAMP en Ubuntu se realizan de forma similar que en CentOS, desde una ventana de terminal.  La instalación de las aplicaciones desde los repositorios se realiza con el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;apt-get&lt;/code&gt;. El comando &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo&lt;/code&gt; antes de &lt;code class=&quot;highlighter-rouge&quot;&gt;apt-get&lt;/code&gt; es para indicar que el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;apt-get&lt;/code&gt;se ejecutará con los permisos de superusuario.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Instalación del servidor HTTP Apache&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Desde una terminal se escribe el comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt-get install apache2
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Por default, el servidor de apache2 arranca en automatico y los puertos son liberados en el firewall, por lo que no se requiere de una configuración adicional.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Instalación del servidor de base de datos MySQL.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Para la instalación de MySQL, desde una terminal se invoca el comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt-get install mysql-server mysql-client libmysqlclient-dev
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Durante el proceso de la instalación se solicita la contraseña de &lt;code class=&quot;highlighter-rouge&quot;&gt;root&lt;/code&gt; para MySQL.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Instalación de PHP&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Desde una terminal se escribe el comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt-get install php5 libapache2-mod-php5 php5-cli php5-mysql
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Para que las modificaciones de PHP se actualicen en el servidor HTTP es necesario reiniciar Apache.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo service apache2 restart
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;De esta manera, se tiene instalado un servidor LAMP basado en Ubuntu.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Conclusión&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Se puede observar claramente que la instalación de un servidor LAMP es mucho mas sencillo en Ubuntu, pero los niveles de seguridad y protección en datos de CentOS es algo que no podemos ignorar. Aún así, la experiencia de utilizar diferentes distribuciones de Linux para ofrecer estos servicios permite que el administrador de redes sea capaz de adaptarse a las necesidades de diferentes empresas.&lt;/p&gt;
-
-&lt;p&gt;viktorivan@openmailbox.org&lt;/p&gt;
-
-&lt;p&gt;@viktor_ivan&lt;/p&gt;
-</description>
-        <pubDate>Thu, 12 Jun 2014 07:50:29 -0500</pubDate>
-        <link>http://librebit.github.io/lamp/servidor/linux/instalacion/2014/06/12/instalacion-de-servidor-lamp.html</link>
-        <guid isPermaLink="true">http://librebit.github.io/lamp/servidor/linux/instalacion/2014/06/12/instalacion-de-servidor-lamp.html</guid>
-        
-        
-        <category>LAMP</category>
-        
-        <category>servidor</category>
-        
-        <category>Linux</category>
-        
-        <category>instalacion</category>
-        
-      </item>
-    
-  </channel>
-</rss>
+&lt;p&gt;@viktor_ivan&lt;/p&gt;</content><author><name>Iván Rodríguez</name></author><summary type="html">Introducción. El desarrollo de software involucra el uso de herramientas que permitan su fácil distribución o acceso, ya sea por sitios web especializados o dispositivos de almacenamiento. Sitios como GitHub permiten además un control de versiones del proyecto, de tal modo que pueden verse las diferentes modificaciones realizadas a los archivos asi como quien las realizó en caso de ser un proyecto en modo colaborativo. De igual modo esta herramienta es multiplataforma, lo que permite que usuarios de diferentes sistemas operativos puedan descargar o colaborar en el proyecto.</summary></entry></feed>
