@@ -1,4 +1,56 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="http://librebit.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://librebit.github.io/" rel="alternate" type="text/html" /><updated>2018-04-11T00:42:54+00:00</updated><id>http://librebit.github.io/</id><title type="html">LibreBit</title><subtitle>Un blog sobre el conocimiento libre.</subtitle><entry><title type="html">[Errores Linux Mint] Ciclo en Inicio De Sesión</title><link href="http://librebit.github.io/linuxmint/displaymanager/mdm/2018/03/26/errores-linux-mint-ciclo-en-inicio-de-sesin.html" rel="alternate" type="text/html" title="[Errores Linux Mint] Ciclo en Inicio De Sesión" /><published>2018-03-26T02:31:47+00:00</published><updated>2018-03-26T02:31:47+00:00</updated><id>http://librebit.github.io/linuxmint/displaymanager/mdm/2018/03/26/errores-linux-mint-ciclo-en-inicio-de-sesin</id><content type="html" xml:base="http://librebit.github.io/linuxmint/displaymanager/mdm/2018/03/26/errores-linux-mint-ciclo-en-inicio-de-sesin.html">&lt;p&gt;El Display Manager de Linux Mint &lt;code class=&quot;highlighter-rouge&quot;&gt;mdm&lt;/code&gt; está asociado con el inicio de sesión de Linux Mint tanto para &lt;code class=&quot;highlighter-rouge&quot;&gt;cinnamon&lt;/code&gt; como para &lt;code class=&quot;highlighter-rouge&quot;&gt;mate&lt;/code&gt;, un síntoma de que se ha dañado el programa &lt;code class=&quot;highlighter-rouge&quot;&gt;mdm&lt;/code&gt; es que al iniciar sesión no se pueda entrar correctamente a la sesión y aparezca un error relacionado a &lt;code class=&quot;highlighter-rouge&quot;&gt;.Xauthority&lt;/code&gt; indicando también que se volverá a iniciar sesión después de unos cuantos segundos quedando el inicio de sesión en un ciclo.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="http://librebit.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://librebit.github.io/" rel="alternate" type="text/html" /><updated>2018-07-18T16:16:32+00:00</updated><id>http://librebit.github.io/</id><title type="html">LibreBit</title><subtitle>Un blog sobre el conocimiento libre.</subtitle><entry><title type="html">Instalación De Servidor GIT en Raspberry Pi</title><link href="http://librebit.github.io/git/servidor/raspberrypi/2018/04/16/instalacin-de-servidor-git-en-raspberry-pi.html" rel="alternate" type="text/html" title="Instalación De Servidor GIT en Raspberry Pi" /><published>2018-04-16T21:35:23+00:00</published><updated>2018-04-16T21:35:23+00:00</updated><id>http://librebit.github.io/git/servidor/raspberrypi/2018/04/16/instalacin-de-servidor-git-en-raspberry-pi</id><content type="html" xml:base="http://librebit.github.io/git/servidor/raspberrypi/2018/04/16/instalacin-de-servidor-git-en-raspberry-pi.html">&lt;p&gt;Existen diversos tipos de servidores &lt;a href=&quot;https://git-scm.com/&quot;&gt;Git&lt;/a&gt;, tales como &lt;a href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt; y &lt;a href=&quot;https://gitlab.com/&quot;&gt;GitLab&lt;/a&gt;, los cuales son muy populares para el desarrollo de proyectos ya que ofrecen herramientas que permiten la colaboración y control de versiones entre un grupo de desarrolladores.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Git&lt;/code&gt; se desarrolló como un programa para el control de versiones de proyectos cliente-servidor a base de líneas de comandos, facilitando de esta manera la distrubución y el control de código dentro de un proyecto en particular.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GitLab&lt;/code&gt; y &lt;code class=&quot;highlighter-rouge&quot;&gt;GitHub&lt;/code&gt; son proyectos basados en &lt;code class=&quot;highlighter-rouge&quot;&gt;Git&lt;/code&gt; de tal manera que los comandos utilizados en &lt;code class=&quot;highlighter-rouge&quot;&gt;Git&lt;/code&gt; son compatibles con estas plataformas con la diferencia de que estas ofrecen una interfaz web la cual permite desde cualquier navegador crear proyectos y realizar seguimientos de los mismos.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Git&lt;/code&gt; puede utilizarse además como una plataforma de respaldo personal, sin la infraestructura que conlleva instalar un servidor como &lt;code class=&quot;highlighter-rouge&quot;&gt;GitLab&lt;/code&gt;, aunque &lt;code class=&quot;highlighter-rouge&quot;&gt;GitLab&lt;/code&gt; tiene disponible una versión para instalar en servidores personales a diferencia de &lt;code class=&quot;highlighter-rouge&quot;&gt;GitHub&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Para la instalación de &lt;code class=&quot;highlighter-rouge&quot;&gt;Git&lt;/code&gt; como un servidor de respaldo personal de proyectos se pueden utilizar computadoras de rendimiento limitado tal como la &lt;code class=&quot;highlighter-rouge&quot;&gt;RaspberryPi&lt;/code&gt;, la cual equivale en desempeño a una computadora de la década de 1990.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Instalación de servidor Git&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;La instalación de &lt;code class=&quot;highlighter-rouge&quot;&gt;Git&lt;/code&gt; en la computadora donde se almacenarán los proyectos (servidor) se realiza a través de &lt;code class=&quot;highlighter-rouge&quot;&gt;apt&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt install git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Una vez instalado el servicio, se debe de crear un usuario llamado &lt;code class=&quot;highlighter-rouge&quot;&gt;git&lt;/code&gt; el cual se utilizará para crear los proyectos desde la terminal de comandos del servidor.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo adduser git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;Creación de proyectos Git&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Los proyectos creados en el servidor &lt;code class=&quot;highlighter-rouge&quot;&gt;Git&lt;/code&gt; se deben de realizar con el usuario &lt;code class=&quot;highlighter-rouge&quot;&gt;git&lt;/code&gt;, en el caso de linux se puede identificar con cual usuario se ha iniciado sesión desde la terminal &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;usuario&amp;gt;@&amp;lt;NombrePC&amp;gt;&lt;/code&gt;, para RaspberryPi el usuario es&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pi@&amp;lt;NombrePC&amp;gt;$
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Cuando se ha iniciado sesión con &lt;code class=&quot;highlighter-rouge&quot;&gt;git&lt;/code&gt; se observa&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git@&amp;lt;NombrePC&amp;gt;$
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Una vez iniciada la sesión con el usuario &lt;code class=&quot;highlighter-rouge&quot;&gt;git&lt;/code&gt; se puede crear los folders donde se guardarán los repositorios, se recomienda utilizar la extesión &lt;code class=&quot;highlighter-rouge&quot;&gt;.git&lt;/code&gt; por cuestiones de nomenclatura en los proyectos de &lt;code class=&quot;highlighter-rouge&quot;&gt;Git&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ mkdir &amp;lt;NombreDeProyecto&amp;gt;.git
+$ cd &amp;lt;NombreDeProyecto&amp;gt;.git/
+$ git init --bare
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;El comando &lt;code class=&quot;highlighter-rouge&quot;&gt;git init --bare&lt;/code&gt; es el responsable de crear la estructura de archivos para el manejo de repositorios dentro del folder &lt;code class=&quot;highlighter-rouge&quot;&gt;.git&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Respaldo de proyecto en Git&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Una vez configurado el servidor de &lt;code class=&quot;highlighter-rouge&quot;&gt;Git&lt;/code&gt; se puede empezar a realizar los respaldos de proyectos desde la computadora de usuario, para ello se debe de inicializar el folder raíz del proyecto con el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;git@&amp;lt;ServidorGit&amp;gt;:/home/git/&amp;lt;NombreDeProyecto&amp;gt;.git&lt;/code&gt;, en el se puede observar que pide el nombre o dirección IP del servidor &lt;code class=&quot;highlighter-rouge&quot;&gt;Git&lt;/code&gt; y la ubicación del folder del proyecto dentro de &lt;code class=&quot;highlighter-rouge&quot;&gt;home/git&lt;/code&gt; del servidor &lt;code class=&quot;highlighter-rouge&quot;&gt;Git&lt;/code&gt;. Una vez determinada esta información se puede configurar el repositorio para su respaldo en el servidor &lt;code class=&quot;highlighter-rouge&quot;&gt;Git&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd &amp;lt;NombreDeProyecto&amp;gt;/
+git init
+git add .
+git remote add pi git@&amp;lt;ServidorGit&amp;gt;:/home/git/&amp;lt;NombreDeProyecto&amp;gt;.git
+git commit -m 'Mensaje'
+git push pi master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Como se puede observar, los comandos utilizados son similares a los utilizados tanto en &lt;code class=&quot;highlighter-rouge&quot;&gt;GitLab&lt;/code&gt; como en &lt;code class=&quot;highlighter-rouge&quot;&gt;GitHub&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;@viktor_ivan&lt;/p&gt;</content><author><name>Iván Rodríguez</name></author><summary type="html">Existen diversos tipos de servidores Git, tales como GitHub y GitLab, los cuales son muy populares para el desarrollo de proyectos ya que ofrecen herramientas que permiten la colaboración y control de versiones entre un grupo de desarrolladores.</summary></entry><entry><title type="html">[Errores Linux Mint] Ciclo en Inicio De Sesión</title><link href="http://librebit.github.io/linuxmint/displaymanager/mdm/2018/03/26/errores-linux-mint-ciclo-en-inicio-de-sesin.html" rel="alternate" type="text/html" title="[Errores Linux Mint] Ciclo en Inicio De Sesión" /><published>2018-03-26T02:31:47+00:00</published><updated>2018-03-26T02:31:47+00:00</updated><id>http://librebit.github.io/linuxmint/displaymanager/mdm/2018/03/26/errores-linux-mint-ciclo-en-inicio-de-sesin</id><content type="html" xml:base="http://librebit.github.io/linuxmint/displaymanager/mdm/2018/03/26/errores-linux-mint-ciclo-en-inicio-de-sesin.html">&lt;p&gt;El Display Manager de Linux Mint &lt;code class=&quot;highlighter-rouge&quot;&gt;mdm&lt;/code&gt; está asociado con el inicio de sesión de Linux Mint tanto para &lt;code class=&quot;highlighter-rouge&quot;&gt;cinnamon&lt;/code&gt; como para &lt;code class=&quot;highlighter-rouge&quot;&gt;mate&lt;/code&gt;, un síntoma de que se ha dañado el programa &lt;code class=&quot;highlighter-rouge&quot;&gt;mdm&lt;/code&gt; es que al iniciar sesión no se pueda entrar correctamente a la sesión y aparezca un error relacionado a &lt;code class=&quot;highlighter-rouge&quot;&gt;.Xauthority&lt;/code&gt; indicando también que se volverá a iniciar sesión después de unos cuantos segundos quedando el inicio de sesión en un ciclo.&lt;/p&gt;
 
 &lt;p&gt;Este error se presenta normalmente después de actualizar el sistema operativo a través de &lt;code class=&quot;highlighter-rouge&quot;&gt;apt upgrade&lt;/code&gt; o por el &lt;code class=&quot;highlighter-rouge&quot;&gt;Update Manager&lt;/code&gt; y con programas relacionados al sistema de arranque &lt;code class=&quot;highlighter-rouge&quot;&gt;UEFI&lt;/code&gt;.&lt;/p&gt;
 
@@ -701,6 +753,52 @@ layout: default
 
 &lt;p&gt;En caso de que indique que la conexión requiere guardar una llave de ssh, se le indica que si.&lt;/p&gt;
 
+&lt;p&gt;&lt;em&gt;Errores comunes&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Error de dependencia tzinfo-data&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;The dependency tzinfo-data (&amp;gt;= 0) will be unused by any of the platforms Bundler is installing for. Bundler is installing for ruby but the dependency is only for x86-mingw32, x86-mswin32, x64-mingw32, java. To add those platforms to the bundle, run `bundle lock --add-platform x86-mingw32 x86-mswin32 x64-mingw32 java`.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Este error se presenta por problemas de compatibilidad del paquete, para evitar que siga apareciendo el mensaje hay que ejecutar el comando de &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle lock&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ bundle lock --add-platform x86-mingw32 x86-mswin32 x64-mingw32 java
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;Error de new post&lt;/em&gt;
+Si al momento de ejecutar el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;octopress new post&lt;/code&gt; se presenta el error:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;WARN: Unresolved specs during Gem::Specification.reset:
+      rouge (&amp;lt; 4, &amp;gt;= 1.7)
+WARN: Clearing out unresolved specs.
+Please report a bug if this causes problems.
+  Dependency Error: Yikes! It looks like you don't have jekyll-feed or one of its dependencies installed. In order to use Jekyll as currently configured, you'll need to install this gem. The full error message from Ruby is: 'cannot load such file -- jekyll-feed' If you run into trouble, you can find helpful resources at https://jekyllrb.com/help/!
+octopress 3.0.11 | Error:  jekyll-feed
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Esto significa que &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle&lt;/code&gt; no instaló las versiones correctas para la plataforma de octopress, para ello se debe de modificar el archivo de &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; e incluir el proyecto de &lt;code class=&quot;highlighter-rouge&quot;&gt;octopress&lt;/code&gt; como parte de el.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ nano Gemfile
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Abajo de &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll&lt;/code&gt; se puede agregar la línea de instalar &lt;code class=&quot;highlighter-rouge&quot;&gt;octopress&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem &quot;jekyll&quot;, &quot;~&amp;gt; 3.6.2&quot;
+gem &quot;octopress&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Finalmente se instala de nuevo el proyecto&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ bundle
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Para asegurar que se ejecuten las versiones correctas de los programas se sugiere el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ bundle exec octopress new post &quot;Título del post&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;Error de url en Disqus&lt;/em&gt;
+El sitio &lt;code class=&quot;highlighter-rouge&quot;&gt;Disqus&lt;/code&gt; puede mostrar un enlace incorrecto en los comentarios que se hagan en los posts del sitio, para evitar esto se recomienda generar los archivos del sitio sin la opción &lt;code class=&quot;highlighter-rouge&quot;&gt;--h 0.0.0.0 --incremental --watch&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ jekyll build
+$ jekyll serve
+$ octopress deploy
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;En caso de que &lt;code class=&quot;highlighter-rouge&quot;&gt;Disqus&lt;/code&gt; tenga los enlaces incorrectos en el sitio, se debe de modificar de forma manual en el sitio de &lt;code class=&quot;highlighter-rouge&quot;&gt;Disqus&lt;/code&gt; con la opción de &lt;code class=&quot;highlighter-rouge&quot;&gt;urlmapper&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;De este modo &lt;code class=&quot;highlighter-rouge&quot;&gt;Disqus&lt;/code&gt; enviará un archivo &lt;code class=&quot;highlighter-rouge&quot;&gt;CSV&lt;/code&gt; el cual deberá de modificarse con las direcciones correctas de los posts.&lt;/p&gt;
+
 &lt;p&gt;&lt;em&gt;Conclusión.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;Aunque el proyecto de Octopress 3.0 no ha madurado todavía, las mejores que presenta con respecto a versiones anteriores resultan bastante prometedoras, aunque hay muchos detalles por corregir. Por lo que puedo mencionar algunos puntos.&lt;/p&gt;
@@ -723,7 +821,7 @@ layout: default
 
 &lt;p&gt;Con el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;ln&lt;/code&gt; para crear enlaces simbólicos y con permisos de super usuario, se teclea en una terminal la ubicación del archivo ejecutable que fue instalado de Matlab y la ubicación destino del archivo simbólico.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo ln -s /usr/local/MATLAB/R2016a/bin/matlab /usr/local/bin/matlab
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo ln -s /usr/local/MATLAB/R20XXx/bin/matlab /usr/local/bin/matlab
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Esto creará un archivo llamado matlab en &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/bin&lt;/code&gt; el cual permitirá invocar el programa de Matlab desde la ventana de comando o en su defecto crear un acceso directo para el escritorio.&lt;/p&gt;
@@ -741,6 +839,25 @@ layout: default
 &lt;p&gt;El archivo .desktop que se descargó es para la versión R2012a, para cambiarlo solo se requiere editar el archivo con un editor de textos con permisos de super usuario, en este caso se modifica utilizando el editor xed.&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo xed /usr/share/applications/matlab.desktop
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;El contenido del archivo .desktop es el siguiente:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Icon=/usr/share/icons/matlab.png
+Name=MATLAB R2018a
+Comment=Start MATLAB - The Language of Technical Computing
+#Uncomment the following line and comment the line after to
+#force matlab to use the 32 bits architecture
+#Exec=matlab -arch=glnx86 -desktop
+Exec=matlab -desktop -useStartupFolderPref
+Categories=Development;
+#Uncomment the following line if you've got several matlab icons in the launcher
+#StartupWMClass=com-mathworks-util-PostVMInit
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Se puede observar que el nombre del ícono es MATLAB 2018a, &lt;code class=&quot;highlighter-rouge&quot;&gt;Name=MATLAB R2018a&lt;/code&gt;, y que cuando se ejecute el comando de Matlab este se abrirá en modo de escritorio respetando las preferencias del usuario con respecto a los folders de trabajo, &lt;code class=&quot;highlighter-rouge&quot;&gt;Exec=matlab -desktop -useStartupFolderPref&lt;/code&gt;.&lt;/p&gt;
+
 &lt;p&gt;El archivo .desktop solo contiene la información para llamar el programa de Matlab, para el ícono es necesario descargar el archivo y guardarlo en la carpetas de los íconos del sistema operativo.&lt;/p&gt;
 
 &lt;p&gt;Para descargar el icono&lt;/p&gt;
@@ -763,7 +880,7 @@ layout: default
 &lt;p&gt;Para instalar los archivos necesarios para ejecutar Matlab en caso de que exista un error al ejecutar matlab -desktop&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt-get install matlab-support
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Se ejecutará un script que localizará el directorio de instalación de Matlab, en caso de no encontrarlo será necesario indicarlo, por lo general es &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/MATLAB/R201xx/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Se ejecutará un script que localizará el directorio de instalación de Matlab, en caso de no encontrarlo será necesario indicarlo, por lo general es &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/MATLAB/R20XXx/&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;Una vez realizado esto empezará a redireccionar los archivos de las librerías que requiere para su funcionamiento.&lt;/p&gt;
 
@@ -857,34 +974,4 @@ dtoverlay=mz61581
 
 &lt;p&gt;Dispositivos como los raspberry han tomado popularidad debido a su costo y fácil manejo, existen una diversidad de dispositivos y sensores que permiten desarrollar sistemas sin necesidad de adquirir equipo costoso o especilizado, dejando libertad a la creatividad del programador para alcanzar sus objetivos.&lt;/p&gt;
 
-&lt;p&gt;@viktor_ivan&lt;/p&gt;</content><author><name>Iván Rodríguez</name></author><summary type="html">El uso de sistemas mínimos o embedidos implica por lo general algún método para su monitoreo o control, que puede ser desde el puerto serial o UART, un enlace SSH o alguna interfaz gráfica. El uso de monitores en dispositivos tan pequeños como los embebidos se ha popularizado, de tal modo que estan pantallas incluyen funciones touch en tan sólo 3.5 pulgadas.</summary></entry><entry><title type="html">Spotify en Linux</title><link href="http://librebit.github.io/spotify/linux/applications/2016/03/11/spotify-linux.html" rel="alternate" type="text/html" title="Spotify en Linux" /><published>2016-03-11T18:29:00+00:00</published><updated>2016-03-11T18:29:00+00:00</updated><id>http://librebit.github.io/spotify/linux/applications/2016/03/11/spotify-linux</id><content type="html" xml:base="http://librebit.github.io/spotify/linux/applications/2016/03/11/spotify-linux.html">&lt;p&gt;Recientemente instalé Ubuntu Gnome para trabajar (me dedico a desarrollar para web), y me hacía falta tener spotify para oir musica para programar ;)&lt;/p&gt;
-
-&lt;p&gt;Aunque Spotify había dicho que no iban a dar soporte para linux, la verdad es que desde su sitio web se puede descargar, visitando esta url&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://www.spotify.com/mx/download/linux/
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;em&gt;Instalación.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/spotify-receta-original.png&quot; /&gt;
-Tras seguir los pasos ahi indicados me encuentro que al ejecutar la aplicación no se abre, entonces voy a una terminal y lo ejecuto&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ spotify
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;y obtengo la siguiente respuesta:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;libgcrypt.so.11: cannot open shared object file: No such file or directory
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;em&gt;Solución.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Por lo que después de leer un rato, resulta que hay que activar el repositorio de ‘testing’, así que procedemos a eliminar el paquete, quitar el repositorio de spotify, poner el repositorio testing de spotify y reinstalar la aplicación:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt-get purge spotify-client
-$ sudo apt-get autoremove
-$ sudo add-apt-repository --remove 'deb http://repository.spotify.com stable non-free'
-$ sudo echo deb http://repository.spotify.com testing non-free | sudo tee /etc/apt/sources.list.d/spotify.list
-$ sudo apt-get update
-$ sudo apt-get install spotify-client
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;/images/spotify-linux.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Éxito :)&lt;/p&gt;
-
-&lt;p&gt;@Y0_Soy&lt;/p&gt;</content><author><name>Fernando Valderrábano</name></author><summary type="html">Recientemente instalé Ubuntu Gnome para trabajar (me dedico a desarrollar para web), y me hacía falta tener spotify para oir musica para programar ;)</summary></entry></feed>
+&lt;p&gt;@viktor_ivan&lt;/p&gt;</content><author><name>Iván Rodríguez</name></author><summary type="html">El uso de sistemas mínimos o embedidos implica por lo general algún método para su monitoreo o control, que puede ser desde el puerto serial o UART, un enlace SSH o alguna interfaz gráfica. El uso de monitores en dispositivos tan pequeños como los embebidos se ha popularizado, de tal modo que estan pantallas incluyen funciones touch en tan sólo 3.5 pulgadas.</summary></entry></feed>

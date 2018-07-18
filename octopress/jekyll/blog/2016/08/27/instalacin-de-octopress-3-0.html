@@ -321,6 +321,52 @@ layout: default
 
 <p>En caso de que indique que la conexión requiere guardar una llave de ssh, se le indica que si.</p>
 
+<p><em>Errores comunes</em></p>
+
+<p><em>Error de dependencia tzinfo-data</em></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The dependency tzinfo-data (&gt;= 0) will be unused by any of the platforms Bundler is installing for. Bundler is installing for ruby but the dependency is only for x86-mingw32, x86-mswin32, x64-mingw32, java. To add those platforms to the bundle, run `bundle lock --add-platform x86-mingw32 x86-mswin32 x64-mingw32 java`.
+</code></pre></div></div>
+
+<p>Este error se presenta por problemas de compatibilidad del paquete, para evitar que siga apareciendo el mensaje hay que ejecutar el comando de <code class="highlighter-rouge">bundle lock</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ bundle lock --add-platform x86-mingw32 x86-mswin32 x64-mingw32 java
+</code></pre></div></div>
+<p><em>Error de new post</em>
+Si al momento de ejecutar el comando <code class="highlighter-rouge">octopress new post</code> se presenta el error:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>WARN: Unresolved specs during Gem::Specification.reset:
+      rouge (&lt; 4, &gt;= 1.7)
+WARN: Clearing out unresolved specs.
+Please report a bug if this causes problems.
+  Dependency Error: Yikes! It looks like you don't have jekyll-feed or one of its dependencies installed. In order to use Jekyll as currently configured, you'll need to install this gem. The full error message from Ruby is: 'cannot load such file -- jekyll-feed' If you run into trouble, you can find helpful resources at https://jekyllrb.com/help/!
+octopress 3.0.11 | Error:  jekyll-feed
+</code></pre></div></div>
+<p>Esto significa que <code class="highlighter-rouge">bundle</code> no instaló las versiones correctas para la plataforma de octopress, para ello se debe de modificar el archivo de <code class="highlighter-rouge">Gemfile</code> e incluir el proyecto de <code class="highlighter-rouge">octopress</code> como parte de el.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nano Gemfile
+</code></pre></div></div>
+<p>Abajo de <code class="highlighter-rouge">jekyll</code> se puede agregar la línea de instalar <code class="highlighter-rouge">octopress</code></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem "jekyll", "~&gt; 3.6.2"
+gem "octopress"
+</code></pre></div></div>
+<p>Finalmente se instala de nuevo el proyecto</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ bundle
+</code></pre></div></div>
+<p>Para asegurar que se ejecuten las versiones correctas de los programas se sugiere el comando <code class="highlighter-rouge">bundle exec</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ bundle exec octopress new post "Título del post"
+</code></pre></div></div>
+<p><em>Error de url en Disqus</em>
+El sitio <code class="highlighter-rouge">Disqus</code> puede mostrar un enlace incorrecto en los comentarios que se hagan en los posts del sitio, para evitar esto se recomienda generar los archivos del sitio sin la opción <code class="highlighter-rouge">--h 0.0.0.0 --incremental --watch</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ jekyll build
+$ jekyll serve
+$ octopress deploy
+</code></pre></div></div>
+<p>En caso de que <code class="highlighter-rouge">Disqus</code> tenga los enlaces incorrectos en el sitio, se debe de modificar de forma manual en el sitio de <code class="highlighter-rouge">Disqus</code> con la opción de <code class="highlighter-rouge">urlmapper</code>.</p>
+
+<p>De este modo <code class="highlighter-rouge">Disqus</code> enviará un archivo <code class="highlighter-rouge">CSV</code> el cual deberá de modificarse con las direcciones correctas de los posts.</p>
+
 <p><em>Conclusión.</em></p>
 
 <p>Aunque el proyecto de Octopress 3.0 no ha madurado todavía, las mejores que presenta con respecto a versiones anteriores resultan bastante prometedoras, aunque hay muchos detalles por corregir. Por lo que puedo mencionar algunos puntos.</p>
