@@ -77,10 +77,10 @@
 
 <p>Los proyectos creados en el servidor <code class="highlighter-rouge">Git</code> se deben de realizar con el usuario <code class="highlighter-rouge">git</code>, en el caso de linux se puede identificar con cual usuario se ha iniciado sesión desde la terminal <code class="highlighter-rouge">&lt;usuario&gt;@&lt;NombrePC&gt;</code>, para RaspberryPi el usuario es</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pi@&lt;NombrePC&gt;$
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pi@&lt;NombrePC&gt; ~$
 </code></pre></div></div>
 <p>Cuando se ha iniciado sesión con <code class="highlighter-rouge">git</code> se observa</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git@&lt;NombrePC&gt;$
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git@&lt;NombrePC&gt; ~$
 </code></pre></div></div>
 <p>Una vez iniciada la sesión con el usuario <code class="highlighter-rouge">git</code> se puede crear los folders donde se guardarán los repositorios, se recomienda utilizar la extesión <code class="highlighter-rouge">.git</code> por cuestiones de nomenclatura en los proyectos de <code class="highlighter-rouge">Git</code>.</p>
 
@@ -94,12 +94,12 @@ $ git init --bare
 
 <p>Una vez configurado el servidor de <code class="highlighter-rouge">Git</code> se puede empezar a realizar los respaldos de proyectos desde la computadora de usuario, para ello se debe de inicializar el folder raíz del proyecto con el comando <code class="highlighter-rouge">git@&lt;ServidorGit&gt;:/home/git/&lt;NombreDeProyecto&gt;.git</code>, en el se puede observar que pide el nombre o dirección IP del servidor <code class="highlighter-rouge">Git</code> y la ubicación del folder del proyecto dentro de <code class="highlighter-rouge">home/git</code> del servidor <code class="highlighter-rouge">Git</code>. Una vez determinada esta información se puede configurar el repositorio para su respaldo en el servidor <code class="highlighter-rouge">Git</code>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd &lt;NombreDeProyecto&gt;/
-git init
-git add .
-git remote add pi git@&lt;ServidorGit&gt;:/home/git/&lt;NombreDeProyecto&gt;.git
-git commit -m 'Mensaje'
-git push pi master
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd &lt;NombreDeProyecto&gt;/
+$ git init
+$ git add .
+$ git remote add pi git@&lt;ServidorGit&gt;:/home/git/&lt;NombreDeProyecto&gt;.git
+$ git commit -m 'Mensaje'
+$ git push pi master
 </code></pre></div></div>
 <p>Como se puede observar, los comandos utilizados son similares a los utilizados tanto en <code class="highlighter-rouge">GitLab</code> como en <code class="highlighter-rouge">GitHub</code>.</p>
 

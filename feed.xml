@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="http://librebit.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://librebit.github.io/" rel="alternate" type="text/html" /><updated>2018-07-18T16:16:32+00:00</updated><id>http://librebit.github.io/</id><title type="html">LibreBit</title><subtitle>Un blog sobre el conocimiento libre.</subtitle><entry><title type="html">Instalación De Servidor GIT en Raspberry Pi</title><link href="http://librebit.github.io/git/servidor/raspberrypi/2018/04/16/instalacin-de-servidor-git-en-raspberry-pi.html" rel="alternate" type="text/html" title="Instalación De Servidor GIT en Raspberry Pi" /><published>2018-04-16T21:35:23+00:00</published><updated>2018-04-16T21:35:23+00:00</updated><id>http://librebit.github.io/git/servidor/raspberrypi/2018/04/16/instalacin-de-servidor-git-en-raspberry-pi</id><content type="html" xml:base="http://librebit.github.io/git/servidor/raspberrypi/2018/04/16/instalacin-de-servidor-git-en-raspberry-pi.html">&lt;p&gt;Existen diversos tipos de servidores &lt;a href=&quot;https://git-scm.com/&quot;&gt;Git&lt;/a&gt;, tales como &lt;a href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt; y &lt;a href=&quot;https://gitlab.com/&quot;&gt;GitLab&lt;/a&gt;, los cuales son muy populares para el desarrollo de proyectos ya que ofrecen herramientas que permiten la colaboración y control de versiones entre un grupo de desarrolladores.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="http://librebit.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://librebit.github.io/" rel="alternate" type="text/html" /><updated>2018-07-18T16:20:26+00:00</updated><id>http://librebit.github.io/</id><title type="html">LibreBit</title><subtitle>Un blog sobre el conocimiento libre.</subtitle><entry><title type="html">Instalación De Servidor GIT en Raspberry Pi</title><link href="http://librebit.github.io/git/servidor/raspberrypi/2018/04/16/instalacin-de-servidor-git-en-raspberry-pi.html" rel="alternate" type="text/html" title="Instalación De Servidor GIT en Raspberry Pi" /><published>2018-04-16T21:35:23+00:00</published><updated>2018-04-16T21:35:23+00:00</updated><id>http://librebit.github.io/git/servidor/raspberrypi/2018/04/16/instalacin-de-servidor-git-en-raspberry-pi</id><content type="html" xml:base="http://librebit.github.io/git/servidor/raspberrypi/2018/04/16/instalacin-de-servidor-git-en-raspberry-pi.html">&lt;p&gt;Existen diversos tipos de servidores &lt;a href=&quot;https://git-scm.com/&quot;&gt;Git&lt;/a&gt;, tales como &lt;a href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt; y &lt;a href=&quot;https://gitlab.com/&quot;&gt;GitLab&lt;/a&gt;, los cuales son muy populares para el desarrollo de proyectos ya que ofrecen herramientas que permiten la colaboración y control de versiones entre un grupo de desarrolladores.&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Git&lt;/code&gt; se desarrolló como un programa para el control de versiones de proyectos cliente-servidor a base de líneas de comandos, facilitando de esta manera la distrubución y el control de código dentro de un proyecto en particular.&lt;/p&gt;
 
@@ -24,10 +24,10 @@
 
 &lt;p&gt;Los proyectos creados en el servidor &lt;code class=&quot;highlighter-rouge&quot;&gt;Git&lt;/code&gt; se deben de realizar con el usuario &lt;code class=&quot;highlighter-rouge&quot;&gt;git&lt;/code&gt;, en el caso de linux se puede identificar con cual usuario se ha iniciado sesión desde la terminal &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;usuario&amp;gt;@&amp;lt;NombrePC&amp;gt;&lt;/code&gt;, para RaspberryPi el usuario es&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pi@&amp;lt;NombrePC&amp;gt;$
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pi@&amp;lt;NombrePC&amp;gt; ~$
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Cuando se ha iniciado sesión con &lt;code class=&quot;highlighter-rouge&quot;&gt;git&lt;/code&gt; se observa&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git@&amp;lt;NombrePC&amp;gt;$
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git@&amp;lt;NombrePC&amp;gt; ~$
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Una vez iniciada la sesión con el usuario &lt;code class=&quot;highlighter-rouge&quot;&gt;git&lt;/code&gt; se puede crear los folders donde se guardarán los repositorios, se recomienda utilizar la extesión &lt;code class=&quot;highlighter-rouge&quot;&gt;.git&lt;/code&gt; por cuestiones de nomenclatura en los proyectos de &lt;code class=&quot;highlighter-rouge&quot;&gt;Git&lt;/code&gt;.&lt;/p&gt;
 
@@ -41,12 +41,12 @@ $ git init --bare
 
 &lt;p&gt;Una vez configurado el servidor de &lt;code class=&quot;highlighter-rouge&quot;&gt;Git&lt;/code&gt; se puede empezar a realizar los respaldos de proyectos desde la computadora de usuario, para ello se debe de inicializar el folder raíz del proyecto con el comando &lt;code class=&quot;highlighter-rouge&quot;&gt;git@&amp;lt;ServidorGit&amp;gt;:/home/git/&amp;lt;NombreDeProyecto&amp;gt;.git&lt;/code&gt;, en el se puede observar que pide el nombre o dirección IP del servidor &lt;code class=&quot;highlighter-rouge&quot;&gt;Git&lt;/code&gt; y la ubicación del folder del proyecto dentro de &lt;code class=&quot;highlighter-rouge&quot;&gt;home/git&lt;/code&gt; del servidor &lt;code class=&quot;highlighter-rouge&quot;&gt;Git&lt;/code&gt;. Una vez determinada esta información se puede configurar el repositorio para su respaldo en el servidor &lt;code class=&quot;highlighter-rouge&quot;&gt;Git&lt;/code&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd &amp;lt;NombreDeProyecto&amp;gt;/
-git init
-git add .
-git remote add pi git@&amp;lt;ServidorGit&amp;gt;:/home/git/&amp;lt;NombreDeProyecto&amp;gt;.git
-git commit -m 'Mensaje'
-git push pi master
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd &amp;lt;NombreDeProyecto&amp;gt;/
+$ git init
+$ git add .
+$ git remote add pi git@&amp;lt;ServidorGit&amp;gt;:/home/git/&amp;lt;NombreDeProyecto&amp;gt;.git
+$ git commit -m 'Mensaje'
+$ git push pi master
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Como se puede observar, los comandos utilizados son similares a los utilizados tanto en &lt;code class=&quot;highlighter-rouge&quot;&gt;GitLab&lt;/code&gt; como en &lt;code class=&quot;highlighter-rouge&quot;&gt;GitHub&lt;/code&gt;.&lt;/p&gt;
 
